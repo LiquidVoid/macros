@@ -7,7 +7,8 @@ scripts/logs/*
 
 #tempfiles
 scripts/.events.txt
-.*.xml
+.vars.xml
+.globalvars.xml
 
 ############
 ## Windows
