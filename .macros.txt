@@ -281,28 +281,28 @@ Macro[210].Override=1
 Macro[211].Macro=$${@&queue[9] = %@&server_commands_safehome%;}$$
 
 # CONTROL_CHAT GLOBAL
-Macro[270].Macro=$${@&queue[7] = "/channel global";}$$
+Macro[270].Macro=$${@&queue[7] = "/ch global";}$$
 
 # CONTROL_CHAT LOCAL
-Macro[271].Macro=$${@&queue[7] = "/channel local";}$$
+Macro[271].Macro=$${@&queue[7] = "/ch local";}$$
 
 # CONTROL_CHAT TOWNWORLD
-Macro[272].Macro=$${@&queue[7] = "/channel town";}$$
+Macro[272].Macro=$${@&queue[7] = "/ch town";}$$
 
 # CONTROL_CHAT WILDERNESS
-Macro[273].Macro=$${@&queue[7] = "/channel wilderness";}$$
+Macro[273].Macro=$${@&queue[7] = "/ch wilderness";}$$
 
 # CONTROL_CHAT MINE
-Macro[274].Macro=$${@&queue[7] = "/channel mine";}$$
+Macro[274].Macro=$${@&queue[7] = "/ch mine";}$$
 
 # CONTROL_CHAT MINE LEAVE
 Macro[275].Macro=$${@&queue[7] = "/channel leave mine";}$$
 
 # CONTROL_CHAT WILDERNESS LEAVE
-Macro[276].Macro=$${@&queue[7] = "/channel leave wilderness";}$$
+Macro[276].Macro=$${@&queue[7] = "/ch leave wilderness";}$$
 
 # CONTROL_CHAT GLOBAL LEAVE
-Macro[277].Macro=$${@&queue[7] = "/channel leave global";}$$
+Macro[277].Macro=$${@&queue[7] = "/ch leave global";}$$
 
 # CONTROL_REMOTE-SEND
 Macro[278].Macro=$$<CMD-Remote-Send.txt>

@@ -9,7 +9,7 @@ $${
             if( ( #status == 200 ) && ( &reply != "" ) );
                 match(%&reply%,"^%PLAYER%:{2}echo:{2}(.+)$",&msg,1);
                 logto(ScriptLog,%&msg%);
-                wait(2);
+                wait("250ms");
                 @&queue[6] = %&msg%;
 
             elseif( #status == 408 );
