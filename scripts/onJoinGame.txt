@@ -218,13 +218,17 @@ $${
 
         @auto_cobblestone = true;
         @automatic = false;
+        @actions[1] = false;
+        @actions[2] = false;
+        @actions[3] = false;
+        @actions[4] = false;
         @auto_noafk = true;
         @chat_ping = false;
+        
         unset(#times[]);
-
-        @&display_balance = "";
-
         #lasty = %YPOS%;
+        
+        @&display_balance = "";
 
         exec(CMD-Remote-Receive.txt,"CMD-Remote-Receive");
         clearchat();
