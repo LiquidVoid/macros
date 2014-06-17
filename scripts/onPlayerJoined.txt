@@ -4,4 +4,27 @@ $${
         achievementget("%JOINEDPLAYER% Joined the Game!","minecraft:diamond");
     endif;
 
+    unset(&staff[]);
+    unset(&friend[]);
+    unset(&foe[]);
+
+    foreach(players);
+        ifmatches(%PLAYERNAME%,"^(%@&server_groups_staff%)$");
+            &staff[] = %PLAYERNAME%;
+        endif;
+
+        ifmatches(%PLAYERNAME%,"^(%@&server_groups_friend%|%@&server_groups_trusted%)$");
+            &friend[] = %PLAYERNAME%;
+        endif;
+
+        ifmatches(%PLAYERNAME%,"^(%@&server_groups_enemy%)$");
+            &foe[] = %PLAYERNAME%;
+        endif;
+
+    next;
+
+    @&display_staff = join("\n","&staff[]");
+    @&display_friend = join("\n","&friend[]");
+    @&display_foe = join("\n","&foe[]");
+
 }$$

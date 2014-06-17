@@ -2,7 +2,7 @@ $${
 
     if( ( MODULEFARHIT == true ) && ( MODULESIGNTEXT == true) && ( MODULEJSON == true ) && ( MODULEHTTP == true ) );
         &config = $$<config.txt>;
-        if( &config != "");
+        if( &config != "" );
             &remote = jsonget(%&config%,"remote");
                 &remote_http = jsonget(%&remote%,"http");
                     match(%&remote_http%,"\"(.+)\"",@&remote_http,1);
@@ -58,6 +58,7 @@ $${
                             &kit_current_data = jsonget(%&server_kits%,"%&kit_current_name%");
                                 #kit_current_data_time = jsonget(%&kit_current_data%,"time");
                                 #kit_current_data_permission = jsonget(%&kit_current_data%,"permission");
+
                             if( #kit_current_data_permission <= @#permissions );
                                 exec("onJoinGame_kit.txt","kit-%&kit_current_data_name%","%&kit_current_data_name%","%#kit_current_data_time%");
                             endif;
@@ -65,10 +66,14 @@ $${
                         next;
 
                     &server_commands = jsonget(%&server%,"commands");
-                        @&server_commands_money = jsonget(%&server_commands%,"money");
-                        @&server_commands_safehome = jsonget(%&server_commands%,"safehome");
-                        @&server_commands_home = jsonget(%&server_commands%,"home");
-                        @&server_commands_spawn = jsonget(%&server_commands%,"spawn");
+                        &server_commands_money = jsonget(%&server_commands%,"money");
+                            match(%&server_commands_money%,"\"(.+)\"",@&server_commands_money,1);
+                        &server_commands_safehome = jsonget(%&server_commands%,"safehome");
+                            match(%&server_commands_safehome%,"\"(.+)\"",@&server_commands_safehome,1);
+                        &server_commands_home = jsonget(%&server_commands%,"home");
+                            match(%&server_commands_home%,"\"(.+)\"",@&server_commands_home,1);
+                        &server_commands_spawn = jsonget(%&server_commands%,"spawn");
+                            match(%&server_commands_spawn%,"\"(.+)\"",@&server_commands_spawn,1);
                     &server_permissions = jsonget(%&server%,"permissions");
                         @&server_permissions_teleportation = jsonget(%&server_permissions%,"teleportation");
                         @#server_permissions_default = jsonget(%&server_permissions%,"default");
@@ -92,23 +97,23 @@ $${
                             &server_chat_allowed[] = getjsonasarray(%&server_chat_allowed%);
 
                         if( server_configured == true );
-                            &server_default_groups_enemy = join(|,&server_default_groups_enemy[]);
-                            &server_default_groups_friend = join(|,&server_default_groups_friend[]);
-                            &server_default_groups_trusted = join(|,&server_default_groups_trusted[]);
-                            &server_default_groups_staff = join(|,&server_default_groups_staff[]);
-                            &server_default_chat_blocked = join(|,&server_default_chat_blocked[]);
-                            &server_default_chat_log = join(|,&server_default_chat_log[]);
-                            &server_default_chat_allowed = join(|,&server_default_chat_allowed[]);
+                            &server_default_groups_enemy = join("|","&server_default_groups_enemy[]");
+                            &server_default_groups_friend = join("|","&server_default_groups_friend[]");
+                            &server_default_groups_trusted = join("|","&server_default_groups_trusted[]");
+                            &server_default_groups_staff = join("|","&server_default_groups_staff[]");
+                            &server_default_chat_blocked = join("|","&server_default_chat_blocked[]");
+                            &server_default_chat_log = join("|","&server_default_chat_log[]");
+                            &server_default_chat_allowed = join("|","&server_default_chat_allowed[]");
 
                         endif;
 
-                        &server_groups_enemy = join(|,&server_groups_enemy[]);
-                        &server_groups_friend = join(|,&server_groups_friend[]);
-                        &server_groups_trusted = join(|,&server_groups_trusted[]);
-                        &server_groups_staff = join(|,&server_groups_staff[]);
-                        &server_chat_blocked = join(|,&server_chat_blocked[]);
-                        &server_chat_log = join(|,&server_chat_log[]);
-                        &server_chat_allowed = join(|,&server_chat_allowed[]);
+                        &server_groups_enemy = join("|","&server_groups_enemy[]");
+                        &server_groups_friend = join("|","&server_groups_friend[]");
+                        &server_groups_trusted = join("|","&server_groups_trusted[]");
+                        &server_groups_staff = join("|","&server_groups_staff[]");
+                        &server_chat_blocked = join("|","&server_chat_blocked[]");
+                        &server_chat_log = join("|","&server_chat_log[]");
+                        &server_chat_allowed = join("|","&server_chat_allowed[]");
 
                         if( server_configured == true );
                             if( &server_groups_enemy != "" );
@@ -151,6 +156,7 @@ $${
                             endif;
 
                         endif;
+
                         replace(&server_groups_enemy,"\"|\"","|");
                             match(%&server_groups_enemy%,"\"(.+)\"",@&server_groups_enemy,1);
                         replace(&server_groups_friend,"\"|\"","|");
@@ -298,7 +304,7 @@ $${
 
                 endif;
 
-                @&display_clock = time("h:mm:ss a");
+                time(@&display_clock,"h:mm:ss a");
 
                 if( ( KEY_TAB ) && ( @#safety < 3 ) );
                     @#safety = 3;
@@ -365,7 +371,7 @@ $${
                 endif;
 
 
-                //COMMENT-START: 1.0000 Hz or (1 sec) @ [??] :;
+                //COMMENT-START: 1.0000 Hz or (1 sec) @ [??] :
                 if( @&display_clock != &temp_second_old );
                     #i = 0;
                     unset(&effects[]);
@@ -376,7 +382,7 @@ $${
 
                     next;
 
-                    @&display_effects = join("\n",&effects[]);
+                    @&display_effects = join("\n","&effects[]");
 
                     #times[0] = #times[0] + 1;
                     unset(&out);
@@ -441,60 +447,39 @@ $${
 
                     endif;
 
-                    //COMMENT-START: 0.2000 Hz or (5 sec) @ [?0, ?5] :;
-                    ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:[0-9](0|5) (A|P)M");
-
-                        unset(&staff[]);
-                        unset(&friend[]);
-                        unset(&foe[]);
-
-                        foreach(players);
-                            ifmatches(%PLAYERNAME%,"^(%@&server_groups_staff%)$");
-                                &staff[] = %PLAYERNAME%;
-                            endif;
-
-                            ifmatches(%PLAYERNAME%,"^(%@&server_groups_friend%|%@&server_groups_trusted%)$");
-                                &friend[] = %PLAYERNAME%;
-                            endif;
-
-                            ifmatches(%PLAYERNAME%,"^(%@&server_groups_enemy%)$");
-                                &foe[] = %PLAYERNAME%;
-                            &main = jsonget(%&json%,"main");
-                            &temp = jsonget(%&main%,"temp");
-                            &weather = jsonget(%&json%,"weather");
-                            endif;
-
-                        next;
-
-                        @&display_staff = join("\n",&staff[]);
-                        @&display_friend = join("\n",&friend[]);
-                        @&display_foe = join("\n",&foe[]);
-
-                    endif;
-
-                    //COMMENT-START: 0.0167 Hz (60 sec) @ [07] :;
+                    //COMMENT-START: 0.0167 Hz (60 sec) @ [07] :
                     ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:07 (A|P)M");
-                        &json = httpget(%@&remote_weather%,"q=%@&weather_location_safe%&lang=%@&weather_language%&units=%@&weather_units%",#status);
-                        weather_error = jsonhas(%&json%,"message");
+                        &weather = httpget(%@&remote_weather%,"q=%@&weather_location_safe%&lang=%@&weather_language%&units=%@&weather_units%",#status);
+                        weather_error = jsonhas(%&weather%,"message");
 
                         if( ( #status == 200 ) && ( weather_error == false ) );
-                            &weather = jsonarrayget(%&weather%,0);
-                            &desc = jsonget(%&weather%,"main");
-                            match(%&desc%,"\"(.+)\"",&desc,1);
+                            &weather_name = jsonget(%&weather%,"name")
+                            match(%&weather_name%,"\"(.*)\"",&weather_name,1)
+                            
+                            &weather_main = jsonget(%&weather%,"main")
+                                &weather_main_temp = jsonget(%&weather_main%,"temp")
+                            
+                            &weather_weather = jsonget(%&weather%,"weather")
+                            &weather_weather_array = jsonarrayget(%&weather_weather%,0)
+                                &weather_weather_desc = jsonget(%&weather_weather_array%,"main")
+                                match(%&weather_weather_desc%,"\"(.+)\"",&weather_weather_desc,1)
+                                
 
                         endif;
+                        
+                        
 
                         if( weather_error == true );
                             logto(ErrorLog,"City not found");
                         else;
-                            @&display_weather_temp = %&temp%%@&weather_units_symbol%;
-                            @&display_weather_desc = %&desc%;
+                            @&display_weather_temp = %&weather_main_temp%%@&weather_units_symbol%;
+                            @&display_weather_desc = %&weather_weather_desc%;
 
                         endif;
 
                     endif;
 
-                    //COMMENT-START: 0.0033 Hz (300 sec) @ [17] :;
+                    //COMMENT-START: 0.0033 Hz (300 sec) @ [17] :
                     ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]5:17 (A|P)M");
 
                         if( &cmd_money != "" );
