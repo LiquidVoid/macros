@@ -1,0 +1,57 @@
+//ACTION-START: Global Money
+ifmatches(%CHATCLEAN%,"^Balance: ((-|\+|\$){0,3}(([0-9]{1,3}(\.|,)?)+[0-9]{0,2}))",@&display_balance,1);
+    filter();
+endif;
+//ACTION-END: Global Money
+
+//ACTION-START: Auto Teleport
+ifmatches(%CHATCLEAN%,"^(%@&server_groups_trusted%|%@&server_groups_friend%) has requested to teleport to you\.$");
+    @&queue[4] = "/tpaccept";
+    filter();
+
+else;
+    ifmatches(%CHATCLEAN%,"^(%@&server_groups_enemy%) has requested to teleport to you\.$");
+        @&queue[4] = "/deny";
+    endif;
+
+endif;
+//ACTION-END: Auto Teleport
+
+//ACTION-START: Chat Filter/Log
+//COMMENT: Allowed Chat :
+ifmatches(%CHATCLEAN%,"(%@&server_chat_allowed%)");
+    logto(%SERVER%-%DATE%-CHAT-LOG.txt,"%DATETIME%: %CHATCLEAN%");
+    logto(%SERVER%-%DATE%-CHAT-LOG-ALLOWED.txt,"%DATETIME%: %CHATCLEAN%");
+
+else;
+    //COMMENT: Blocked Chat :
+    //logto(debug.txt,"(%@&server_chat_blocked%)")
+    ifmatches(%CHATCLEAN%,"(%@&server_chat_blocked%)");
+        logto(DebugChat,%CHAT%);
+        filter();
+
+    else;
+        //COMMENT: Highlighted Chat :
+        ifmatches(%CHATCLEAN%,"(%@&server_chat_log%)");
+            logto(ChatLog,%CHAT%);
+            filter();
+
+        else;
+
+            //COMMENT: Special Chat :
+            ifmatches(%CHATCLEAN%,"\[Noobstown\] Earned ([0-9\.]+) for killing a ([A-Z]?[a-z]+)",@&mob_money,1);
+                match(%CHATCLEAN%,"\[Noobstown\] Earned ([0-9\.]+) for killing a ([A-Z]?[a-z]+)",@&mob_name,2);
+                logto(ScriptLog,"   %@&mob_name% ($%@&mob_money%)");
+                filter();
+
+            else;
+                //COMMENT: Standard Chat :
+                logto(%SERVER%-%DATE%-CHAT-LOG.txt,"%CHATCLEAN%");
+            endif;
+
+        endif;
+
+    endif;
+
+endif;
+//ACTION-END: Chat Filter/Log

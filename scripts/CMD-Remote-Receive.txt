@@ -1,0 +1,45 @@
+$${
+
+    //Check requirements
+    if( MODULEHTTP == true );
+
+        //Check site for message, queue, repeat
+        do;
+            &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%PLAYER%&action=get",#status);
+            if( ( #status == 200 ) && ( &reply != "" ) );
+                match(%&reply%,"^%PLAYER%:{2}echo:{2}(.+)$",&msg,1);
+                logto(ScriptLog,%&msg%);
+                wait(2);
+                @&queue[6] = %&msg%;
+
+            elseif( #status == 408 );
+                logto(ErrorLog,"%#status%: Request Timeout. %@&colours_text_default%[%@&colours_variable_global%%@&http_remote%%@&colours_text_default%]");
+                wait(20);
+
+            elseif( #status == -1 );
+                logto(ErrorLog,"ERROR: No Reason Given. %@&colours_text_default%[%@&colours_variable_global%%@&http_remote%%@&colours_text_default%]");
+                wait(10);
+
+            elseif( #status != 200 );
+                logto(ErrorLog,"%#status%: ERROR %@&colours_text_default%[%@&colours_variable_global%%@&http_remote%%@&colours_text_default%]");
+                wait(5);
+
+            else;
+                wait(1);
+            endif;
+
+        loop;
+
+    else;
+        //Failed Requirement Check
+        logto(ErrorLog,"Could not run %@&colours_text_highlight%CMD-Remote-Receive");
+
+        if( MODULEHTTP == false );
+            wait(2);
+            logto(ErrorLog,"Missing: %@&colours_variable_global%MODULEHTTP");
+
+        endif;
+
+    endif;
+
+}$$

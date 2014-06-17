@@ -1,0 +1,7 @@
+209:spawn[Display=Spawn]
+196:palace[Display=Palace]
+80:auction[Display=Auction]
+205:arena[Display=Arena]
+242:party[Display=Party]
+237:stable[Display=Stable]
+8:v5[Display=Version 5]

@@ -1,0 +1,39 @@
+$${
+
+    if( @auto_noafk == false );
+        logto(ScriptLog,"%@&colours_text_enable%No-AFK Enabled");
+        @auto_noafk = true;
+
+        do;
+
+            foreach(players);
+                #int = random(10,0);
+
+                if( #int == 0 );
+                    @&queue[1] = "/balance";
+                elseif( #int == 1 );
+                    @&queue[1] = "/mcrank";
+                elseif( #int == 2 );
+                    @&queue[1] = "/mctop";
+                elseif( #int == 3 );
+                    @&queue[1] = "/mctop";
+                elseif( #int == 4 );
+                    @&queue[1] = "/mcstats";
+                elseif;
+                    @&queue[1] = "/seen %PLAYERNAME%";
+                endif;
+
+                wait("200");
+
+            next;
+
+        loop;
+
+    else;
+        logto(ScriptLog,"%@&colours_text_disable%No-AFK Disabled");
+        @auto_noafk = false;
+        stop;
+
+    endif;
+
+}$$

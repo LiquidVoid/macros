@@ -1,0 +1,35 @@
+$${
+
+    if( @auto_tunnel = 0 );
+        @auto_tunnel = 1;
+        logto(ScriptLog,"%@&colours_text_enable%Auto-Tunnel Enabled");
+
+        do;
+            if( DURABILITY > 25 );
+                keydown(forward);
+                keydown(sneak);
+                key(attack);
+
+            else;
+                keyup(forward);
+                playsound("tile.piston.in");
+                wait(1);
+                playsound("tile.piston.out");
+                wait(2);
+
+            endif;
+
+        loop;
+
+    else;
+        @auto_tunnel = 0;
+        logto(ScriptLog,"%@&colours_text_disable%Auto-Tunnel Disabled");
+        keyup(forward);
+        keyup(sneak);
+        stop();
+
+    endif;
+
+}$$
+
+

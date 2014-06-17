@@ -1,0 +1,81 @@
+&function = $$[1];
+&action = $$[2];
+log(1%&function% %&action%)
+
+if( &function != ( "Mine" || "Walk" || "Place" || "Sneak" ) )
+    &function = $$[[Place,Mine,Walk,Sneak]];
+endif;
+
+if( &action != ( "Enable" || "Disable" || "Toggle" ) )
+    &action = $$[[Enable,Disable,Toggle]];
+endif;
+
+log(2%&function% %&action%)
+
+    if( &function == "Mine" );
+        if( %&action% == "Enable" )
+            actions[1] = true;
+        elseif( %&action% == "Disable" )
+            actions[1] = false;
+        elseif( %&action% == "Toggle" )
+            toggle(actions[1]);
+        endif
+    elseif( &function == "Walk" );
+        if( %&action% == "Enable" )
+            actions[1] = true;
+        elseif( %&action% == "Disable" )
+            actions[1] = false;
+        elseif( %&action% == "Toggle" )
+            toggle(actions[1]);
+        endif
+
+        keyup("forward")
+
+    elseif( &function == "Place" );
+        if( %&action% == "Enable" )
+            actions[1] = true;
+        elseif( %&action% == "Disable" )
+            actions[1] = false;
+        elseif( %&action% == "Toggle" )
+            toggle(actions[1]);
+        endif
+    elseif( &function == "Sneak" );
+        if( %&action% == "Enable" )
+            actions[1] = true;
+        elseif( %&action% == "Disable" )
+            actions[1] = false;
+        elseif( %&action% == "Toggle" )
+            toggle(actions[1]);
+        endif
+
+        keyup("sneak")
+
+    endif
+
+    logto(ScriptLog,"%@&colours_text_enable%Automatic %&function%: %&action%");
+
+if( @automatic == false );
+    @automatic = true;
+    unset(actions[])
+
+    do;
+        if( actions[1] == true )
+            key("attack")
+        endif
+
+        if( actions[2] == true )
+            keydown("forward")
+        endif
+
+        if( actions[3] == true )
+            key("use")
+        endif
+
+        if( actions[4] == true )
+            keydown("sneak")
+        endif
+
+
+    loop;
+
+endif;

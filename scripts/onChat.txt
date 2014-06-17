@@ -1,0 +1,36 @@
+$${
+
+    //ACTION-START: Chat Ping
+    ifmatches(%CHATCLEAN%,"(^(From|To) (%@&server_groups_staff%)|^\[L\]) .+");
+        logto(%SERVER%-Mod-CHAT-LOG.txt,"%DATETIME%: %CHATCLEAN%");
+        @chat_ping = 1;
+
+    endif;
+    //ACTION-END: Chat Ping
+
+    //ACTION-START: Disconnect
+    ifmatches(%CHATCLEAN%,"^From (%@&server_groups_trusted%):.*ka tago.*");
+        @chat_ping = 1;
+        wait(5);
+        disconnect();
+
+    endif;
+    //ACTION-END: Disconnect
+
+    //ACTION-END: /tpahere
+    ifmatches(%CHATCLEAN%,"^From (%@&server_groups_trusted%): tpa.*",&tpname)
+      wait(2);
+      @&queue[4] = "/tpa %&tpname%";
+
+    endif;
+    //ACTION-END: /tpahere
+
+    //ACTION-START: High Priority messages to web server
+    ifmatches(%CHATCLEAN%,"(%@&server_chat_allowed%|%@&server_chat_log%)");
+        &act = urlencode(%CHATCLEAN%);
+        &reply = httpget("%@&http_remote%","source=%PLAYER%&target=web&type=echo&action=%&act%",#status);
+
+    endif;
+    //ACTION-END: High Priority messages to web server
+
+}$$

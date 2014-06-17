@@ -1,0 +1,23 @@
+$${
+
+    &path = "5101,-3298|5101,-3305|5088,-3299";
+    &waypoints[] = split("|","%&path%");
+
+    foreach(&waypoints[],&point);
+        &coords[] = split(",","%&point%")
+        #x = %&coords[0]%;
+        #z = %&coords[1]%;
+
+        do;
+            #yaw = calcyawto("%#x%","%#z%",#distance);
+            #yaw = #yaw + 180);
+            looks(%#yaw%,"0","0.1");
+            keydown("forward");
+
+        while( ( XPOS != #x ) && ( ( ZPOS != #z ) && ( #distance <= 1) );
+
+        keyup("forward");
+
+    next;
+
+}$$

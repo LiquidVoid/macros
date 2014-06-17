@@ -1,0 +1,56 @@
+$${
+
+    #dist = $$[Width];
+    &operation = $$[Key];
+
+    dir = 0;
+    axis = 0;
+    #x = XPOS;
+    #z = ZPOS;
+
+    do(%#dist%);
+        toggle(dir);
+
+        do(2);
+            toggle(axis);
+
+            if( axis == true );
+                if( dir == true);
+                    #z = #z + %#dist%;
+                else;
+                    #z = #z - %#dist%;
+                endif;
+
+            else;
+                if( dir == true );
+                    #x = #x + %#dist%;
+                else;
+                    #x = #x - %#dist%;
+                endif;
+
+            endif;
+
+            unsafe;
+
+                do;
+                    #yaw = calcyawto("%#x%","%#z%",#distance);
+                    #yaw = #yaw + 180;
+                    looks(%#yaw%,"+0","0.1");
+                    keydown("forward");
+                    key("%&operation%");
+
+                while( ( XPOS != #x ) && ( ( ZPOS != #z ) && ( #distance <= 1) );
+
+                keyup("forward");
+
+            endunsafe;
+
+            wait("100ms");
+
+        loop;
+
+        #dist = #dist - 1;
+
+    loop;
+
+}$$
