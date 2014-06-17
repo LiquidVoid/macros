@@ -23,7 +23,7 @@ user:
     ranks: 
       connect1.minetime.com: 1
       noobstown.com: 1
-      SP: 4
+      SP: 3
       localhost: 4
     weather: 
       units: "Imperial"
@@ -41,7 +41,7 @@ user:
     ranks: 
       connect1.minetime.com: 1
       noobstown.com: 2
-      SP: 4
+      SP: 3
       localhost: 4
     weather: 
       units: "Imperial"
@@ -288,3 +288,26 @@ server:
       default: 1
       ranks: null
       teleportation: "warp|home|spawn|tpa|wild|jump"
+  SP: 
+    commands: 
+      spawn: null
+      money: null
+      safehome: null
+      home: null
+    kits: null
+    chat: 
+      blocked: null
+      log: null
+      allowed: null
+    groups: 
+      enemy: null
+      friend: null
+      trusted: null
+      staff: null
+    permissions: 
+      default: 1
+      ranks: 
+        - help|?|me|tell|message|msg|w|trigger
+        - achievement|blockdata|clear|clone|debug|defaultgamemode|difficulty|effect|execute|fill|gamemode|gamerule|give|kill|particle|playsound|publish|say|scoreboard|seed|setblock|setworldspawn|spawnpoint|spreadplayers|summon|tellraw|testfor|testforblock|testforblocks|time|title|toggledownfall|tp|weather|worldborder|xp
+        - .+
+      teleportation: "tp"
