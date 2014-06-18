@@ -7,7 +7,7 @@ $${
         do;
 
             foreach(players);
-                #int = random(10,0);
+                #int = random("10","0");
 
                 if( #int == 0 );
                     @&queue[1] = "/balance";
@@ -30,7 +30,7 @@ $${
         loop;
 
     else;
-        logto(ScriptLog,"%@&colours_text_disable%No-AFK Disabled");
+        logto("ScriptLog","%@&colours_text_disable%No-AFK Disabled");
         @auto_noafk = false;
         stop;
 

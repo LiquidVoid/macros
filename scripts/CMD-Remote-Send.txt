@@ -1,24 +1,17 @@
 $${
 
-    //Check requirements
     if( MODULEHTTP == true );
-        //set information
         &target = urlencode($$f);
         &act = urlencode($$?);
-
-        //query information
-        &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%&target%&type=echo&action=%&act%",#status);
-
-        //return information
-        logto(Debug,"%&reply[0]%");
+        &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%&target%&type=echo&action=%&act%","#status");
+        logto("Debug","%&reply[0]%");
 
     else;
-        //Failed Requirement Check
-        logto(ErrorLog,"Could not run %@&colours_text_highlight%CMD-Remote-Send");
+        logto("ErrorLog","Could not run %@&colours_text_highlight%CMD-Remote-Send");
 
         if( MODULEHTTP == false );
-            wait(2);
-            logto(ErrorLog,"Missing: %@&colours_variable_global%MODULEHTTP");
+            wait("2");
+            logto("ErrorLog","Missing: %@&colours_variable_global%MODULEHTTP");
 
         endif;
 

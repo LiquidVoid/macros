@@ -2,8 +2,9 @@ $${
 
     @#queue_wait = %@#queue_wait% + 1;
 
-    ifmatches(%CHAT%,"(%@&cmd_teleport%)( .+)*");
+    ifmatches("%CHAT%","(%@&cmd_teleport%)( .+)*");
         @#safety = 7;
+
     endif;
 
 }$$

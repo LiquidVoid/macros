@@ -2,25 +2,25 @@ $${
 
     if( @auto_cobblestone == false );
         @auto_cobblestone = true;
-        logto(ScriptLog,"%@&colours_text_enable%Auto-Cobblestone Enabled");
+        logto("ScriptLog","%@&colours_text_enable%Auto-Cobblestone Enabled");
         #blocks = 0;
         #jam = 0;
         looks(180,-90,0.5);
 
         do;
-            #rand = random(30,40);
+            #rand = random("30","40");
 
             do;
-                &id = getidrel(0,4,0);
+                &id = getidrel("0","4","0");
 
                 ifmatches(&id,"(flowing_)?lava");
 
                     if( #jam > 100 );
-                        logto(ScriptLog,"%@&colours_text_enable%Auto-Cobblestone Disabled");
+                        logto("ScriptLog","%@&colours_text_enable%Auto-Cobblestone Disabled");
                         @auto_cobblestone = false;
                         @chat_ping = 1;
                         wait("10");
-                        disconnect();
+                        disconnect;
 
                     else;
                         #jam = #jam + 1;
@@ -34,7 +34,7 @@ $${
 
             until( DURABILITY < #rand );
 
-            looks(180,0,0.5);
+            looks("180","0","0.5");
 
             do;
                 key("use");
@@ -42,12 +42,12 @@ $${
 
             until( DURABILITY >= 70 );
 
-            looks(180,-90,0.5);
+            looks("180","-90","0.5");
 
         loop;
 
     elseif;
-        logto(ScriptLog,"%@&colours_text_enable%Auto-Cobblestone Disabled");
+        logto("ScriptLog","%@&colours_text_enable%Auto-Cobblestone Disabled");
         @auto_cobblestone = false;
         stop;
 

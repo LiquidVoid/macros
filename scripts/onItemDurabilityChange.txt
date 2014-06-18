@@ -1,16 +1,12 @@
 $${
 
-    //ACTION-START: Alert Player
     if( ( DURABILITY < 25 ) && ( DURABILITY > 5 ) );
-        //COMMENT: Alert Player => Standard :
-        logto(ScriptLog,%@&colours_text_default%Up to %@&colours_variable_default%%DURABILITY% %@&colours_text_default%Remaining!);
+        logto("ScriptLog","%@&colours_text_default%Up to %@&colours_variable_default%%DURABILITY% %@&colours_text_default%Remaining!");
         playsound("random.break");
 
-    //COMMENT: ( DURABILITY != 0 ) checks to make sure it is even a tool :
     elseif( ( DURABILITY < 5 ) && ( DURABILITY != 0 ) );
-        //COMMENT: Alert Player => Last Resort :
-        gui(inventory);
+        gui("inventory");
 
     endif;
-    //ACTION-END: Alert Player
+
 }$$

@@ -23,7 +23,4 @@ Macros for the popular Minecraft mod: [The Macro/Keybind Mod](http://www.minecra
 - To set a varible use "x = y;", or "x = y + 1;"
 - Each function gets a new line
 - newline before and after IFs and LOOPs
-- Comments start with: TODO: COMMENT: CONFIG-START: COMMENT-START:
-- Comments can be divided with: CONFIG-END: COMMENT-END: ACTION-END: ERROR-END: ::
-- Comments end with: CONFIG-END: COMMENT-END: ACTION-END: ERROR-END: :
 ```
