@@ -5,14 +5,14 @@ $${
         do;
             &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%PLAYER%&action=get",#status);
             if( ( #status == 200 ) && ( &reply != "" ) );
-                match(%&reply%,"^%PLAYER%:{2}echo:{2}(.+)$",&msg,"1");
+                &msg = match("%&reply%","^%PLAYER%:{2}echo:{2}(.+)$","1");
                 logto("ScriptLog","%&msg%");
                 wait("250ms");
                 @&queue[6] = %&msg%;
 
             elseif( #status == 509 );
                 logto("ScriptLog","%#status%: Bandwidth Limit Exceeded. %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");
-                wait(600);
+                wait("600");
 
             elseif( #status == 408 );
                 logto("ScriptLog","%#status%: Request Timeout. %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");

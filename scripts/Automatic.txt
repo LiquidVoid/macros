@@ -56,7 +56,7 @@ elseif( &function == "sneak" );
 
 endif
 
-logto(ScriptLog,"Automatic %&function%: %&action%");
+logto("ScriptLog","Automatic %&function%: %&action%");
 
 if( @automatic == false );
     @automatic = true;

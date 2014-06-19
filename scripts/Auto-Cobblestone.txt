@@ -5,7 +5,7 @@ $${
         logto("ScriptLog","%@&colours_text_enable%Auto-Cobblestone Enabled");
         #blocks = 0;
         #jam = 0;
-        looks(180,-90,0.5);
+        looks("180","-90","0.5");
 
         do;
             #rand = random("30","40");
