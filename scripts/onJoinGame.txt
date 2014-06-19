@@ -2,99 +2,104 @@ $${
 
     if( ( MODULEFARHIT == true ) && ( MODULESIGNTEXT == true) && ( MODULEJSON == true ) && ( MODULEHTTP == true ) );
         &config = $$<config.txt>;
+
         if( &config != "" );
-            &remote = jsonget(%&config%,"remote");
-                &remote_http = jsonget(%&remote%,"http");
-                    match(%&remote_http%,"\"(.+)\"",@&remote_http,1);
-                &remote_weather = jsonget(%&remote%,"weather");
-                    match(%&remote_weather%,"\"(.+)\"",@&remote_weather,1);
-            &colours = jsonget(%&config%,"colours");
+            &remote = jsonget("%&config%","remote");
+                &remote_http = jsonget("%&remote%","http");
+                    @&remote_http = match("%&remote_http%","\"(.+)\"","1");
+                &remote_weather = jsonget("%&remote%","weather");
+                    @&remote_weather = match("%&remote_weather%","\"(.+)\"","1");
+            &colours = jsonget("%&config%","colours");
                 &colours_variable = jsonget(%&colours%,"variable");
-                    &colours_variable_default = jsonget(%&colours_variable%,"default");
-                        @&colours_variable_default = replace(&colours_variable_default,"\"");
-                    &colours_variable_global = jsonget(%&colours_variable%,"global");
-                        @&colours_variable_global = replace(&colours_variable_global,"\"");
-                &colours_text = jsonget(%&colours%,"text");
-                    &colours_text_default = jsonget(%&colours_text%,"default");
-                        @&colours_text_default = replace(&colours_text_default,"\"");
-                    &colours_text_enable = jsonget(%&colours_text%,"enable");
-                        @&colours_text_enable = replace(&colours_text_enable,"\"");
-                    &colours_text_disable = jsonget(%&colours_text%,"disable");
-                        @&colours_text_disable = replace(&colours_text_disable,"\"");
-                    &colours_text_highlight = jsonget(%&colours_text%,"highlight");
-                        @&colours_text_highlight = replace(&colours_text_highlight,"\"");
-            &server = jsonget(%&config%,"server");
-                server_configured = jsonhas(%&server%,%SERVER%);
-               if( server_configured == true );
+                    &colours_variable_default = jsonget("%&colours_variable%","default");
+                        @&colours_variable_default = match("%&colours_variable_default%","\"(.+)\"","1");
+                    &colours_variable_global = jsonget("%&colours_variable%","global");
+                        @&colours_variable_global = match("%&colours_variable_global%","\"(.+)\"","1");
+                &colours_text = jsonget("%&colours%","text");
+                    &colours_text_default = jsonget("%&colours_text%","default");
+                        @&colours_text_default = match("%&colours_text_default%","\"(.+)\"","1");
+                    &colours_text_enable = jsonget("%&colours_text%","enable");
+                        @&colours_text_enable = match("%&colours_text_enable%","\"(.+)\"","1");
+                    &colours_text_disable = jsonget("%&colours_text%","disable");
+                        @&colours_text_disable = match("%&colours_text_disable%","\"(.+)\"","1");
+                    &colours_text_highlight = jsonget("%&colours_text%","highlight");
+                        @&colours_text_highlight = match("%&colours_text_highlight%","\"(.+)\"","1");
+            &server = jsonget("%&config%","server");
+                server_configured = jsonhas("%&server%","%SERVER%");
+
+                if( server_configured == true );
                     &server_profile = %SERVER%;
-                    &server_default = jsonget(%&server%,"default");
-                        &server_default_groups = jsonget(%&server_default%,"groups");
-                            &server_default_groups_enemy = jsonget(%&server_default_groups%,"enemy");
-                                &server_default_groups_enemy[] = getjsonasarray(%&server_default_groups_enemy%);
-                            &server_default_groups_friend = jsonget(%&server_default_groups%,"friend");
-                                &server_default_groups_friend[] = getjsonasarray(%&server_default_groups_friend%);
-                            &server_default_groups_trusted = jsonget(%&server_default_groups%,"trusted");
-                                &server_default_groups_trusted[] = getjsonasarray(%&server_default_groups_trusted%);
-                            &server_default_groups_staff = jsonget(%&server_default_groups%,"staff");
-                                &server_default_groups_staff[] = getjsonasarray(%&server_default_groups_staff%);
-                        &server_default_chat = jsonget(%&server_default%,"chat");
-                            &server_default_chat_blocked = jsonget(%&server_default_chat%,"blocked");
-                                &server_default_chat_blocked[] = getjsonasarray(%&server_default_chat_blocked%);
-                            &server_default_chat_log = jsonget(%&server_default_chat%,"log");
-                                &server_default_chat_log[] = getjsonasarray(%&server_default_chat_log%);
-                            &server_default_chat_allowed = jsonget(%&server_default_chat%,"allowed");
-                                &server_default_chat_allowed[] = getjsonasarray(%&server_default_chat_allowed%);
+                    &server_default = jsonget("%&server%","default");
+                        &server_default_groups = jsonget("%&server_default%","groups");
+                            &server_default_groups_enemy = jsonget("%&server_default_groups%","enemy");
+                                &server_default_groups_enemy[] = getjsonasarray("%&server_default_groups_enemy%");
+                            &server_default_groups_friend = jsonget("%&server_default_groups%","friend");
+                                &server_default_groups_friend[] = getjsonasarray("%&server_default_groups_friend%");
+                            &server_default_groups_trusted = jsonget("%&server_default_groups%","trusted");
+                                &server_default_groups_trusted[] = getjsonasarray("%&server_default_groups_trusted%");
+                            &server_default_groups_staff = jsonget("%&server_default_groups%","staff");
+                                &server_default_groups_staff[] = getjsonasarray("%&server_default_groups_staff%");
+                        &server_default_chat = jsonget("%&server_default%","chat");
+                            &server_default_chat_blocked = jsonget("%&server_default_chat%","blocked");
+                                &server_default_chat_blocked[] = getjsonasarray("%&server_default_chat_blocked%");
+                            &server_default_chat_log = jsonget("%&server_default_chat%","log");
+                                &server_default_chat_log[] = getjsonasarray("%&server_default_chat_log%");
+                            &server_default_chat_allowed = jsonget("%&server_default_chat%","allowed");
+                                &server_default_chat_allowed[] = getjsonasarray("%&server_default_chat_allowed%");
+
                 else;
                     &server_profile = "default";
                     logto("ErrorLog","%SERVER% not configured, using default.");
+
                 endif;
 
-                &server = jsonget(%&server%,"%&server_profile%");
-                    &server_kits = jsonget(%&server%,"kits");
-                        &server_kits_names[] = getjsonkeys(%&server_kits%);
+                &server = jsonget("%&server%","%&server_profile%");
+                    &server_kits = jsonget("%&server%","kits");
+                        &server_kits_names[] = getjsonkeys("%&server_kits%");
 
                         foreach(&server_kits_names,&kit_current_name);
                             &kit_current_data_name = %&kit_current_name%;
-                            &kit_current_data = jsonget(%&server_kits%,"%&kit_current_name%");
-                                #kit_current_data_time = jsonget(%&kit_current_data%,"time");
-                                #kit_current_data_permission = jsonget(%&kit_current_data%,"permission");
+                            &kit_current_data = jsonget("%&server_kits%","%&kit_current_name%");
+                                #kit_current_data_time = jsonget("%&kit_current_data%","time");
+                                #kit_current_data_permission = jsonget("%&kit_current_data%","permission");
 
-                            if( #kit_current_data_permission <= @#permissions );
-                                exec("onJoinGame_kit.txt","kit-%&kit_current_data_name%","%&kit_current_data_name%","%#kit_current_data_time%");
-                            endif;
+                                if( #kit_current_data_permission <= @#permissions );
+                                    exec("onJoinGame_kit.txt","kit-%&kit_current_data_name%","%&kit_current_data_name%","%#kit_current_data_time%");
+
+                                endif;
 
                         next;
 
-                    &server_commands = jsonget(%&server%,"commands");
-                        &server_commands_money = jsonget(%&server_commands%,"money");
-                            match(%&server_commands_money%,"\"(.+)\"",@&server_commands_money,1);
-                        &server_commands_safehome = jsonget(%&server_commands%,"safehome");
-                            match(%&server_commands_safehome%,"\"(.+)\"",@&server_commands_safehome,1);
-                        &server_commands_home = jsonget(%&server_commands%,"home");
-                            match(%&server_commands_home%,"\"(.+)\"",@&server_commands_home,1);
-                        &server_commands_spawn = jsonget(%&server_commands%,"spawn");
-                            match(%&server_commands_spawn%,"\"(.+)\"",@&server_commands_spawn,1);
-                    &server_permissions = jsonget(%&server%,"permissions");
-                        @&server_permissions_teleportation = jsonget(%&server_permissions%,"teleportation");
-                        @#server_permissions_default = jsonget(%&server_permissions%,"default");
-                        &server_permissions_ranks = jsonget(%&server_permissions%,"ranks");
-                            @&server_permissions_ranks[] = getjsonasarray(%&server_permissions_ranks%);
-                    &server_groups = jsonget(%&server%,"groups");
-                        &server_groups_enemy = jsonget(%&server_groups%,"enemy");
-                            &server_groups_enemy[] = getjsonasarray(%&server_groups_enemy%);
-                        &server_groups_friend = jsonget(%&server_groups%,"friend");
-                            &server_groups_friend[] = getjsonasarray(%&server_groups_friend%);
-                        &server_groups_trusted = jsonget(%&server_groups%,"trusted");
-                            &server_groups_trusted[] = getjsonasarray(%&server_groups_trusted%);
-                        &server_groups_staff = jsonget(%&server_groups%,"staff");
-                            &server_groups_staff[] = getjsonasarray(%&server_groups_staff%);
-                    &server_chat = jsonget(%&server%,"chat");
-                        &server_chat_blocked = jsonget(%&server_chat%,"blocked");
-                            &server_chat_blocked[] = getjsonasarray(%&server_chat_blocked%);
-                        &server_chat_log = jsonget(%&server_chat%,"log");
-                            &server_chat_log[] = getjsonasarray(%&server_chat_log%);
-                        &server_chat_allowed = jsonget(%&server_chat%,"allowed");
-                            &server_chat_allowed[] = getjsonasarray(%&server_chat_allowed%);
+                    &server_commands = jsonget("%&server%","commands");
+                        &server_commands_money = jsonget("%&server_commands%","money");
+                            @&server_commands_money = match("%&server_commands_money%","\"(.+)\"","1");
+                        &server_commands_safehome = jsonget("%&server_commands%","safehome");
+                            @&server_commands_safehome = match("%&server_commands_safehome%","\"(.+)\"","1");
+                        &server_commands_home = jsonget("%&server_commands%","home");
+                            @&server_commands_home = match("%&server_commands_home%","\"(.+)\"","1");
+                        &server_commands_spawn = jsonget("%&server_commands%","spawn");
+                            @&server_commands_spawn = match("%&server_commands_spawn%","\"(.+)\"","1");
+                    &server_permissions = jsonget("%&server%","permissions");
+                        @&server_permissions_teleportation = jsonget("%&server_permissions%","teleportation");
+                        @#server_permissions_default = jsonget("%&server_permissions%","default");
+                        &server_permissions_ranks = jsonget("%&server_permissions%","ranks");
+                            @&server_permissions_ranks[] = getjsonasarray("%&server_permissions_ranks%");
+                    &server_groups = jsonget("%&server%","groups");
+                        &server_groups_enemy = jsonget("%&server_groups%","enemy");
+                            &server_groups_enemy[] = getjsonasarray("%&server_groups_enemy%");
+                        &server_groups_friend = jsonget("%&server_groups%","friend");
+                            &server_groups_friend[] = getjsonasarray("%&server_groups_friend%");
+                        &server_groups_trusted = jsonget("%&server_groups%","trusted");
+                            &server_groups_trusted[] = getjsonasarray("%&server_groups_trusted%");
+                        &server_groups_staff = jsonget("%&server_groups%","staff");
+                            &server_groups_staff[] = getjsonasarray("%&server_groups_staff%");
+                    &server_chat = jsonget("%&server%","chat");
+                        &server_chat_blocked = jsonget("%&server_chat%","blocked");
+                            &server_chat_blocked[] = getjsonasarray("%&server_chat_blocked%");
+                        &server_chat_log = jsonget("%&server_chat%","log");
+                            &server_chat_log[] = getjsonasarray("%&server_chat_log%");
+                        &server_chat_allowed = jsonget("%&server_chat%","allowed");
+                            &server_chat_allowed[] = getjsonasarray("%&server_chat_allowed%");
 
                         if( server_configured == true );
                             &server_default_groups_enemy = join("|","&server_default_groups_enemy[]");
@@ -116,96 +121,119 @@ $${
                         &server_chat_allowed = join("|","&server_chat_allowed[]");
 
                         if( server_configured == true );
+
                             if( &server_groups_enemy != "" );
                                 &server_groups_enemy = %&server_default_groups_enemy%|%&server_groups_enemy%;
+
                             else;
                                 &server_groups_enemy = %&server_default_groups_enemy%;
+
                             endif;
 
                             if( &server_groups_friend != "" );
                                 &server_groups_friend = %&server_default_groups_friend%|%&server_groups_friend%;
+
                             else;
                                 &server_groups_friend = %&server_default_groups_friend%;
+
                             endif;
 
                             if( &server_groups_trusted != "" );
                                 &server_groups_trusted = %&server_default_groups_trusted%|%&server_groups_trusted%;
+
                             else;
                                 &server_groups_trusted = %&server_default_groups_trusted%;
+
                             endif;
 
                             if( &server_groups_staff != "" );
                                 &server_groups_staff = %&server_default_groups_staff%|%&server_groups_staff%;
+
                             else;
                                 &server_groups_staff = %&server_default_groups_staff%;
+
                             endif;
+
                             if( &server_chat_blocked != "" );
                                 &server_chat_blocked = %&server_default_chat_blocked%|%&server_chat_blocked%;
+
                             else;
                                 &server_chat_blocked = %&server_default_chat_blocked%;
+
                             endif;
+
                             if( &server_chat_log != "" );
                                 &server_chat_log = %&server_default_chat_log%|%&server_chat_log%;
+
                             else;
                                 &server_chat_log = %&server_default_chat_log%;
+
                             endif;
+
                             if( &server_chat_allowed != "" );
                                 &server_chat_allowed = %&server_default_chat_allowed%|%&server_chat_allowed%;
+
                             else;
                                 &server_chat_allowed = %&server_default_chat_allowed%;
+
                             endif;
 
                         endif;
 
-                        replace(&server_groups_enemy,"\"|\"","|");
-                            match(%&server_groups_enemy%,"\"(.+)\"",@&server_groups_enemy,1);
-                        replace(&server_groups_friend,"\"|\"","|");
-                            match(%&server_groups_friend%,"\"(.+)\"",@&server_groups_friend,1);
-                        replace(&server_groups_trusted,"\"|\"","|");
-                            match(%&server_groups_trusted%,"\"(.+)\"",@&server_groups_trusted,1);
-                        replace(&server_groups_staff,"\"|\"","|");
-                            match(%&server_groups_staff%,"\"(.+)\"",@&server_groups_staff,1);
-                        replace(&server_chat_blocked,"\"|\"","|");
-                            match(%&server_chat_blocked%,"\"(.+)\"",&server_chat_blocked,1);
-                                //replace(&server_chat_blocked,"\\\\","\\");
+                        replace("%&server_groups_enemy%","\"|\"","|");
+                            @&server_groups_enemy = match("%&server_groups_enemy%","\"(.+)\"","1");
+                        replace("%&server_groups_friend%","\"|\"","|");
+                            @&server_groups_friend = match("%&server_groups_friend%","\"(.+)\"","1");
+                        replace("%&server_groups_trusted%","\"|\"","|");
+                            @&server_groups_trusted = match("%&server_groups_trusted%","\"(.+)\"","1");
+                        replace("%&server_groups_staff%","\"|\"","|");
+                            @&server_groups_staff = match("%&server_groups_staff%","\"(.+)\"",1);
+                        replace("%&server_chat_blocked%","\"|\"","|");
+                            &server_chat_blocked = match("%&server_chat_blocked%","\"(.+)\"","1");
+                                //replace("%&server_chat_blocked%","\\\\","\\");
                                 @&server_chat_blocked = %&server_chat_blocked%;
-                        replace(&server_chat_log,"\"|\"","|");
-                            match(%&server_chat_log%,"\"(.+)\"",&server_chat_log,1);
-                                //replace(&server_chat_log,"\\\\","\\");
+                        replace("%&server_chat_log%","\"|\"","|");
+                            &server_chat_log = match("%&server_chat_log%","\"(.+)\"","1");
+                                //replace("%&server_chat_log%","\\\\","\\");
                                 @&server_chat_log = %&server_chat_log%;
-                        replace(&server_chat_allowed,"\"|\"","|");
-                            match(%&server_chat_allowed%,"\"(.+)\"",&server_chat_allowed,1);
-                                //replace(&server_chat_allowed,"\\\\","\\");
+                        replace("%&server_chat_allowed%","\"|\"","|");
+                            &server_chat_allowed = match("%&server_chat_allowed%","\"(.+)\"","1");
+                                //replace("%&server_chat_allowed%","\\\\","\\");
                                 @&server_chat_allowed = %&server_chat_allowed%;
 
-            &user = jsonget(%&config%,"user");
-                user_configured = jsonhas(%&user%,%PLAYER%);
+            &user = jsonget("%&config%","user");
+                user_configured = jsonhas("%&user%","%PLAYER%");
 
                 if( user_configured == true );
                     &user_profile = %PLAYER%;
+
                 else;
                     &user_profile = "default";
-                    logto(ErrorLog,"%PLAYER% not configured, using default.");
+                    logto("ErrorLog","%PLAYER% not configured, using default.");
+
                 endif;
 
-                &user = jsonget(%&user%,"%&user_profile%");
-                    &ranks = jsonget(%&user%,"ranks");
-                        ranks_configured = jsonhas(%&ranks%,%SERVER%);
+                &user = jsonget("%&user%","%&user_profile%");
+                    &ranks = jsonget("%&user%","ranks");
+                        ranks_configured = jsonhas("%&ranks%","%SERVER%");
+
                         if( ranks_configured == true );
-                            @#permissions = jsonget(%&ranks%,%SERVER%);
+                            @#permissions = jsonget("%&ranks%","%SERVER%");
+
                         else;
                             @#permissions = @#server_permissions_default;
-                            logto(ErrorLog,"Rank not configured for %PLAYER% on %SERVER%, using default: %@#server_permissions_default%.");
+                            logto("ErrorLog","Rank not configured for %PLAYER% on %SERVER%, using default: %@#server_permissions_default%.");
+
                         endif;
 
-                    &weather = jsonget(%&user%,"weather");
-                        &weather_location = jsonget(%&weather%,"location");
-                            match(%&weather_location%,"\"(.+)\"",@&weather_location,1);
-                                @&weather_location_safe = urlencode(%@&weather_location%);
-                        &weather_language = jsonget(%&weather%,"language");
-                            match(%&weather_language%,"\"(.+)\"",@&weather_language,1);
-                        &weather_units = jsonget(%&weather%,"units");
-                            match(%&weather_units%,"\"(.+)\"",@&weather_units,1);
+                    &weather = jsonget("%&user%","weather");
+                        &weather_location = jsonget("%&weather%","location");
+                            @&weather_location = match("%&weather_location%","\"(.+)\"","1");
+                                @&weather_location_safe = urlencode("%@&weather_location%");
+                        &weather_language = jsonget("%&weather%","language");
+                            @&weather_language = match("%&weather_language%","\"(.+)\"","1");
+                        &weather_units = jsonget("%&weather%","units");
+                            @&weather_units = match("%&weather_units%","\"(.+)\"","1");
 
                             if( @&weather_units == "Imperial" );
                                 @&weather_units_symbol = "°F";
@@ -220,7 +248,7 @@ $${
                             endif;
 
         elseif;
-            logto(ScriptLog,"No config file found");
+            logto("ScriptLog","No config file found");
             stop;
 
         endif;
@@ -239,8 +267,8 @@ $${
 
         @&display_balance = "";
 
-        exec(CMD-Remote-Receive.txt,"CMD-Remote-Receive");
-        clearchat();
+        exec("CMD-Remote-Receive.txt","CMD-Remote-Receive");
+        clearchat;
 
         unsafe;
 
@@ -256,7 +284,7 @@ $${
                 endif;
 
                 if( ( FARHITDIST >= 10 ) && ( ( FARHITID  == "standing_sign" ) || ( FARHITID == "wall_sign" ) ) );
-                    @&signtext[] = getsigntext(%FARHITX%,%FARHITY%,%FARHITZ%);
+                    @&signtext[] = getsigntext("%FARHITX%","%FARHITY%","%FARHITZ%");
 
                 else;
                     unset(@&signtext[]);
@@ -277,11 +305,11 @@ $${
                     if( #lasty > YPOS );
                         #i = 0;
                         #thresh = %HEALTH%;
-                        #thresh = #thresh + 2;
+                        #thresh = %#thresh% + 2;
 
                             do;
-                                #i = #i + 1;
-                                &blockname = getidrel(0,-%#i%,0);
+                                #i = %#i% + 1;
+                                &blockname = getidrel("0","-%#i%","0");
 
                                 if( &blockname != "air" );
 
@@ -309,7 +337,7 @@ $${
 
                         if( save == 1 );
                             logto("DeathLog","%@&colours_text_highlight%Fall saved%@&colours_text_default%: from %@&colours_variable_default%%#i%%@&colours_text_default%m on %@&colours_variable_default%%&blockname% %@&colours_text_default%at %@&colours_variable_default%%@&display_coords%");
-                            @&queue[10] = "%@&server_commands_safehome%";
+                            @&queue[10] = %@&server_commands_safehome%;
                             @#safety = 10;
 
                         endif;
@@ -346,20 +374,20 @@ $${
                 if( @#queue_wait == 0 );
                     &queue_str = pop(@&queue);
 
-                    ifmatches(%&queue_str%,"^/.+$");
+                    ifmatches("%&queue_str%","^/.+$");
                         #cycle = 0;
 
                         foreach(@&server_permissions_ranks[],&cmd_perms_current);
 
                             if( @#permissions >= #cycle );
 
-                                ifmatches(%&queue_str%,"^/(%&cmd_perms_current%)( .+)*$");
-                                    logto(cmdLog,"%&queue_str%");
-                                    echo(%&queue_str%);
+                                ifmatches("%&queue_str%","^/(%&cmd_perms_current%)( .+)*$");
+                                    logto("cmdLog","%&queue_str%");
+                                    echo("%&queue_str%");
                                     break;
 
                                 else;
-                                    #cycle = #cycle + 1;
+                                    #cycle = %#cycle% + 1;
                                     next;
 
                                 endif;
@@ -403,7 +431,7 @@ $${
 
                     @&display_effects = join("\n","&effects[]");
 
-                    #times[0] = #times[0] + 1;
+                    #times[0] = %#times[0]% + 1;
                     unset(&out);
 
                     foreach(#times,#tim,#i);
@@ -430,21 +458,21 @@ $${
                         endif;
 
                         if( #times[%#i%] < 1 );
-                            &str = "00";
+                            &str = 00;
 
                         elseif( #times[%#i%] < 10 );
-                            &str = "0%#tim%";
+                            &str = 0%#tim%;
 
                         else;
-                            &str = "%#tim%";
+                            &str = %#tim%;
 
                         endif;
 
                         if( #i == 0 );
-                            &out = "%&str%%&out%";
+                            &out = %&str%%&out%;
 
                         else;
-                            &out = "%&str%:%&out%";
+                            &out = %&str%:%&out%;
 
                         endif;
 
@@ -453,25 +481,25 @@ $${
                     @&display_ingametime = %&out%;
 
                     if( ( KEY_TAB == false ) && ( @#safety != 0 ) );
-                        @#safety = @#safety - 1;
+                        @#safety = %@#safety% - 1;
 
                     endif;
 
                     //COMMENT-START: 0.5000 Hz or (2 sec) @ [?0, ?5] :;
-                    ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:[0-9](0|2|4|6|8) (A|P)M");
+                    ifmatches("%@&display_clock%","[0-9]{1,2}:[0-9]{2}:[0-9](0|2|4|6|8) (A|P)M");
 
                         if( @chat_ping = true );
-                            ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:[0-9](0|2) (A|P)M");
+                            ifmatches("%@&display_clock%","[0-9]{1,2}:[0-9]{2}:[0-9](0|2) (A|P)M");
                                 playSound("note.pling");
 
                             endif;
 
-                            ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:[0-9](4|8) (A|P)M");
+                            ifmatches("%@&display_clock%","[0-9]{1,2}:[0-9]{2}:[0-9](4|8) (A|P)M");
                                 playSound("random.bowhit");
 
                             endif;
 
-                            ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:[0-9](6) (A|P)M");
+                            ifmatches("%@&display_clock%","[0-9]{1,2}:[0-9]{2}:[0-9](6) (A|P)M");
                                 playSound("note.snare");
 
                             endif;
@@ -481,21 +509,21 @@ $${
                     endif;
 
                     //COMMENT-START: 0.0167 Hz (60 sec) @ [07] :
-                    ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:07 (A|P)M");
-                        &weather = httpget(%@&remote_weather%,"q=%@&weather_location_safe%&lang=%@&weather_language%&units=%@&weather_units%",#status);
-                        weather_error = jsonhas(%&weather%,"message");
+                    ifmatches("%@&display_clock%","[0-9]{1,2}:[0-9]{2}:07 (A|P)M");
+                        &weather = httpget("%@&remote_weather%","q=%@&weather_location_safe%&lang=%@&weather_language%&units=%@&weather_units%",#status);
+                        weather_error = jsonhas("%&weather%","message");
 
                         if( ( #status == 200 ) && ( weather_error == false ) );
-                            &weather_name = jsonget(%&weather%,"name")
-                            match(%&weather_name%,"\"(.*)\"",&weather_name,1)
+                            &weather_name = jsonget("%&weather%","name");
+                            &weather_name = match("%&weather_name%","\"(.*)\"","1");
 
-                            &weather_main = jsonget(%&weather%,"main")
-                                &weather_main_temp = jsonget(%&weather_main%,"temp")
+                            &weather_main = jsonget("%&weather%","main");
+                                &weather_main_temp = jsonget("%&weather_main%","temp");
 
-                            &weather_weather = jsonget(%&weather%,"weather")
-                            &weather_weather_array = jsonarrayget(%&weather_weather%,0)
-                                &weather_weather_desc = jsonget(%&weather_weather_array%,"main")
-                                match(%&weather_weather_desc%,"\"(.+)\"",&weather_weather_desc,1)
+                            &weather_weather = jsonget("%&weather%","weather");
+                            &weather_weather_array = jsonarrayget("%&weather_weather%","0");
+                                &weather_weather_desc = jsonget("%&weather_weather_array%","main");
+                                &weather_weather_desc = match("%&weather_weather_desc%","\"(.+)\"","1");
 
                         endif;
 
@@ -522,7 +550,7 @@ $${
 
                 endif;
 
-                #lasty = "%YPOS%";
+                #lasty = %YPOS%;
                 &temp_second_old = %@&display_clock%;
 
             loop;
@@ -530,7 +558,7 @@ $${
         endunsafe;
 
     else;
-        logto(ErrorLog,"Could not run %@&colours_text_highlight%onJoinGame");
+        logto("ErrorLog","Could not run %@&colours_text_highlight%onJoinGame");
 
         if( MODULEHTTP == false );
             wait("2");
@@ -557,4 +585,5 @@ $${
         endif;
 
     endif;
+
 }$$
