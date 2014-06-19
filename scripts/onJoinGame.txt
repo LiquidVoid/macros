@@ -6,24 +6,24 @@ $${
         if( &config != "" );
             &remote = jsonget("%&config%","remote");
                 &remote_http = jsonget("%&remote%","http");
-                    @&remote_http = match("%&remote_http%","\"(.+)\"","1");
+                    @&remote_http = match("%&remote_http%","\"(.+)\"",,"1");
                 &remote_weather = jsonget("%&remote%","weather");
-                    @&remote_weather = match("%&remote_weather%","\"(.+)\"","1");
+                    @&remote_weather = match("%&remote_weather%","\"(.+)\"",,"1");
             &colours = jsonget("%&config%","colours");
                 &colours_variable = jsonget(%&colours%,"variable");
                     &colours_variable_default = jsonget("%&colours_variable%","default");
-                        @&colours_variable_default = match("%&colours_variable_default%","\"(.+)\"","1");
+                        @&colours_variable_default = match("%&colours_variable_default%","\"(.+)\"",,"1");
                     &colours_variable_global = jsonget("%&colours_variable%","global");
-                        @&colours_variable_global = match("%&colours_variable_global%","\"(.+)\"","1");
+                        @&colours_variable_global = match("%&colours_variable_global%","\"(.+)\"",,"1");
                 &colours_text = jsonget("%&colours%","text");
                     &colours_text_default = jsonget("%&colours_text%","default");
-                        @&colours_text_default = match("%&colours_text_default%","\"(.+)\"","1");
+                        @&colours_text_default = match("%&colours_text_default%","\"(.+)\"",,"1");
                     &colours_text_enable = jsonget("%&colours_text%","enable");
-                        @&colours_text_enable = match("%&colours_text_enable%","\"(.+)\"","1");
+                        @&colours_text_enable = match("%&colours_text_enable%","\"(.+)\"",,"1");
                     &colours_text_disable = jsonget("%&colours_text%","disable");
-                        @&colours_text_disable = match("%&colours_text_disable%","\"(.+)\"","1");
+                        @&colours_text_disable = match("%&colours_text_disable%","\"(.+)\"",,"1");
                     &colours_text_highlight = jsonget("%&colours_text%","highlight");
-                        @&colours_text_highlight = match("%&colours_text_highlight%","\"(.+)\"","1");
+                        @&colours_text_highlight = match("%&colours_text_highlight%","\"(.+)\"",,"1");
             &server = jsonget("%&config%","server");
                 server_configured = jsonhas("%&server%","%SERVER%");
 
@@ -69,16 +69,16 @@ $${
                                 endif;
 
                         next;
-
+                        
                     &server_commands = jsonget("%&server%","commands");
                         &server_commands_money = jsonget("%&server_commands%","money");
-                            @&server_commands_money = match("%&server_commands_money%","\"(.+)\"","1");
+                            @&server_commands_money = match(%&server_commands_money%,"\"(.+)\"",,"1");
                         &server_commands_safehome = jsonget("%&server_commands%","safehome");
-                            @&server_commands_safehome = match("%&server_commands_safehome%","\"(.+)\"","1");
+                            @&server_commands_safehome = match("%&server_commands_safehome%","\"(.+)\"",,"1");
                         &server_commands_home = jsonget("%&server_commands%","home");
-                            @&server_commands_home = match("%&server_commands_home%","\"(.+)\"","1");
+                            @&server_commands_home = match("%&server_commands_home%","\"(.+)\"",,"1");
                         &server_commands_spawn = jsonget("%&server_commands%","spawn");
-                            @&server_commands_spawn = match("%&server_commands_spawn%","\"(.+)\"","1");
+                            @&server_commands_spawn = match("%&server_commands_spawn%","\"(.+)\"",,"1");
                     &server_permissions = jsonget("%&server%","permissions");
                         @&server_permissions_teleportation = jsonget("%&server_permissions%","teleportation");
                         @#server_permissions_default = jsonget("%&server_permissions%","default");
@@ -181,23 +181,23 @@ $${
                         endif;
 
                         replace("%&server_groups_enemy%","\"|\"","|");
-                            @&server_groups_enemy = match("%&server_groups_enemy%","\"(.+)\"","1");
+                            @&server_groups_enemy = match("%&server_groups_enemy%","\"(.+)\"",,"1");
                         replace("%&server_groups_friend%","\"|\"","|");
-                            @&server_groups_friend = match("%&server_groups_friend%","\"(.+)\"","1");
+                            @&server_groups_friend = match("%&server_groups_friend%","\"(.+)\"",,"1");
                         replace("%&server_groups_trusted%","\"|\"","|");
-                            @&server_groups_trusted = match("%&server_groups_trusted%","\"(.+)\"","1");
+                            @&server_groups_trusted = match("%&server_groups_trusted%","\"(.+)\"",,"1");
                         replace("%&server_groups_staff%","\"|\"","|");
                             @&server_groups_staff = match("%&server_groups_staff%","\"(.+)\"",1);
                         replace("%&server_chat_blocked%","\"|\"","|");
-                            &server_chat_blocked = match("%&server_chat_blocked%","\"(.+)\"","1");
+                            &server_chat_blocked = match("%&server_chat_blocked%","\"(.+)\"",,"1");
                                 //replace("%&server_chat_blocked%","\\\\","\\");
                                 @&server_chat_blocked = %&server_chat_blocked%;
                         replace("%&server_chat_log%","\"|\"","|");
-                            &server_chat_log = match("%&server_chat_log%","\"(.+)\"","1");
+                            &server_chat_log = match("%&server_chat_log%","\"(.+)\"",,"1");
                                 //replace("%&server_chat_log%","\\\\","\\");
                                 @&server_chat_log = %&server_chat_log%;
                         replace("%&server_chat_allowed%","\"|\"","|");
-                            &server_chat_allowed = match("%&server_chat_allowed%","\"(.+)\"","1");
+                            &server_chat_allowed = match("%&server_chat_allowed%","\"(.+)\"",,"1");
                                 //replace("%&server_chat_allowed%","\\\\","\\");
                                 @&server_chat_allowed = %&server_chat_allowed%;
 
@@ -228,12 +228,12 @@ $${
 
                     &weather = jsonget("%&user%","weather");
                         &weather_location = jsonget("%&weather%","location");
-                            @&weather_location = match("%&weather_location%","\"(.+)\"","1");
+                            @&weather_location = match("%&weather_location%","\"(.+)\"",,"1");
                                 @&weather_location_safe = urlencode("%@&weather_location%");
                         &weather_language = jsonget("%&weather%","language");
-                            @&weather_language = match("%&weather_language%","\"(.+)\"","1");
+                            @&weather_language = match("%&weather_language%","\"(.+)\"",,"1");
                         &weather_units = jsonget("%&weather%","units");
-                            @&weather_units = match("%&weather_units%","\"(.+)\"","1");
+                            @&weather_units = match("%&weather_units%","\"(.+)\"",,"1");
 
                             if( @&weather_units == "Imperial" );
                                 @&weather_units_symbol = "°F";
@@ -268,7 +268,6 @@ $${
         @&display_balance = "";
 
         exec("CMD-Remote-Receive.txt","CMD-Remote-Receive");
-        clearchat;
 
         unsafe;
 
@@ -374,44 +373,48 @@ $${
                 if( @#queue_wait == 0 );
                     &queue_str = pop(@&queue);
 
-                    ifmatches("%&queue_str%","^/.+$");
-                        #cycle = 0;
+                    if( &queue_str != "" );
 
-                        foreach(@&server_permissions_ranks[],&cmd_perms_current);
+                        ifmatches("%&queue_str%","^//?[A-Za-z0-9]+( [A-Za-z0-9]+)*$");
+                            #cycle = 0;
 
-                            if( @#permissions >= #cycle );
+                            foreach(@&server_permissions_ranks[],&cmd_perms_current);
 
-                                ifmatches("%&queue_str%","^/(%&cmd_perms_current%)( .+)*$");
+                                if( @#permissions >= #cycle );
+
+                                    ifmatches("%&queue_str%","^/(%&cmd_perms_current%)( [A-Za-z0-9]+)*$");
+                                        logto("cmdLog","%&queue_str%");
+                                        echo("%&queue_str%");
+                                        break;
+
+                                    else;
+                                        #cycle = %#cycle% + 1;
+                                        next;
+
+                                    endif;
+
+                                elseif;
+                                    logto("ScriptLog","%@&colours_variable_default%%&queue_str%%@&colours_text_default% not issued. %@&colours_text_highlight%(%@&colours_variable_default%%#cycle%%@&colours_text_highlight%/%@&colours_variable_default%%#permission_level%%@&colours_text_highlight%)");
                                     logto("cmdLog","%&queue_str%");
-                                    echo("%&queue_str%");
                                     break;
-
-                                else;
-                                    #cycle = %#cycle% + 1;
-                                    next;
 
                                 endif;
 
-                            elseif;
-                                logto("ScriptLog","%@&colours_variable_default%%&queue_str%%@&colours_text_default% not issued. %@&colours_text_highlight%(%@&colours_variable_default%%#cycle%%@&colours_text_highlight%/%@&colours_variable_default%%#permission_level%%@&colours_text_highlight%)");
-                                logto("cmdLog","%&queue_str%");
-                                break;
+                            next;
+
+                            @#queue_wait = @#queue_wait + 1;
+
+                            ifmatches("%&queue_str%","(%@&server_permissions_teleportation%)( .+)*");
+                                @#safety = 10;
+                                @#queue_wait = @#queue_wait + 2;
 
                             endif;
 
-                        next;
-
-                        @#queue_wait = @#queue_wait + 1;
-
-                        ifmatches("%&queue_str%","(%@&server_permissions_teleportation%)( .+)*");
-                            @#safety = 10;
+                        else;
                             @#queue_wait = @#queue_wait + 2;
+                            echo("%&queue_str%");
 
                         endif;
-
-                    else;
-                        @#queue_wait = @#queue_wait + 2;
-                        echo("%&queue_str%");
 
                     endif;
 
@@ -515,7 +518,7 @@ $${
 
                         if( ( #status == 200 ) && ( weather_error == false ) );
                             &weather_name = jsonget("%&weather%","name");
-                            &weather_name = match("%&weather_name%","\"(.*)\"","1");
+                            &weather_name = match("%&weather_name%","\"(.*)\"",,"1");
 
                             &weather_main = jsonget("%&weather%","main");
                                 &weather_main_temp = jsonget("%&weather_main%","temp");
@@ -523,7 +526,7 @@ $${
                             &weather_weather = jsonget("%&weather%","weather");
                             &weather_weather_array = jsonarrayget("%&weather_weather%","0");
                                 &weather_weather_desc = jsonget("%&weather_weather_array%","main");
-                                &weather_weather_desc = match("%&weather_weather_desc%","\"(.+)\"","1");
+                                &weather_weather_desc = match("%&weather_weather_desc%","\"(.+)\"",,"1");
 
                         endif;
 
