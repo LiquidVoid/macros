@@ -1,6 +1,6 @@
 Macros
 ======
-**by MegaSniperB and zeel01**
+**by MegaSniperB, Jman8778, and zeel01**
 
 
 Macros for the popular Minecraft mod: [The Macro/Keybind Mod](http://www.minecraftforum.net/topic/467504-/) by [Mumfrey](https://github.com/Mumfrey) or [Mumfrey on MCF](http://u.mcf.li/mumfrey/profile)
@@ -22,5 +22,5 @@ Macros for the popular Minecraft mod: [The Macro/Keybind Mod](http://www.minecra
 - Boolean operators: < > == != >= <= && ||
 - To set a varible use "x = y;", or "x = y + 1;"
 - Each function gets a new line
-- newline before and after IFs and LOOPs
+- Newline before and after IFs and LOOPs
 ```
