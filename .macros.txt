@@ -235,7 +235,7 @@ Macro[53].Macro=/$$!
 Macro[53].Override=1
 
 # KEY_RSHIFT
-Macro[54].Macro=$${exec("Automatic.txt","Automatic","Sneak","Toggle");}$$
+Macro[54].Macro=$${exec("Automatic.txt","Automatic","sneak","toggle");}$$
 
 # KEY_NUMPAD0
 Macro[82].Macro=$${@&queue[9] = "/tpa $$f";}$$
@@ -248,8 +248,11 @@ Macro[83].Override=1
 Macro[83].Warp=stable
 
 # KEY_RCONTROL
-Macro[157].Macro=$${exec("Automatic.txt","Automatic","Mine","Enable");exec("Automatic.txt","Automatic","Walk","Enable");exec("Automatic.txt","Automatic","Sneak","Enable");}$$
-Macro[157].Shift=1
+Macro[157].Macro=$${exec("automatic.txt","automatic","mine","disable");exec("automatic.txt","automatic","walk","disable");exec("automatic.txt","automatic","sneak","disable");}$$
+Macro[157].OnKeyUp=$${exec("automatic.txt","automatic","mine","enable");exec("automatic.txt","automatic","walk","enable");exec("automatic.txt","automatic","sneak","enable");}$$
+Macro[157].Condition=@&actions[1] == "true"
+Macro[157].Mode=conditional
+Macro[157].Control=1
 
 # KEY_HOME
 Macro[199].Macro=$${@&queue[9] = %@&server_commands_home%;}$$
@@ -278,28 +281,28 @@ Macro[210].Override=1
 Macro[211].Macro=$${@&queue[9] = %@&server_commands_safehome%;}$$
 
 # CONTROL_CHAT GLOBAL
-Macro[270].Macro=$${@&queue[7] = "/channel global";}$$
+Macro[270].Macro=$${@&queue[7] = "/ch global";}$$
 
 # CONTROL_CHAT LOCAL
-Macro[271].Macro=$${@&queue[7] = "/channel local";}$$
+Macro[271].Macro=$${@&queue[7] = "/ch local";}$$
 
 # CONTROL_CHAT TOWNWORLD
-Macro[272].Macro=$${@&queue[7] = "/channel town";}$$
+Macro[272].Macro=$${@&queue[7] = "/ch town";}$$
 
 # CONTROL_CHAT WILDERNESS
-Macro[273].Macro=$${@&queue[7] = "/channel wilderness";}$$
+Macro[273].Macro=$${@&queue[7] = "/ch wilderness";}$$
 
 # CONTROL_CHAT MINE
-Macro[274].Macro=$${@&queue[7] = "/channel mine";}$$
+Macro[274].Macro=$${@&queue[7] = "/ch mine";}$$
 
 # CONTROL_CHAT MINE LEAVE
 Macro[275].Macro=$${@&queue[7] = "/channel leave mine";}$$
 
 # CONTROL_CHAT WILDERNESS LEAVE
-Macro[276].Macro=$${@&queue[7] = "/channel leave wilderness";}$$
+Macro[276].Macro=$${@&queue[7] = "/ch leave wilderness";}$$
 
 # CONTROL_CHAT GLOBAL LEAVE
-Macro[277].Macro=$${@&queue[7] = "/channel leave global";}$$
+Macro[277].Macro=$${@&queue[7] = "/ch leave global";}$$
 
 # CONTROL_REMOTE-SEND
 Macro[278].Macro=$$<CMD-Remote-Send.txt>

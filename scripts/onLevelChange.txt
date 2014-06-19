@@ -2,8 +2,10 @@ $${
 
     if( (LEVEL = 5) || (LEVEL = 10) || (LEVEL = 15) || (LEVEL = 20) || (LEVEL = 25) );
         achievementget("Level Up!","minecraft:experience_bottle");
+
     elseif( LEVEL >= 30 );
         achievementget("Time to Enchant!","minecraft:enchanting_table");
+
     endif;
 
 }$$

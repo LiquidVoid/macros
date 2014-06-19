@@ -2,7 +2,7 @@ $${
 
     if( ( MODULEFARHIT == true ) && ( MODULESIGNTEXT == true) && ( MODULEJSON == true ) && ( MODULEHTTP == true ) );
         &config = $$<config.txt>;
-        if( &config != "");
+        if( &config != "" );
             &remote = jsonget(%&config%,"remote");
                 &remote_http = jsonget(%&remote%,"http");
                     match(%&remote_http%,"\"(.+)\"",@&remote_http,1);
@@ -58,6 +58,7 @@ $${
                             &kit_current_data = jsonget(%&server_kits%,"%&kit_current_name%");
                                 #kit_current_data_time = jsonget(%&kit_current_data%,"time");
                                 #kit_current_data_permission = jsonget(%&kit_current_data%,"permission");
+
                             if( #kit_current_data_permission <= @#permissions );
                                 exec("onJoinGame_kit.txt","kit-%&kit_current_data_name%","%&kit_current_data_name%","%#kit_current_data_time%");
                             endif;
@@ -65,10 +66,14 @@ $${
                         next;
 
                     &server_commands = jsonget(%&server%,"commands");
-                        @&server_commands_money = jsonget(%&server_commands%,"money");
-                        @&server_commands_safehome = jsonget(%&server_commands%,"safehome");
-                        @&server_commands_home = jsonget(%&server_commands%,"home");
-                        @&server_commands_spawn = jsonget(%&server_commands%,"spawn");
+                        &server_commands_money = jsonget(%&server_commands%,"money");
+                            match(%&server_commands_money%,"\"(.+)\"",@&server_commands_money,1);
+                        &server_commands_safehome = jsonget(%&server_commands%,"safehome");
+                            match(%&server_commands_safehome%,"\"(.+)\"",@&server_commands_safehome,1);
+                        &server_commands_home = jsonget(%&server_commands%,"home");
+                            match(%&server_commands_home%,"\"(.+)\"",@&server_commands_home,1);
+                        &server_commands_spawn = jsonget(%&server_commands%,"spawn");
+                            match(%&server_commands_spawn%,"\"(.+)\"",@&server_commands_spawn,1);
                     &server_permissions = jsonget(%&server%,"permissions");
                         @&server_permissions_teleportation = jsonget(%&server_permissions%,"teleportation");
                         @#server_permissions_default = jsonget(%&server_permissions%,"default");
@@ -92,23 +97,23 @@ $${
                             &server_chat_allowed[] = getjsonasarray(%&server_chat_allowed%);
 
                         if( server_configured == true );
-                            &server_default_groups_enemy = join(|,&server_default_groups_enemy[]);
-                            &server_default_groups_friend = join(|,&server_default_groups_friend[]);
-                            &server_default_groups_trusted = join(|,&server_default_groups_trusted[]);
-                            &server_default_groups_staff = join(|,&server_default_groups_staff[]);
-                            &server_default_chat_blocked = join(|,&server_default_chat_blocked[]);
-                            &server_default_chat_log = join(|,&server_default_chat_log[]);
-                            &server_default_chat_allowed = join(|,&server_default_chat_allowed[]);
+                            &server_default_groups_enemy = join("|","&server_default_groups_enemy[]");
+                            &server_default_groups_friend = join("|","&server_default_groups_friend[]");
+                            &server_default_groups_trusted = join("|","&server_default_groups_trusted[]");
+                            &server_default_groups_staff = join("|","&server_default_groups_staff[]");
+                            &server_default_chat_blocked = join("|","&server_default_chat_blocked[]");
+                            &server_default_chat_log = join("|","&server_default_chat_log[]");
+                            &server_default_chat_allowed = join("|","&server_default_chat_allowed[]");
 
                         endif;
 
-                        &server_groups_enemy = join(|,&server_groups_enemy[]);
-                        &server_groups_friend = join(|,&server_groups_friend[]);
-                        &server_groups_trusted = join(|,&server_groups_trusted[]);
-                        &server_groups_staff = join(|,&server_groups_staff[]);
-                        &server_chat_blocked = join(|,&server_chat_blocked[]);
-                        &server_chat_log = join(|,&server_chat_log[]);
-                        &server_chat_allowed = join(|,&server_chat_allowed[]);
+                        &server_groups_enemy = join("|","&server_groups_enemy[]");
+                        &server_groups_friend = join("|","&server_groups_friend[]");
+                        &server_groups_trusted = join("|","&server_groups_trusted[]");
+                        &server_groups_staff = join("|","&server_groups_staff[]");
+                        &server_chat_blocked = join("|","&server_chat_blocked[]");
+                        &server_chat_log = join("|","&server_chat_log[]");
+                        &server_chat_allowed = join("|","&server_chat_allowed[]");
 
                         if( server_configured == true );
                             if( &server_groups_enemy != "" );
@@ -151,6 +156,7 @@ $${
                             endif;
 
                         endif;
+
                         replace(&server_groups_enemy,"\"|\"","|");
                             match(%&server_groups_enemy%,"\"(.+)\"",@&server_groups_enemy,1);
                         replace(&server_groups_friend,"\"|\"","|");
@@ -203,11 +209,14 @@ $${
 
                             if( @&weather_units == "Imperial" );
                                 @&weather_units_symbol = "°F";
+
                             elseif( @&weather_units == "Metric" );
                                 @&weather_units_symbol = "°C";
+
                             else;
                                 @&weather_units_symbol = "K";
                                 @&weather_units = "Kelvin";
+
                             endif;
 
         elseif;
@@ -218,13 +227,17 @@ $${
 
         @auto_cobblestone = true;
         @automatic = false;
+        @actions[1] = false;
+        @actions[2] = false;
+        @actions[3] = false;
+        @actions[4] = false;
         @auto_noafk = true;
         @chat_ping = false;
+
         unset(#times[]);
+        #lasty = %YPOS%;
 
         @&display_balance = "";
-
-        #lasty = %YPOS%;
 
         exec(CMD-Remote-Receive.txt,"CMD-Remote-Receive");
         clearchat();
@@ -235,20 +248,27 @@ $${
 
                 if( FARHITDIST >= 10 );
                     @&display_name = "(%DIRECTION%) %FARHITNAME% (%FARHITDIST%)";
+
+
                 else;
                     @&display_name = "(%DIRECTION%) %FARHITNAME%";
+
                 endif;
 
                 if( ( FARHITDIST >= 10 ) && ( ( FARHITID  == "standing_sign" ) || ( FARHITID == "wall_sign" ) ) );
                     @&signtext[] = getsigntext(%FARHITX%,%FARHITY%,%FARHITZ%);
+
                 else;
                     unset(@&signtext[]);
+
                 endif;
 
                 if( PLAYER == "zeel01" );
                     @&display_coords = "(%XPOS%, %YPOS%, %ZPOS%)";
+
                 else;
                     @&display_coords = "%XPOS%, %ZPOS% (%YPOS%)";
+
                 endif;
 
                 if( ( @#safety == 0 ) && ( @&safehome != "" ) );
@@ -262,19 +282,23 @@ $${
                             do;
                                 #i = #i + 1;
                                 &blockname = getidrel(0,-%#i%,0);
+
                                 if( &blockname != "air" );
 
                                     if( ( #i < #thresh ) || ( &blockname == "water" ) || ( &blockname == "flowing_water" ) );
                                         break;
+
                                     else;
                                         save = 1;
                                         break;
+
 
                                     endif;
 
                                 elseif( #i > #lasty );
                                     if( YPOS < 0 );
                                         save = 1;
+
                                     endif;
 
                                     break;
@@ -284,7 +308,7 @@ $${
                             loop;
 
                         if( save == 1 );
-                            logto(DeathLog,"%@&colours_text_highlight%Fall saved%@&colours_text_default%: from %@&colours_variable_default%%#i%%@&colours_text_default%m on %@&colours_variable_default%%&blockname% %@&colours_text_default%at %@&colours_variable_default%%@&display_coords%");
+                            logto("DeathLog","%@&colours_text_highlight%Fall saved%@&colours_text_default%: from %@&colours_variable_default%%#i%%@&colours_text_default%m on %@&colours_variable_default%%&blockname% %@&colours_text_default%at %@&colours_variable_default%%@&display_coords%");
                             @&queue[10] = "%@&server_commands_safehome%";
                             @#safety = 10;
 
@@ -294,10 +318,11 @@ $${
 
                 endif;
 
-                @&display_clock = time("h:mm:ss a");
+                time(@&display_clock,"h:mm:ss a");
 
                 if( ( KEY_TAB ) && ( @#safety < 3 ) );
                     @#safety = 3;
+
                 endif;
 
                 //COMMENT-START: Channels
@@ -315,6 +340,7 @@ $${
 
                 if( ( @&display_clock != &temp_second_old ) && ( @#queue_wait > 0 ) );
                     @#queue_wait = @#queue_wait - 1;
+
                 endif;
 
                 if( @#queue_wait == 0 );
@@ -324,7 +350,9 @@ $${
                         #cycle = 0;
 
                         foreach(@&server_permissions_ranks[],&cmd_perms_current);
+
                             if( @#permissions >= #cycle );
+
                                 ifmatches(%&queue_str%,"^/(%&cmd_perms_current%)( .+)*$");
                                     logto(cmdLog,"%&queue_str%");
                                     echo(%&queue_str%);
@@ -337,8 +365,8 @@ $${
                                 endif;
 
                             elseif;
-                                logto(ScriptLog,"%@&colours_variable_default%%&queue_str%%@&colours_text_default% not issued. %@&colours_text_highlight%(%@&colours_variable_default%%#cycle%%@&colours_text_highlight%/%@&colours_variable_default%%#permission_level%%@&colours_text_highlight%)");
-                                logto(cmdLog,"%&queue_str%");
+                                logto("ScriptLog","%@&colours_variable_default%%&queue_str%%@&colours_text_default% not issued. %@&colours_text_highlight%(%@&colours_variable_default%%#cycle%%@&colours_text_highlight%/%@&colours_variable_default%%#permission_level%%@&colours_text_highlight%)");
+                                logto("cmdLog","%&queue_str%");
                                 break;
 
                             endif;
@@ -346,7 +374,8 @@ $${
                         next;
 
                         @#queue_wait = @#queue_wait + 1;
-                        ifmatches(%&queue_str%,"(%@&server_permissions_teleportation%)( .+)*");
+
+                        ifmatches("%&queue_str%","(%@&server_permissions_teleportation%)( .+)*");
                             @#safety = 10;
                             @#queue_wait = @#queue_wait + 2;
 
@@ -354,14 +383,14 @@ $${
 
                     else;
                         @#queue_wait = @#queue_wait + 2;
-                        echo(%&queue_str%);
+                        echo("%&queue_str%");
 
                     endif;
 
                 endif;
 
 
-                //COMMENT-START: 1.0000 Hz or (1 sec) @ [??] :;
+                //COMMENT-START: 1.0000 Hz or (1 sec) @ [??] :
                 if( @&display_clock != &temp_second_old );
                     #i = 0;
                     unset(&effects[]);
@@ -372,20 +401,25 @@ $${
 
                     next;
 
-                    @&display_effects = join("\n",&effects[]);
+                    @&display_effects = join("\n","&effects[]");
 
                     #times[0] = #times[0] + 1;
                     unset(&out);
 
                     foreach(#times,#tim,#i);
+
                         if( #i == 0 );
                             #till = 60;
+
                         elseif( #i == 1 );
                             #till = 60;
+
                         elseif( #i == 2 );
                             #till = 24;
+
                         else;
                             #till = 365;
+
                         endif;
 
                         if( #times[%#i%] >= #till );
@@ -397,16 +431,21 @@ $${
 
                         if( #times[%#i%] < 1 );
                             &str = "00";
+
                         elseif( #times[%#i%] < 10 );
                             &str = "0%#tim%";
+
                         else;
                             &str = "%#tim%";
+
                         endif;
 
                         if( #i == 0 );
                             &out = "%&str%%&out%";
+
                         else;
                             &out = "%&str%:%&out%";
+
                         endif;
 
                     next;
@@ -415,6 +454,7 @@ $${
 
                     if( ( KEY_TAB == false ) && ( @#safety != 0 ) );
                         @#safety = @#safety - 1;
+
                     endif;
 
                     //COMMENT-START: 0.5000 Hz or (2 sec) @ [?0, ?5] :;
@@ -423,78 +463,59 @@ $${
                         if( @chat_ping = true );
                             ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:[0-9](0|2) (A|P)M");
                                 playSound("note.pling");
+
                             endif;
 
                             ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:[0-9](4|8) (A|P)M");
                                 playSound("random.bowhit");
+
                             endif;
 
                             ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:[0-9](6) (A|P)M");
                                 playSound("note.snare");
+
                             endif;
 
                         endif;
 
                     endif;
 
-                    //COMMENT-START: 0.2000 Hz or (5 sec) @ [?0, ?5] :;
-                    ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:[0-9](0|5) (A|P)M");
-
-                        unset(&staff[]);
-                        unset(&friend[]);
-                        unset(&foe[]);
-
-                        foreach(players);
-                            ifmatches(%PLAYERNAME%,"^(%@&server_groups_staff%)$");
-                                &staff[] = %PLAYERNAME%;
-                            endif;
-
-                            ifmatches(%PLAYERNAME%,"^(%@&server_groups_friend%|%@&server_groups_trusted%)$");
-                                &friend[] = %PLAYERNAME%;
-                            endif;
-
-                            ifmatches(%PLAYERNAME%,"^(%@&server_groups_enemy%)$");
-                                &foe[] = %PLAYERNAME%;
-                            &main = jsonget(%&json%,"main");
-                            &temp = jsonget(%&main%,"temp");
-                            &weather = jsonget(%&json%,"weather");
-                            endif;
-
-                        next;
-
-                        @&display_staff = join("\n",&staff[]);
-                        @&display_friend = join("\n",&friend[]);
-                        @&display_foe = join("\n",&foe[]);
-
-                    endif;
-
-                    //COMMENT-START: 0.0167 Hz (60 sec) @ [07] :;
+                    //COMMENT-START: 0.0167 Hz (60 sec) @ [07] :
                     ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]{2}:07 (A|P)M");
-                        &json = httpget(%@&remote_weather%,"q=%@&weather_location_safe%&lang=%@&weather_language%&units=%@&weather_units%",#status);
-                        weather_error = jsonhas(%&json%,"message");
+                        &weather = httpget(%@&remote_weather%,"q=%@&weather_location_safe%&lang=%@&weather_language%&units=%@&weather_units%",#status);
+                        weather_error = jsonhas(%&weather%,"message");
 
                         if( ( #status == 200 ) && ( weather_error == false ) );
-                            &weather = jsonarrayget(%&weather%,0);
-                            &desc = jsonget(%&weather%,"main");
-                            match(%&desc%,"\"(.+)\"",&desc,1);
+                            &weather_name = jsonget(%&weather%,"name")
+                            match(%&weather_name%,"\"(.*)\"",&weather_name,1)
+
+                            &weather_main = jsonget(%&weather%,"main")
+                                &weather_main_temp = jsonget(%&weather_main%,"temp")
+
+                            &weather_weather = jsonget(%&weather%,"weather")
+                            &weather_weather_array = jsonarrayget(%&weather_weather%,0)
+                                &weather_weather_desc = jsonget(%&weather_weather_array%,"main")
+                                match(%&weather_weather_desc%,"\"(.+)\"",&weather_weather_desc,1)
 
                         endif;
 
                         if( weather_error == true );
-                            logto(ErrorLog,"City not found");
+                            logto("ErrorLog","City not found");
+
                         else;
-                            @&display_weather_temp = %&temp%%@&weather_units_symbol%;
-                            @&display_weather_desc = %&desc%;
+                            @&display_weather_temp = %&weather_main_temp%%@&weather_units_symbol%;
+                            @&display_weather_desc = %&weather_weather_desc%;
 
                         endif;
 
                     endif;
 
-                    //COMMENT-START: 0.0033 Hz (300 sec) @ [17] :;
-                    ifmatches(%@&display_clock%,"[0-9]{1,2}:[0-9]5:17 (A|P)M");
+                    //COMMENT-START: 0.0033 Hz (300 sec) @ [17] :
+                    ifmatches("%@&display_clock%","[0-9]{1,2}:[0-9]5:17 (A|P)M");
 
                         if( &cmd_money != "" );
                             @&queue[3] = "%&server_commands_money%";
+
                         endif;
 
                     endif;
@@ -512,29 +533,28 @@ $${
         logto(ErrorLog,"Could not run %@&colours_text_highlight%onJoinGame");
 
         if( MODULEHTTP == false );
-            wait(2);
-            logto(ErrorLog,"Missing: %@&colours_variable_global%MODULEHTTP");
+            wait("2");
+            logto("ErrorLog","Missing: %@&colours_variable_global%MODULEHTTP");
 
         endif;
 
         if( MODULEFARHIT == false );
-            wait(2);
-            logto(ErrorLog,"Missing: %@&colours_variable_global%MODULEFARHIT");
+            wait("2");
+            logto("ErrorLog","Missing: %@&colours_variable_global%MODULEFARHIT");
 
         endif;
 
         if( MODULESIGNTEXT == false );
-            wait(2);
-            logto(ErrorLog,"Missing: %@&colours_variable_global%MODULESIGNTEXT");
+            wait("2");
+            logto("ErrorLog","Missing: %@&colours_variable_global%MODULESIGNTEXT");
 
         endif;
 
         if( MODULEJSON == false );
-            wait(2);
-            logto(ErrorLog,"Missing: %@&colours_variable_global%MODULEJSON");
+            wait("2");
+            logto("ErrorLog","Missing: %@&colours_variable_global%MODULEJSON");
 
         endif;
-
 
     endif;
 }$$

@@ -1,80 +1,83 @@
 &function = $$[1];
 &action = $$[2];
-log(1%&function% %&action%)
 
-if( &function != ( "Mine" || "Walk" || "Place" || "Sneak" ) )
-    &function = $$[[Place,Mine,Walk,Sneak]];
+if( ( &function != "mine" ) && ( &function != "walk" ) && ( &function != "place" ) && ( &function != "sneak" ) )
+    &function = prompt("$$[[place,mine,walk,sneak]]","function")
 endif;
 
-if( &action != ( "Enable" || "Disable" || "Toggle" ) )
-    &action = $$[[Enable,Disable,Toggle]];
+if( ( &action != "enable" ) && ( &action != "disable" ) && ( &action != "toggle" ) )
+     &action = prompt("$$[[enable,disable,toggle]]","action")
 endif;
 
-log(2%&function% %&action%)
 
-    if( &function == "Mine" );
-        if( %&action% == "Enable" )
-            actions[1] = true;
-        elseif( %&action% == "Disable" )
-            actions[1] = false;
-        elseif( %&action% == "Toggle" )
-            toggle(actions[1]);
-        endif
-    elseif( &function == "Walk" );
-        if( %&action% == "Enable" )
-            actions[1] = true;
-        elseif( %&action% == "Disable" )
-            actions[1] = false;
-        elseif( %&action% == "Toggle" )
-            toggle(actions[1]);
-        endif
+if( &function == "mine" );
 
-        keyup("forward")
-
-    elseif( &function == "Place" );
-        if( %&action% == "Enable" )
-            actions[1] = true;
-        elseif( %&action% == "Disable" )
-            actions[1] = false;
-        elseif( %&action% == "Toggle" )
-            toggle(actions[1]);
-        endif
-    elseif( &function == "Sneak" );
-        if( %&action% == "Enable" )
-            actions[1] = true;
-        elseif( %&action% == "Disable" )
-            actions[1] = false;
-        elseif( %&action% == "Toggle" )
-            toggle(actions[1]);
-        endif
-
-        keyup("sneak")
-
+    if( &action == "enable" )
+        @&actions[1] = "true";
+    elseif( &action == "disable" )
+        @&actions[1] = "false";
+    elseif( &action == "toggle" )
+        toggle(@&actions[1]);
     endif
 
-    logto(ScriptLog,"%@&colours_text_enable%Automatic %&function%: %&action%");
+elseif( &function == "walk" );
+
+    if( &action == "enable" )
+        @&actions[2] = "true";
+    elseif( &action == "disable" )
+        @&actions[2] = "false";
+    elseif( &action == "toggle" )
+        toggle(@&actions[2]);
+    endif
+
+    keyup("forward")
+
+elseif( &function == "place" );
+
+    if( &action == "enable" )
+        @&actions[3] = "true";
+    elseif( &action == "disable" )
+        @&actions[3] = "false";
+    elseif( &action == "toggle" )
+        toggle(@&actions[3]);
+    endif
+
+elseif( &function == "sneak" );
+
+    if( &action == "enable" )
+        @&actions[4] = "true";
+    elseif( &action == "disable" )
+        @&actions[4] = "false";
+    elseif( &action == "toggle" )
+        toggle(@&actions[4]);
+    endif
+
+    keyup("sneak")
+
+endif
+
+logto(ScriptLog,"Automatic %&function%: %&action%");
 
 if( @automatic == false );
     @automatic = true;
-    unset(actions[])
 
     do;
-        if( actions[1] == true )
+
+        if( @&actions[1] == "true" )
             key("attack")
         endif
 
-        if( actions[2] == true )
+        if( @&actions[2] == "true" )
             keydown("forward")
         endif
 
-        if( actions[3] == true )
+        if( @&actions[3] == "true" )
             key("use")
         endif
 
-        if( actions[4] == true )
+        if( @&actions[4] == "true" )
             keydown("sneak")
         endif
-
 
     loop;
 

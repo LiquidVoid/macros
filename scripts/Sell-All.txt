@@ -6,7 +6,7 @@ $${
         @&queue[5] = "/shop";
 
         do;
-            wait(50ms);
+            wait("50ms");
         until( GUI == "GUICHEST" );
         //ACTION-END: Open Shop Menu
 
@@ -18,14 +18,18 @@ $${
             //ACTION-START: Set Sub-Menu Size
             if( #slot_menu == 0 );
                 #shop_size = 2;
+
             elseif( #slot_menu == 1 );
                 #shop_size = 1;
+
             elseif( #slot_menu == 2 );
                 #shop_size = 1;
+
             elseif( #slot_menu == 3 );
                 #shop_size = 1;
+
             else;
-                logto(ScriptLog,"ERROR: The Menu: %&menu_name% has not been configured yet.");
+                logto("ScriptLog","ERROR: The Menu: %&menu_name% has not been configured yet.");
                 break;
 
             endif;
@@ -34,31 +38,32 @@ $${
             //ACTION-START: Choose Sub-Menu if existent
             if( ( &menu_name != "air" ) && ( GUI == "GUICHEST" ) );
                 slotclick(%#slot_menu%,"LMB");
-                wait(250ms);
+                wait("250ms");
 
                 //ACTION-START: Set Sub-Menu Size
                 for(#shop_row,1,%#shop_size%);
                     //COMMENT-START: Sets Sub-Menu Size
-                    #slot_chest_min = ( 18 * #shop_row ) - 18;
-                    #slot_chest_max = ( 18 * #shop_row ) - 11;
-                    #slot_inventory_min = 18 * #shop_size;
-                    #slot_inventory_max = ( 18 * #shop_size ) + 35;
+                    #slot_chest_min = ( 18 * %#shop_row% ) - 18;
+                    #slot_chest_max = ( 18 * %#shop_row% ) - 11;
+                    #slot_inventory_min = ( 18 * %#shop_size% );
+                    #slot_inventory_max = ( 18 * %#shop_size% ) + 35;
                     //COMMENT-END: Sets Sub-Menu Size
 
                     //ACTION-START: Loop Sub-Menu Options
                     for(#slot_chest,%#slot_chest_min%,%#slot_chest_max%);
                         #item_total = 0;
-                        &item_name = getslotitem(%#slot_chest%);
+                        &item_name = getslotitem("%#slot_chest%");
 
                         //If Sell Option -> Count and Sell
                         if( &item_name != "air" );
 
                             //ACTION-START: Count Inventory
                             for(#slot_inventory,%#slot_inventory_min%,%#slot_inventory_max%);
-                                getslotitem(%#slot_inventory%,&name,#stacksize);
+                                &name = getslotitem("%#slot_inventory%","#stacksize");
 
                                 if( &name == &item_name );
                                     #item_total = #item_total + #stacksize;
+
                                 endif;
 
                             next;
@@ -67,7 +72,8 @@ $${
                             //ACTION-START: Sell ALL
                             do;
                                 if( #item_total != 0 );
-                                    logto(Debug,"%&menu_name%>%&item_name%[%#item_total%]");
+                                    logto("Debug","%&menu_name%>%&item_name%[%#item_total%]");
+
                                 endif;
 
                                 //ACTION-START: Sell Max
@@ -75,19 +81,19 @@ $${
                                     //ACTION-START: Sell 64
                                     #item_total = #item_total - 64;
                                     #slot_chest_large = #slot_chest + 9;
-                                    slotclick(%#slot_chest_large%,"LMB");
+                                    slotclick("%#slot_chest_large%","LMB");
                                     //ACTION-END: Sell 64
 
                                 elseif( #item_total >= 16 );
                                     //ACTION-START: Sell 16
                                     #item_total = #item_total - 16;
-                                    slotclick(%#slot_chest%,"LMB");
+                                    slotclick("%#slot_chest%","LMB");
                                     //ACTION-END: Sell 16
 
                                 endif;
                                 //ACTION-END: Sell Max
 
-                                wait(250ms);
+                                wait("250ms");
 
                             until( #item_total < 16 );
                             //ACTION-END: Sell ALL
@@ -109,9 +115,9 @@ $${
 
             //ACTION-START: GOTO Menu
             do;
-                slotclick(8,"LMB");
-                wait(100ms);
-                &menu_back = getslotitem(8);
+                slotclick("8","LMB");
+                wait("100ms");
+                &menu_back = getslotitem("8");
 
             until( &menu_back == "air" );
             //ACTION-END: GOTO Menu
@@ -122,8 +128,8 @@ $${
         //ACTION-END: Loop Sub-Menus
 
         //ACTION-START: Clean-Up
-        logto(Debug," ");
-        gui();
+        logto(Debug,"  ");
+        gui;
         //ACTION-END: Clean-Up
 
     endunsafe;

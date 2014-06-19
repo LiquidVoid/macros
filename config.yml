@@ -1,66 +1,65 @@
 colours: 
   variable: 
-    default: &9
-    global: &1
+    default: "&9"
+    global: "&1"
   text: 
-    default: &7
-    highlight: &f
-    enable: &a
-    disable: &c
+    default: "&7"
+    highlight: "&f"
+    enable: "&a"
+    disable: "&c"
 remote: 
-  weather: http://api.openweathermap.org/data/2.5/weather
-  http: http://dev.lordzeel.com/minecraft/remote/client.php
+  weather: "http://api.openweathermap.org/data/2.5/weather"
+  http: "http://dev.lordzeel.com/minecraft/remote/client.php"
 user: 
   default: 
     ranks: 
       SP: 3
       localhost: 3
     weather: 
-      units: Imperial
-      location: District of Columbia
-      language: English
+      units: "Imperial"
+      location: "District of Columbia"
+      language: "English"
   MegaSniperB: 
     ranks: 
       connect1.minetime.com: 1
       noobstown.com: 1
-      SP: 4
+      SP: 3
       localhost: 4
     weather: 
-      units: Imperial
-      location: Stow, Ohio
-      language: English
+      units: "Imperial"
+      location: "Stow, Ohio"
+      language: "English"
   A6776: 
     ranks: 
       connect1.minetime.com: 1
       noobstown.com: 1
     weather: 
-      units: Imperial
-      location: Akron, Ohio
-      language: English
+      units: "Imperial"
+      location: "Akron, Ohio"
+      language: "English"
   zeel01: 
     ranks: 
       connect1.minetime.com: 1
       noobstown.com: 2
-      SP: 4
+      SP: 3
       localhost: 4
     weather: 
-      units: Imperial
-      location: Akron, Ohio
-      language: English
+      units: "Imperial"
+      location: "Akron, Ohio"
+      language: "English"
 server: 
   default: 
     commands: 
-      spawn: /spawn
-      money: 
-      safehome: 
-      home: /home
+      spawn: "/spawn"
+      money: null
+      safehome: null
+      home: "/home"
     kits: null
     chat: 
       blocked: 
-        - ^http://minecraftservers.org/vote/[0-9]+/?$
-        - ^http://minecraft-server-list.com/server/[0-9]+/?(vote)?/?$
+        - ^http':'//minecraftservers\.org/vote/[0-9]+/?$
+        - ^http':'//minecraft-server-list\.com/server/[0-9]+/?(vote)?/?$
         - Available kits':' No kits available
-        
         - ^Giving kit [A-Za-z0-9_]+ to (\%@&server_groups_trusted\%|\%@&server_groups_friend\%)$
         - ^Request sent to [A-Za-z0-9_]{3,16}\.$
         - ^Teleport(ation|ing\.\.\.)? (will commence in [0-9]+ seconds\. Don't Move\.|commencing\.\.\.|Teleport Woosh!)$
@@ -78,7 +77,7 @@ server:
         - ^((-|\+|\$)+?([0-9]{0,3}(\.|,)?)+[0-9]{0,2}).?(has been (sent to|received from) [A-Za-z0-9_]{4,16}\.)?$
         - ^Bed spawn set!$
         - ^Created a [A-Za-z0-9_ ]+ successfully$
-        - ^Kits:( .+)+$
+        - ^Kits':'( .+)+$
         - ^Mail sent!$
         - ^Now chatting in [A-Za-z0-9_ ]+\.$
         - ^Pending teleportation request cancelled\.$
@@ -90,7 +89,7 @@ server:
         - ^The luck of Hyrule is with you today!$
         - ^Treasure found!$
         - ^Warping to [A-Za-z0-9_]+\.$
-        - ^You are too tired to use that ability again\. \([0-9]*s\)$
+        - You are too tired to use that ability again\. \([0-9]*s\)$
         - ^You have joined .+\.$
         - ^You have placed an anvil, anvils can repair tools and armor\.$
         - ^You need more [A-Za-z]+$
@@ -130,16 +129,16 @@ server:
         - kit|warp|home|spawn|tpa|tp(accept|deny)|p|ch(annel)?|inspect|mcstats|mcrank|mctop|wild|town|shop|list|ticket|ignore|helpop|lwc|unlock|lock|c(info|password|modify|persist)|party|seen|menu|sethome|delhome|bal(ance)?
         - achievement|blockdata|clear|clone|debug|defaultgamemode|difficulty|effect|execute|fill|gamemode|gamerule|give|kill|particle|playsound|publish|say|scoreboard|seed|setblock|setworldspawn|spawnpoint|spreadplayers|summon|tellraw|testfor|testforblock|testforblocks|time|title|toggledownfall|tp|weather|worldborder|xp
         - .+
-      teleportation: warp|home|spawn|tpa|wild|jump
+      teleportation: "warp|home|spawn|tpa|wild|jump|tp"
   noobstown.com: 
     commands: 
-      spawn: /warp spawn
-      money: /balance
-      safehome: /wild chunks home
-      home: /home
+      spawn: "/warp spawn"
+      money: "/balance"
+      safehome: "/wild chunks home"
+      home: "/home"
     kits: 
-      food:
-        time: 90
+      food: 
+        time: 620
         permission: 1
     chat: 
       blocked: 
@@ -164,7 +163,7 @@ server:
         - ^[A-Za-z0-9_]{3,16} was the last man standing!$
         - ^\[Noobstowny\] .+$
         - ^\[Wild\] Success, you were teleported to your land\.$
-        - ^\s?~(\s?|(\(|\[|\{)?[A-Za-z0-9_\s:]+(\)|\]|\})?|\s-\s)+$
+        - ^\s?~(\s?|(\(|\[|\{)?[A-Za-z0-9_\s':']+(\)|\]|\})?|\s-\s)+$
       allowed: 
         - ^.{2}(\%@&server_groups_trusted\%|\%@&server_groups_friend\%|\%@&server_groups_staff\%) (joined|left|is (no longer|now) AFK)\.
     groups: 
@@ -192,13 +191,13 @@ server:
         - vipshop
         - achievement|blockdata|clear|clone|debug|defaultgamemode|difficulty|effect|execute|fill|gamemode|gamerule|give|kill|particle|playsound|publish|say|scoreboard|seed|setblock|setworldspawn|spawnpoint|spreadplayers|summon|tellraw|testfor|testforblock|testforblocks|time|title|toggledownfall|tp|weather|worldborder|xp
         - .+
-      teleportation: warp|home|spawn|tpa|wild|jump
+      teleportation: "warp|home|spawn|tpa|wild|jump|town spawn"
   connect1.minetime.com: 
     commands: 
-      spawn: /spawn
-      money: /balance
-      safehome: 
-      home: 
+      spawn: "/spawn"
+      money: "/balance"
+      safehome: null
+      home: null
     kits: null
     chat: 
       blocked: 
@@ -230,62 +229,85 @@ server:
     groups: 
       enemy: null
       friend: 
-      - notchs5
+        - notchs5
       trusted: null
       staff: 
-      - sawine
-      - Dragoness
-      - Darkpsy
-      - Lomanic
-      - DanniDorrito
-      - Darth Android
-      - Deus Lemmus
-      - Sayomie
-      - EliteCatalyst
-      - XCoaster
-      - MasterJack
-      - Danny
-      - Grifff
-      - Hayden775
-      - HolySm0kes
-      - Neil the Ninjargh
-      - WhatItDo
-      - Zionia
-      - 8x8johan
-      - AlecMcKinley
-      - Keval
-      - Nanakisan
-      - ohten40oz
-      - RavensDragon
-      - Vexed_Vixxen
-      - xk_cortex
-      - xMoralThreat
-      - zdeathclock
-      - bugans1
-      - waffletastic
-      - leronzadok
-      - dzoumaya
-      - jc199710
-      - Lochiechoccie
-      - nbc0711
-      - YouFoundMe
-      - Jared
-      - Novaleigh
-      - Pljz
-      - ronvandorp
-      - sydneya11
-      - Alyysia
-      - ebay269
-      - Hagan
-      - kutha1
-      - Luggious
-      - pyrefangs
-      - savage1106
-      - smilingkate
-      - Insert
-      - MischievousGrins
-      - Tman_103
+        - sawine
+        - Dragoness
+        - Darkpsy
+        - Lomanic
+        - DanniDorrito
+        - Darth Android
+        - Deus Lemmus
+        - Sayomie
+        - EliteCatalyst
+        - XCoaster
+        - MasterJack
+        - Danny
+        - Grifff
+        - Hayden775
+        - HolySm0kes
+        - Neil the Ninjargh
+        - WhatItDo
+        - Zionia
+        - 8x8johan
+        - AlecMcKinley
+        - Keval
+        - Nanakisan
+        - ohten40oz
+        - RavensDragon
+        - Vexed_Vixxen
+        - xk_cortex
+        - xMoralThreat
+        - zdeathclock
+        - bugans1
+        - waffletastic
+        - leronzadok
+        - dzoumaya
+        - jc199710
+        - Lochiechoccie
+        - nbc0711
+        - YouFoundMe
+        - Jared
+        - Novaleigh
+        - Pljz
+        - ronvandorp
+        - sydneya11
+        - Alyysia
+        - ebay269
+        - Hagan
+        - kutha1
+        - Luggious
+        - pyrefangs
+        - savage1106
+        - smilingkate
+        - Insert
+        - MischievousGrins
+        - Tman_103
     permissions: 
       default: 1
       ranks: null
-      teleportation: warp|home|spawn|tpa|wild|jump
+      teleportation: "warp|home|spawn|tpa|wild|jump"
+  SP: 
+    commands: 
+      spawn: null
+      money: null
+      safehome: null
+      home: null
+    kits: null
+    chat: 
+      blocked: null
+      log: null
+      allowed: null
+    groups: 
+      enemy: null
+      friend: null
+      trusted: null
+      staff: null
+    permissions: 
+      default: 1
+      ranks: 
+        - help|?|me|tell|message|msg|w|trigger
+        - achievement|blockdata|clear|clone|debug|defaultgamemode|difficulty|effect|execute|fill|gamemode|gamerule|give|kill|particle|playsound|publish|say|scoreboard|seed|setblock|setworldspawn|spawnpoint|spreadplayers|summon|tellraw|testfor|testforblock|testforblocks|time|title|toggledownfall|tp|weather|worldborder|xp
+        - .+
+      teleportation: "tp"
