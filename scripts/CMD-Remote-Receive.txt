@@ -4,7 +4,6 @@ $${
 
         do;
             &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%PLAYER%&action=get",#status);
-            log(%#status%)
             
             if( ( #status == 200 ) && ( &reply != "" ) );
                 &msg = match("%&reply%","^%PLAYER%:{2}echo:{2}(.+)$","1");
