@@ -4,8 +4,8 @@ $${
     &operation = $$[Key];
     dir = 0;
     axis = 0;
-    #x = XPOS;
-    #z = ZPOS;
+    #x = %XPOS%;
+    #z = %ZPOS%;
 
     do("%#dist%");
         toggle("dir");
@@ -16,20 +16,20 @@ $${
             if( axis == true );
 
                 if( dir == true);
-                    #z = #z + %#dist%;
+                    #z = %#z% + %#dist%;
 
                 else;
-                    #z = #z - %#dist%;
+                    #z = %#z% - %#dist%;
 
                 endif;
 
             else;
 
                 if( dir == true );
-                    #x = #x + %#dist%;
+                    #x = %#x% + %#dist%;
 
                 else;
-                    #x = #x - %#dist%;
+                    #x = %#x% - %#dist%;
 
                 endif;
 
@@ -38,7 +38,7 @@ $${
             unsafe;
 
                 do;
-                    #yaw = calcyawto("%#x%","%#z%","#distance");
+                    #yaw = calcyawto("%#x%","%#z%",#distance);
                     #yaw = %#yaw% + 180;
                     looks(%#yaw%,"+0","0.1");
                     keydown("forward");
@@ -54,7 +54,7 @@ $${
 
         loop;
 
-        #dist = #dist - 1;
+        #dist = %#dist% - 1;
 
     loop;
 
