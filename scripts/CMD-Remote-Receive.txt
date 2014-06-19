@@ -3,23 +3,27 @@ $${
     if( MODULEHTTP == true );
 
         do;
-            &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%PLAYER%&action=get","#status");
+            &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%PLAYER%&action=get",#status);
             if( ( #status == 200 ) && ( &reply != "" ) );
                 match(%&reply%,"^%PLAYER%:{2}echo:{2}(.+)$",&msg,"1");
                 logto("ScriptLog","%&msg%");
                 wait("250ms");
                 @&queue[6] = %&msg%;
 
+            elseif( #status == 509 );
+                logto("ScriptLog","%#status%: Bandwidth Limit Exceeded. %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");
+                wait(600);
+
             elseif( #status == 408 );
-                logto("ScriptLog","%#status%: Request Timeout. %@&colours_text_default%[%@&colours_variable_global%%@&http_remote%%@&colours_text_default%]");
-                wait(20);
+                logto("ScriptLog","%#status%: Request Timeout. %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");
+                wait("20");
 
             elseif( #status == -1 );
-                logto("ScriptLog","ERROR: No Reason Given. %@&colours_text_default%[%@&colours_variable_global%%@&http_remote%%@&colours_text_default%]");
-                wait("10");
+                logto("ScriptLog","ERROR: No Reason Given. %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");
+                wait("20");
 
             elseif( #status != 200 );
-                logto("ScriptLog","%#status%: ERROR %@&colours_text_default%[%@&colours_variable_global%%@&http_remote%%@&colours_text_default%]");
+                logto("ScriptLog","%#status%: ERROR %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");
                 wait("5");
 
             else;
