@@ -1,8 +1,9 @@
 $${
-
     if( MODULEHTTP == true );
-        &target = urlencode($$f);
-        &act = urlencode($$?);
+        &target = prompt("$$f","Player")
+        &target = urlencode("%&target%");
+        &act = prompt("$$?","Command")
+        &act = urlencode("%&act%");
         &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%&target%&type=echo&action=%&act%","#status");
         logto("Debug","%&reply[0]%");
 
