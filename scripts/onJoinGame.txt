@@ -46,7 +46,7 @@ $${
                                 &server_default_chat_allowed[] = getjsonasarray(%&server_default_chat_allowed%);
                 else;
                     &server_profile = "default";
-                    logto(ErrorLog,"%SERVER% not configured, using default.");
+                    logto("ErrorLog","%SERVER% not configured, using default.");
                 endif;
 
                 &server = jsonget(%&server%,"%&server_profile%");
