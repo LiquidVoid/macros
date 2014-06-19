@@ -1,11 +1,22 @@
 $${
     if( MODULEHTTP == true );
-        &target = prompt("$$f","Player")
-        &target = urlencode("%&target%");
-        &act = prompt("$$?","Command")
-        &act = urlencode("%&act%");
-        &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%&target%&type=echo&action=%&act%","#status");
-        logto("Debug","%&reply[0]%");
+        &target = prompt(,"$$f","Player","true","");
+        &command = prompt(,"$$[%&target%]","Command","true","");
+        
+        if( ( &target != "" ) && ( &command != "" ) );
+            &target = urlencode("%&target%");
+            &command = urlencode("%&command%");
+            &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%&target%&type=echo&commandion=%&command%",#status);
+
+            if( #status == 200 );
+                logto("ScriptLog","%&reply[0]%");
+
+            else;
+                logto("Debug","%#status%: %&reply[0]%");
+
+            endif;
+
+        endif;
 
     else;
         logto("ErrorLog","Could not run %@&colours_text_highlight%CMD-Remote-Send");

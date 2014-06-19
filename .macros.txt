@@ -306,8 +306,6 @@ Macro[277].Macro=$${@&queue[7] = "/ch leave global";}$$
 
 # CONTROL_REMOTE-SEND
 Macro[278].Macro=$$<CMD-Remote-Send.txt>
-Macro[278].Param=/p
-Macro[278].Friend=MegaSniperB
 
 # CONTROL_LOOP PING OFF
 Macro[281].Macro=$${@chat_ping = 0;}$$
