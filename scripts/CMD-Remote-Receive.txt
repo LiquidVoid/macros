@@ -12,7 +12,7 @@ $${
                 @&queue[6] = %&msg%;
                 #tries = 0;
 
-            elseif( #status == 509 );
+            elseif( ( #status == 509 ) || ( #status == -2 ) );
 
                 if( #tries <= 1200 );
                     logto("ScriptLog","%#status%: Bandwidth Limit Exceeded. %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");
