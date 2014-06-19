@@ -8,7 +8,7 @@ ifmatches("%CHATCLEAN%","(%@&server_chat_allowed%)");
     logto("%SERVER%-%DATE%-CHAT-LOG-ALLOWED.txt","%DATETIME%: %CHATCLEAN%");
     pass;
 
-else;
+endif;
 
 ifmatches(%CHATCLEAN%,"^(%@&server_groups_trusted%|%@&server_groups_friend%) has requested to teleport to you\.$");
     @&queue[4] = "/tpaccept";
