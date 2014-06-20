@@ -1,7 +1,7 @@
 $${
 
     if( ( MODULEFARHIT == true ) && ( MODULESIGNTEXT == true) && ( MODULEJSON == true ) && ( MODULEHTTP == true ) );
-        &config = $$<config.txt>;
+        &config = decode($$<config.txt>);
 
         if( &config != "" );
             &remote = jsonget("%&config%","remote");
