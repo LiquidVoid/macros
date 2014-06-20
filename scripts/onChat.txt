@@ -21,7 +21,7 @@ $${
 
     ifmatches("%CHATCLEAN%","(%@&server_chat_allowed%|%@&server_chat_log%)");
         &act = urlencode("%CHATCLEAN%");
-        &reply = httpget("%@&http_remote%","source=%PLAYER%&target=web&type=echo&action=%&act%","#status");
+        &reply = httpget("%@&http_remote%","source=%PLAYER%&target=web&type=echo&action=%&act%",#status);
 
     endif;
 

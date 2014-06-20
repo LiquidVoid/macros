@@ -30,7 +30,7 @@ $${
 
     if( HEALTH < 1 );
         logto("DeathLog","%@&prefix%%@&colours_variable_global%%PLAYER% %@&colours_text_default%died: %@&colours_variable_global%%DIMENSION% %@&colours_variable_default%%@&display_coords% %@&colours_text_default%- %@&colours_variable_default%%&head%%@&colours_text_default%:%@&colours_variable_default%%&foot%");
-        logto("DeathLog.txt","%SERVER% %DATETIME%: %PLAYER% %DIMENSION% %@&display_coords% - H:%&head% F:%&foot% B:%&beneath%");
+        logto("DeathLog.txt","[%SERVER% %DATETIME%]: %PLAYER% %DIMENSION% %@&display_coords% - [H:%&head%] [F:%&foot%] [B:%&beneath%]");
 
     endif;
 

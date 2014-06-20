@@ -3,13 +3,6 @@ ifmatches(%CHATCLEAN%,"^Balance: ((-|\+|\$){0,3}(([0-9]{1,3}(\.|,)?)+[0-9]{0,2})
 
 endif;
 
-ifmatches("%CHATCLEAN%","(%@&server_chat_allowed%)");
-    logto("%SERVER%-%DATE%-CHAT-LOG.txt","%DATETIME%: %CHATCLEAN%");
-    logto("%SERVER%-%DATE%-CHAT-LOG-ALLOWED.txt","%DATETIME%: %CHATCLEAN%");
-    pass;
-
-else;
-
 ifmatches(%CHATCLEAN%,"^(%@&server_groups_trusted%|%@&server_groups_friend%) has requested to teleport to you\.$");
     @&queue[4] = "/tpaccept";
     filter;
@@ -22,9 +15,10 @@ else;
 
 endif;
 
-ifmatches("%CHATCLEAN%","(%@&server_chat_blocked%)");
-    logto("DebugChat","%CHAT%");
-    filter;
+ifmatches("%CHATCLEAN%","(%@&server_chat_allowed%)");
+    logto("%SERVER%-%DATE%-CHAT-LOG.txt","%DATETIME%: %CHATCLEAN%");
+    logto("%SERVER%-%DATE%-CHAT-LOG-ALLOWED.txt","%DATETIME%: %CHATCLEAN%");
+    pass;
 
 endif;
 
@@ -34,8 +28,14 @@ ifmatches(%CHATCLEAN%,"(%@&server_chat_log%)");
 
 endif;
 
-ifmatches("%CHATCLEAN%","\[Noobstown\] Earned ([0-9\.]+) for killing a ([A-Z]?[a-z]+)",@&mob_money,1);
-    match("%CHATCLEAN%","\[Noobstown\] Earned ([0-9\.]+) for killing a ([A-Z]?[a-z]+)",@&mob_name,2);
+ifmatches("%CHATCLEAN%","(%@&server_chat_blocked%)");
+    logto("DebugChat","%CHAT%");
+    filter;
+
+endif;
+
+ifmatches("%CHATCLEAN%","\[Noobstown\] Earned ([0-9\.]+) for killing a ([A-Z]?[a-z]+)",@&mob_money,"1");
+    @&mob_name = match("%CHATCLEAN%","\[Noobstown\] Earned ([0-9\.]+) for killing a ([A-Z]?[a-z]+)","2");
     logto("ScriptLog","   %@&mob_name% ($%@&mob_money%)");
     filter;
 

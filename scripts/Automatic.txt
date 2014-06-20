@@ -2,11 +2,11 @@
 &action = $$[2];
 
 if( ( &function != "mine" ) && ( &function != "walk" ) && ( &function != "place" ) && ( &function != "sneak" ) )
-    &function = prompt("$$[[place,mine,walk,sneak]]","function")
+    &function = prompt(,"$$[[place,mine,walk,sneak]]","function")
 endif;
 
 if( ( &action != "enable" ) && ( &action != "disable" ) && ( &action != "toggle" ) )
-     &action = prompt("$$[[enable,disable,toggle]]","action")
+     &action = prompt(,"$$[[enable,disable,toggle]]","action")
 endif;
 
 
@@ -56,7 +56,7 @@ elseif( &function == "sneak" );
 
 endif
 
-logto(ScriptLog,"Automatic %&function%: %&action%");
+logto("ScriptLog","Automatic %&function%: %&action%");
 
 if( @automatic == false );
     @automatic = true;

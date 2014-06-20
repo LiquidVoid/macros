@@ -1,7 +1,7 @@
 $${
 
     if( @auto_noafk == false );
-        logto(ScriptLog,"%@&colours_text_enable%No-AFK Enabled");
+        logto("ScriptLog","%@&colours_text_enable%No-AFK Enabled");
         @auto_noafk = true;
 
         do;
