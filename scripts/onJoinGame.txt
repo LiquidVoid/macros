@@ -394,7 +394,7 @@ $${
                                     endif;
 
                                 elseif;
-                                    logto("ScriptLog","%@&colours_variable_default%%&queue_str%%@&colours_text_default% not issued. %@&colours_text_highlight%(%@&colours_variable_default%%#cycle%%@&colours_text_highlight%/%@&colours_variable_default%%#permission_level%%@&colours_text_highlight%)");
+                                    logto("ScriptLog","%@&colours_variable_default%%&queue_str%%@&colours_text_default% not issued. %@&colours_text_highlight%(%@&colours_variable_default%%#cycle%%@&colours_text_highlight%/%@&colours_variable_default%%@#permissions%%@&colours_text_highlight%)");
                                     logto("cmdLog","%&queue_str%");
                                     break;
 
