@@ -2,6 +2,7 @@
 ```
 - Indent with 4 spaces.
 - No trailing white spaces.
+- No CRLF use LF
 - All lines end with ";"
 - Boolean operators: < > == != >= <= && ||
 - To set a variable use "x = y;", or "x = y + 1;"
