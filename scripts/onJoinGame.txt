@@ -180,26 +180,29 @@ $${
 
                         endif;
 
-                        replace("%&server_groups_enemy%","\"|\"","|");
-                            @&server_groups_enemy = match("%&server_groups_enemy%","\"(.+)\"",,"1");
-                        replace("%&server_groups_friend%","\"|\"","|");
-                            @&server_groups_friend = match("%&server_groups_friend%","\"(.+)\"",,"1");
-                        replace("%&server_groups_trusted%","\"|\"","|");
-                            @&server_groups_trusted = match("%&server_groups_trusted%","\"(.+)\"",,"1");
-                        replace("%&server_groups_staff%","\"|\"","|");
-                            @&server_groups_staff = match("%&server_groups_staff%","\"(.+)\"",1);
-                        replace("%&server_chat_blocked%","\"|\"","|");
-                            &server_chat_blocked = match("%&server_chat_blocked%","\"(.+)\"",,"1");
-                                //replace("%&server_chat_blocked%","\\\\","\\");
-                                @&server_chat_blocked = %&server_chat_blocked%;
-                        replace("%&server_chat_log%","\"|\"","|");
-                            &server_chat_log = match("%&server_chat_log%","\"(.+)\"",,"1");
-                                //replace("%&server_chat_log%","\\\\","\\");
-                                @&server_chat_log = %&server_chat_log%;
-                        replace("%&server_chat_allowed%","\"|\"","|");
-                            &server_chat_allowed = match("%&server_chat_allowed%","\"(.+)\"",,"1");
-                                //replace("%&server_chat_allowed%","\\\\","\\");
-                                @&server_chat_allowed = %&server_chat_allowed%;
+                        &server_groups_enemy = match("%&server_groups_enemy%","\"(.+)\"",,"1");
+                            @&server_groups_enemy = replace("&server_groups_enemy","\"|\"","|");
+                            
+                        &server_groups_friend = match("%&server_groups_friend%","\"(.+)\"",,"1");
+                            @&server_groups_friend = replace("&server_groups_friend","\"|\"","|");
+                            
+                        &server_groups_trusted = match("%&server_groups_trusted%","\"(.+)\"",,"1");
+                            @&server_groups_trusted = replace("&server_groups_trusted","\"|\"","|");
+                            
+                        &server_groups_staff = match("%&server_groups_staff%","\"(.+)\"",,1);
+                            @&server_groups_staff = replace("&server_groups_staff","\"|\"","|");
+                            
+                        &server_chat_blocked = match("%&server_chat_blocked%","\"(.+)\"",,"1");
+                            @&server_chat_blocked = replace("&server_chat_blocked","\"|\"","|");
+                                //&server_chat_blocked = replace("&server_chat_blocked","\\\\","\\");
+                                
+                        &server_chat_log = match("%&server_chat_log%","\"(.+)\"",,"1");
+                            @&server_chat_log = replace("&server_chat_log","\"|\"","|");
+                                //&server_chat_log = replace("&server_chat_log","\\\\","\\");
+                                
+                        &server_chat_allowed = match("%&server_chat_allowed%","\"(.+)\"",,"1");
+                            @&server_chat_allowed = replace("&server_chat_allowed","\"|\"","|");
+                                //&server_chat_allowed = replace("&server_chat_allowed","\\\\","\\");
 
             &user = jsonget("%&config%","user");
                 user_configured = jsonhas("%&user%","%PLAYER%");
