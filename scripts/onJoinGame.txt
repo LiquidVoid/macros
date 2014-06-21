@@ -83,7 +83,14 @@ $${
                         @&server_permissions_teleportation = jsonget("%&server_permissions%","teleportation");
                         @#server_permissions_default = jsonget("%&server_permissions%","default");
                         &server_permissions_ranks = jsonget("%&server_permissions%","ranks");
-                            @&server_permissions_ranks[] = getjsonasarray("%&server_permissions_ranks%");
+                            &server_permissions_ranks[] = getjsonasarray("%&server_permissions_ranks%");
+                            #rank_amount = JsonArraySize("%&server_permissions_ranks%")
+
+                            for(#rank_current, 0, %#rank_amount%);
+                                @&server_permissions_ranks[%#rank_current%] = match("%&server_permissions_ranks[%#rank_current%]%","\"(.+)\"",,"1");
+
+                            next;
+                            
                     &server_groups = jsonget("%&server%","groups");
                         &server_groups_enemy = jsonget("%&server_groups%","enemy");
                             &server_groups_enemy[] = getjsonasarray("%&server_groups_enemy%");
