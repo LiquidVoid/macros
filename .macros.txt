@@ -22,7 +22,7 @@ chatgui.enabled=1
 colourcodeformat=&%s
 
 # Use 0 to disable or -1 to use the MACRO OVERRIDE key
-colourcodehelperkey=0
+colourcodehelperkey=1
 
 # Compiler flags, CASE SENSITIVE. Only change this if you know what you're doing
 compiler.flags=
@@ -34,13 +34,13 @@ compiler.maxincludes=30
 configs.enable.friends=0
 
 # Enable per-config homes list, setting this to 0 uses a single list for all configurations
-configs.enable.homes=0
+configs.enable.homes=1
 
 # Enable per-config places list, setting this to 0 uses a single list for all configurations
 configs.enable.places=1
 
 # Enable per-config presets list, setting this to 0 uses a single list for all configurations
-configs.enable.presets=0
+configs.enable.presets=1
 
 # Enable per-config towns list, setting this to 0 uses a single list for all configurations
 configs.enable.towns=1
@@ -110,7 +110,7 @@ gui.configname.linkstosettings=0
 gui.optionsfirst=1
 
 # Remember which binding page was used last when opening the binding GUI, otherwise always starts with the KEYS screen
-gui.rememberpage=1
+gui.rememberpage=0
 
 # True to display the old style large copy, move and delete buttons in the binding screen
 gui.showlargebuttons=0
