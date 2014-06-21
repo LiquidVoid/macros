@@ -1,9 +1,11 @@
 $${
 
-    @#queue_wait = %@#queue_wait% + 1;
+    @#queue_wait = %@#queue_wait% + %@#queue_wait_base% + %@#queue_wait_base_chat% + %@#queue_wait_thresh%;
+    @#queue_wait_thresh = %@#queue_wait_thresh% + %@#queue_wait_thresh_multi%;
 
     ifmatches("%CHAT%","(%@&cmd_teleport%)( .+)*");
         @#safety = 7;
+        @#queue_wait = %@#queue_wait% + %@#queue_wait_teleport%;
 
     endif;
 

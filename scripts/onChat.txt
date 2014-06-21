@@ -13,9 +13,9 @@ $${
 
     endif;
 
-    ifmatches("%CHATCLEAN%","^From (%@&server_groups_trusted%): tpa.*",&tpname)
-      wait("2");
-      @&queue[4] = "/tpa %&tpname%";
+    ifmatches("%CHATCLEAN%","^From (%@&server_groups_trusted%): tpa.*",&tpname,"1")
+        wait("2");
+        @&queue[4] = "/tpa %&tpname%";
 
     endif;
 

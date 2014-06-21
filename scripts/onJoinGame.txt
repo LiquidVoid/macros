@@ -274,6 +274,10 @@ $${
 
         unset(#times[]);
         #lasty = %YPOS%;
+        @@#queue_wait_base = 1
+        @@#queue_wait_thresh_multi = 1
+        @#queue_wait_chat = 2
+        @#queue_wait_teleport = 3
 
         @&display_balance = "";
 
@@ -395,6 +399,15 @@ $${
                                     ifmatches("%&queue_str%","^/(%&cmd_perms_current%)( [A-Za-z0-9]+)*$");
                                         logto("cmdLog","%&queue_str%");
                                         echo("%&queue_str%");
+                                        @#queue_wait = %@#queue_wait% + %@#queue_wait_base% + %@#queue_wait_thresh%;
+                                        @#queue_wait_thresh = %@#queue_wait_thresh% + %@#queue_wait_thresh_multi%;
+
+                                        ifmatches("%&queue_str%","(%@&server_permissions_teleportation%)( .+)*");
+                                            @#safety = 10;
+                                            @#queue_wait = %@#queue_wait% + %@#queue_wait_teleport%;
+
+                                        endif;
+
                                         break;
 
                                     else;
@@ -411,20 +424,16 @@ $${
 
                             next;
 
-                            @#queue_wait = @#queue_wait + 1;
-
-                            ifmatches("%&queue_str%","(%@&server_permissions_teleportation%)( .+)*");
-                                @#safety = 10;
-                                @#queue_wait = @#queue_wait + 2;
-
-                            endif;
-
                         else;
-                            @#queue_wait = @#queue_wait + 2;
                             logto("cmdLog","%&queue_str%");
                             echo("%&queue_str%");
+                            @#queue_wait = %@#queue_wait% + %@#queue_wait_base% + %@#queue_wait_base_chat% + %@#queue_wait_thresh%;
+                            @#queue_wait_thresh = %@#queue_wait_thresh% + %@#queue_wait_thresh_multi%;
 
                         endif;
+
+                    else;
+                        @#queue_wait_thresh = 0;
 
                     endif;
 
