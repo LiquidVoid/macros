@@ -69,10 +69,10 @@ $${
                                 endif;
 
                         next;
-                        
+
                     &server_commands = jsonget("%&server%","commands");
                         &server_commands_money = jsonget("%&server_commands%","money");
-                            @&server_commands_money = match(%&server_commands_money%,"\"(.+)\"",,"1");
+                            @&server_commands_money = match("%&server_commands_money%","\"(.+)\"",,"1");
                         &server_commands_safehome = jsonget("%&server_commands%","safehome");
                             @&server_commands_safehome = match("%&server_commands_safehome%","\"(.+)\"",,"1");
                         &server_commands_home = jsonget("%&server_commands%","home");
@@ -182,24 +182,24 @@ $${
 
                         &server_groups_enemy = match("%&server_groups_enemy%","\"(.+)\"",,"1");
                             @&server_groups_enemy = replace("&server_groups_enemy","\"|\"","|");
-                            
+
                         &server_groups_friend = match("%&server_groups_friend%","\"(.+)\"",,"1");
                             @&server_groups_friend = replace("&server_groups_friend","\"|\"","|");
-                            
+
                         &server_groups_trusted = match("%&server_groups_trusted%","\"(.+)\"",,"1");
                             @&server_groups_trusted = replace("&server_groups_trusted","\"|\"","|");
-                            
+
                         &server_groups_staff = match("%&server_groups_staff%","\"(.+)\"",,1);
                             @&server_groups_staff = replace("&server_groups_staff","\"|\"","|");
-                            
+
                         &server_chat_blocked = match("%&server_chat_blocked%","\"(.+)\"",,"1");
                             @&server_chat_blocked = replace("&server_chat_blocked","\"|\"","|");
                                 //&server_chat_blocked = replace("&server_chat_blocked","\\\\","\\");
-                                
+
                         &server_chat_log = match("%&server_chat_log%","\"(.+)\"",,"1");
                             @&server_chat_log = replace("&server_chat_log","\"|\"","|");
                                 //&server_chat_log = replace("&server_chat_log","\\\\","\\");
-                                
+
                         &server_chat_allowed = match("%&server_chat_allowed%","\"(.+)\"",,"1");
                             @&server_chat_allowed = replace("&server_chat_allowed","\"|\"","|");
                                 //&server_chat_allowed = replace("&server_chat_allowed","\\\\","\\");
@@ -374,7 +374,7 @@ $${
                 endif;
 
                 if( @#queue_wait == 0 );
-                    &queue_str = pop(@&queue);
+                    &queue_str = pop("@&queue");
 
                     if( &queue_str != "" );
 
@@ -398,7 +398,6 @@ $${
 
                                 elseif;
                                     logto("ScriptLog","%@&colours_variable_default%%&queue_str%%@&colours_text_default% not issued. %@&colours_text_highlight%(%@&colours_variable_default%%#cycle%%@&colours_text_highlight%/%@&colours_variable_default%%@#permissions%%@&colours_text_highlight%)");
-                                    logto("cmdLog","%&queue_str%");
                                     break;
 
                                 endif;
@@ -415,6 +414,7 @@ $${
 
                         else;
                             @#queue_wait = @#queue_wait + 2;
+                            logto("cmdLog","%&queue_str%");
                             echo("%&queue_str%");
 
                         endif;
@@ -545,10 +545,10 @@ $${
                     endif;
 
                     //COMMENT-START: 0.0033 Hz (300 sec) @ [17] :
-                    ifmatches("%@&display_clock%","[0-9]{1,2}:[0-9]5:17 (A|P)M");
+                    ifmatches("%@&display_clock%","[0-9]{1,2}:[0-9](0|5):17 (A|P)M");
 
-                        if( &cmd_money != "" );
-                            @&queue[3] = "%&server_commands_money%";
+                        if( &server_commands_money != "" );
+                            @&queue[3] = %@&server_commands_money%;
 
                         endif;
 
