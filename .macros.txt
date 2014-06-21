@@ -22,7 +22,7 @@ chatgui.enabled=1
 colourcodeformat=&%s
 
 # Use 0 to disable or -1 to use the MACRO OVERRIDE key
-colourcodehelperkey=1
+colourcodehelperkey=-1
 
 # Compiler flags, CASE SENSITIVE. Only change this if you know what you're doing
 compiler.flags=

@@ -90,7 +90,7 @@ $${
                                 @&server_permissions_ranks[%#rank_current%] = match("%&server_permissions_ranks[%#rank_current%]%","\"(.+)\"",,"1");
 
                             next;
-                            
+
                     &server_groups = jsonget("%&server%","groups");
                         &server_groups_enemy = jsonget("%&server_groups%","enemy");
                             &server_groups_enemy[] = getjsonasarray("%&server_groups_enemy%");

@@ -4,7 +4,7 @@ $${
 
         do;
             &reply = httpget("%@&remote_http%","source=%PLAYER%&target=%PLAYER%&action=get",#status);
-            
+
             if( ( #status == 200 ) && ( &reply != "" ) );
                 &msg = match("%&reply%","^%PLAYER%:{2}echo:{2}(.+)$","1");
                 logto("ScriptLog","%&msg%");
@@ -16,7 +16,7 @@ $${
 
                 if( #tries <= 1200 );
                     logto("ScriptLog","%#status%: Bandwidth Limit Exceeded. %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");
-                
+
                 endif;
 
                 wait("600");
@@ -26,7 +26,7 @@ $${
 
                 if( #tries <= 40 );
                     logto("ScriptLog","%#status%: Request Timeout. %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");
-                
+
                 endif;
 
                 wait("20");
@@ -36,7 +36,7 @@ $${
 
                 if( #tries <= 40 );
                     logto("ScriptLog","ERROR: No Reason Given. %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");
-                
+
                 endif;
 
                 wait("20");
@@ -47,7 +47,7 @@ $${
 
                 if( #tries <= 10 );
                     logto("ScriptLog","%#status%: ERROR %@&colours_text_default%[%@&colours_variable_global%%@&remote_http%%@&colours_text_default%]");
-                
+
                 endif;
 
                 wait("5");
@@ -57,7 +57,7 @@ $${
 
                 if( #tries <= 2 );
                     logto("Debug","%@&remote_http%/%#status%: %&reply%");
-                
+
                 endif;
 
                 wait("1");

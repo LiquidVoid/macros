@@ -2,7 +2,7 @@ $${
     if( MODULEHTTP == true );
         &target = prompt(,"$$f","Player","true","");
         &command = prompt(,"$$[%&target%]","Command","true","");
-        
+
         if( ( &target != "" ) && ( &command != "" ) );
             &target = urlencode("%&target%");
             &command = urlencode("%&command%");
