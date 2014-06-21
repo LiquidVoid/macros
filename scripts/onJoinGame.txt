@@ -265,10 +265,7 @@ $${
 
         @auto_cobblestone = true;
         @automatic = false;
-        @actions[1] = false;
-        @actions[2] = false;
-        @actions[3] = false;
-        @actions[4] = false;
+        unset(@actions[]);
         @auto_noafk = true;
         @chat_ping = false;
 

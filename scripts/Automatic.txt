@@ -13,21 +13,21 @@ endif;
 if( &function == "mine" );
 
     if( &action == "enable" )
-        @&actions[1] = "true";
+        @actions[1] = "true";
     elseif( &action == "disable" )
-        @&actions[1] = "false";
+        @actions[1] = "false";
     elseif( &action == "toggle" )
-        toggle(@&actions[1]);
+        toggle(@actions[1]);
     endif
 
 elseif( &function == "walk" );
 
     if( &action == "enable" )
-        @&actions[2] = "true";
+        @actions[2] = "true";
     elseif( &action == "disable" )
-        @&actions[2] = "false";
+        @actions[2] = "false";
     elseif( &action == "toggle" )
-        toggle(@&actions[2]);
+        toggle(@actions[2]);
     endif
 
     keyup("forward")
@@ -35,21 +35,21 @@ elseif( &function == "walk" );
 elseif( &function == "place" );
 
     if( &action == "enable" )
-        @&actions[3] = "true";
+        @actions[3] = "true";
     elseif( &action == "disable" )
-        @&actions[3] = "false";
+        @actions[3] = "false";
     elseif( &action == "toggle" )
-        toggle(@&actions[3]);
+        toggle(@actions[3]);
     endif
 
 elseif( &function == "sneak" );
 
     if( &action == "enable" )
-        @&actions[4] = "true";
+        @actions[4] = "true";
     elseif( &action == "disable" )
-        @&actions[4] = "false";
+        @actions[4] = "false";
     elseif( &action == "toggle" )
-        toggle(@&actions[4]);
+        toggle(@actions[4]);
     endif
 
     keyup("sneak")
@@ -63,19 +63,19 @@ if( @automatic == false );
 
     do;
 
-        if( @&actions[1] == "true" )
+        if( @actions[1] == "true" )
             key("attack")
         endif
 
-        if( @&actions[2] == "true" )
+        if( @actions[2] == "true" )
             keydown("forward")
         endif
 
-        if( @&actions[3] == "true" )
+        if( @actions[3] == "true" )
             key("use")
         endif
 
-        if( @&actions[4] == "true" )
+        if( @actions[4] == "true" )
             keydown("sneak")
         endif
 

@@ -22,7 +22,7 @@ chatgui.enabled=1
 colourcodeformat=&%s
 
 # Use 0 to disable or -1 to use the MACRO OVERRIDE key
-colourcodehelperkey=-1
+colourcodehelperkey=0
 
 # Compiler flags, CASE SENSITIVE. Only change this if you know what you're doing
 compiler.flags=
@@ -250,7 +250,7 @@ Macro[83].Warp=stable
 # KEY_RCONTROL
 Macro[157].Macro=$${exec("automatic.txt","automatic","mine","disable");exec("automatic.txt","automatic","walk","disable");exec("automatic.txt","automatic","sneak","disable");}$$
 Macro[157].OnKeyUp=$${exec("automatic.txt","automatic","mine","enable");exec("automatic.txt","automatic","walk","enable");exec("automatic.txt","automatic","sneak","enable");}$$
-Macro[157].Condition=@&actions[1] == "true"
+Macro[157].Condition=@actions[1] == "true"
 Macro[157].Mode=conditional
 Macro[157].Control=1
 
@@ -311,8 +311,7 @@ Macro[278].Macro=$$<CMD-Remote-Send.txt>
 Macro[281].Macro=$${@chat_ping = 0;}$$
 
 # CONTROL_RUN FILE
-Macro[289].Macro=$$m
-Macro[289].File=onJoinGame.txt
+Macro[289].Macro=$${&file = prompt(,"$$m","File");exec("%&file%","%&file%")}$$
 
 # CONTROL_LOOP_PING
 Macro[300].Macro=$${@chat_ping = 0;}$$
