@@ -1,6 +1,6 @@
 $${
 
-    ifmatches("%JOINEDPLAYER%","(%@&server_groups_trusted%)");
+    ifmatches("%JOINEDPLAYER%","^(%@&server_groups_friend%|%@&server_groups_trusted%)$");
         achievementget("%JOINEDPLAYER% Joined the Game!","minecraft:diamond");
 
     endif;
