@@ -14,7 +14,7 @@ $${
             looks(%#yaw%,"0","0.1");
             keydown("forward");
 
-        while( ( XPOS != #x ) && ( ( ZPOS != #z ) && ( #distance <= 1) );
+        while( ( XPOS != #x ) && ( ZPOS != #z ) && ( #distance >= 1) );
 
         keyup("forward");
 
