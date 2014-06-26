@@ -1,37 +1,33 @@
-$${
+&beneath = getidrel("0","-1","0");
+&foot = getidrel("0","0","0");
+&head = getidrel("0","1","0");
 
-    &beneath = getidrel("0","-1","0");
-    &foot = getidrel("0","0","0");
-    &head = getidrel("0","1","0");
+if( ( HEALTH < 8 ) && ( ( &foot == "lava" ) || ( &beneath == "lava" ) || ( &foot == "flowing_lava" ) || ( &beneath == "flowing_lava" ) ) );
+    logto("DeathLog","%@&colours_text_highlight%Lava Safe%@&colours_text_default%: %@&colours_variable_default%%@&display_coords%");
+    @&queue[10] = %@&server_commands_safehome%;
 
-    if( ( HEALTH < 8 ) && ( ( &foot == "lava" ) || ( &beneath == "lava" ) || ( &foot == "flowing_lava" ) || ( &beneath == "flowing_lava" ) ) );
-        logto("DeathLog","%@&colours_text_highlight%Lava Safe%@&colours_text_default%: %@&colours_variable_default%%@&display_coords%");
-        @&queue[10] = %@&server_commands_safehome%;
+endif;
 
-    endif;
+if( ( HEALTH < 3 ) && ( ( &foot == "fire" ) || ( &beneath == "fire" ) ) );
+    logto("DeathLog","%@&colours_text_highlight%Fire Safe%@&colours_text_default%: %@&colours_variable_default%%@&display_coords%");
+    @&queue[10] = %@&server_commands_safehome%;
 
-    if( ( HEALTH < 3 ) && ( ( &foot == "fire" ) || ( &beneath == "fire" ) ) );
-        logto("DeathLog","%@&colours_text_highlight%Fire Safe%@&colours_text_default%: %@&colours_variable_default%%@&display_coords%");
-        @&queue[10] = %@&server_commands_safehome%;
+endif;
 
-    endif;
+if( ( HEALTH < 3 ) && ( ( &head == "water" ) || ( &head == "flowing_water" ) ) );
+    logto("DeathLog","%@&colours_text_highlight%Drown Safe%@&colours_text_default%: %@&colours_variable_default%%@&display_coords%");
+    @&queue[10] = %@&server_commands_safehome%;
 
-    if( ( HEALTH < 3 ) && ( ( &head == "water" ) || ( &head == "flowing_water" ) ) );
-        logto("DeathLog","%@&colours_text_highlight%Drown Safe%@&colours_text_default%: %@&colours_variable_default%%@&display_coords%");
-        @&queue[10] = %@&server_commands_safehome%;
+endif;
 
-    endif;
+if( HEALTH < 3 && ( ( &foot == "cactus" ) || ( &beneath == "cactus" ) ) );
+    logto("DeathLog","%@&colours_text_highlight%Cactus Safe%@&colours_text_default%: %@&colours_variable_default%%@&display_coords%");
+    @&queue[10] = %@&server_commands_safehome%;
 
-    if( HEALTH < 3 && ( ( &foot == "cactus" ) || ( &beneath == "cactus" ) ) );
-        logto("DeathLog","%@&colours_text_highlight%Cactus Safe%@&colours_text_default%: %@&colours_variable_default%%@&display_coords%");
-        @&queue[10] = %@&server_commands_safehome%;
+endif;
 
-    endif;
+if( HEALTH < 1 );
+    logto("DeathLog","%@&prefix%%@&colours_variable_global%%PLAYER% %@&colours_text_default%died: %@&colours_variable_global%%DIMENSION% %@&colours_variable_default%%@&display_coords% %@&colours_text_default%- %@&colours_variable_default%%&head%%@&colours_text_default%:%@&colours_variable_default%%&foot%");
+    logto("DeathLog.txt","[%SERVER% %DATETIME%]: %PLAYER% %DIMENSION% %@&display_coords% - [H:%&head%] [F:%&foot%] [B:%&beneath%]");
 
-    if( HEALTH < 1 );
-        logto("DeathLog","%@&prefix%%@&colours_variable_global%%PLAYER% %@&colours_text_default%died: %@&colours_variable_global%%DIMENSION% %@&colours_variable_default%%@&display_coords% %@&colours_text_default%- %@&colours_variable_default%%&head%%@&colours_text_default%:%@&colours_variable_default%%&foot%");
-        logto("DeathLog.txt","[%SERVER% %DATETIME%]: %PLAYER% %DIMENSION% %@&display_coords% - [H:%&head%] [F:%&foot%] [B:%&beneath%]");
-
-    endif;
-
-}$$
+endif;

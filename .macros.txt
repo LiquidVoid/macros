@@ -305,38 +305,38 @@ Macro[276].Macro=$${@&queue[7] = "/ch leave wilderness";}$$
 Macro[277].Macro=$${@&queue[7] = "/ch leave global";}$$
 
 # CONTROL_REMOTE-SEND
-Macro[278].Macro=$$<CMD-Remote-Send.txt>
+Macro[278].Macro=$${$$<CMD-Remote-Send.txt>}$$
 
 # CONTROL_LOOP PING OFF
 Macro[281].Macro=$${@chat_ping = 0;}$$
 
 # CONTROL_RUN FILE
-Macro[289].Macro=$${&file = prompt(,"$$m","File");exec("%&file%","%&file%")}$$
+Macro[289].Macro=$${&file = prompt(,"$$m","File");if( &file != "" );    &file = match("%&file%","^.{3}(.+).{5}$",,"1");    exec("%&file%.txt","%&file%");endif;}$$
 
 # CONTROL_LOOP_PING
 Macro[300].Macro=$${@chat_ping = 0;}$$
 
 # EVENT_ONJOINGAME
-Macro[1000].Macro=$$<onJoinGame.txt>
+Macro[1000].Macro=$${$$<onJoinGame.txt>}$$
 
 # EVENT_ONCHAT
-Macro[1001].Macro=$$<onChat.txt>
+Macro[1001].Macro=$${$$<onChat.txt>}$$
 
 # EVENT_ONHEALTHCHANGE
-Macro[1002].Macro=$$<onHealthChange.txt>
+Macro[1002].Macro=$${$$<onHealthChange.txt>}$$
 
 # EVENT_ONWORLDCHANGE
-Macro[1005].Macro=$$<onWorldChange.txt>
+Macro[1005].Macro=$${$$<onWorldChange.txt>}$$
 
 # EVENT_ONLEVELCHANGE
-Macro[1010].Macro=$$<onLevelChange.txt>
+Macro[1010].Macro=$${$$<onLevelChange.txt>}$$
 
 # EVENT_ONITEMDURABILITYCHANGE
-Macro[1011].Macro=$$<onItemDurabilityChange.txt>
+Macro[1011].Macro=$${$$<onItemDurabilityChange.txt>}$$
 
 # EVENT_ONPLAYERJOINED
-Macro[1014].Macro=$$<onPlayerJoined.txt>
+Macro[1014].Macro=$${$$<onPlayerJoined.txt>}$$
 
 # EVENT_ONSENDCHATMESSAGE
-Macro[1019].Macro=$$<onSendChatMessage.txt>
+Macro[1019].Macro=$${$$<onSendChatMessage.txt>}$$
 
