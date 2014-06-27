@@ -11,7 +11,7 @@ unsafe;
 
     //ACTION-START: Loop Sub-Menus
     for(#slot_menu,0,7);
-        &menu_name = getslotitem(%#slot_menu%);
+        &menu_name = getslotitem("%#slot_menu%");
 
         //ACTION-START: Set Sub-Menu Size
         if( #slot_menu == 0 );
@@ -35,7 +35,7 @@ unsafe;
 
         //ACTION-START: Choose Sub-Menu if existent
         if( ( &menu_name != "air" ) && ( GUI == "GUICHEST" ) );
-            slotclick(%#slot_menu%,"LMB");
+            slotclick("%#slot_menu%","LMB");
             wait("250ms");
 
             //ACTION-START: Set Sub-Menu Size
@@ -57,10 +57,10 @@ unsafe;
 
                         //ACTION-START: Count Inventory
                         for(#slot_inventory,%#slot_inventory_min%,%#slot_inventory_max%);
-                            &name = getslotitem("%#slot_inventory%","#stacksize");
+                            &name = getslotitem("%#slot_inventory%",#stacksize);
 
                             if( &name == &item_name );
-                                #item_total = #item_total + #stacksize;
+                                #item_total = %#item_total% + %#stacksize%;
 
                             endif;
 
@@ -70,21 +70,21 @@ unsafe;
                         //ACTION-START: Sell ALL
                         do;
                             if( #item_total != 0 );
-                                logto("Debug","%&menu_name%>%&item_name%[%#item_total%]");
+                                logto("Debug","%&menu_name%> %&item_name%[%#item_total%]");
 
                             endif;
 
                             //ACTION-START: Sell Max
                             if( #item_total >= 64 );
                                 //ACTION-START: Sell 64
-                                #item_total = #item_total - 64;
-                                #slot_chest_large = #slot_chest + 9;
+                                #item_total = %#item_total% - 64;
+                                #slot_chest_large = %#slot_chest% + 9;
                                 slotclick("%#slot_chest_large%","LMB");
                                 //ACTION-END: Sell 64
 
                             elseif( #item_total >= 16 );
                                 //ACTION-START: Sell 16
-                                #item_total = #item_total - 16;
+                                #item_total = %#item_total% - 16;
                                 slotclick("%#slot_chest%","LMB");
                                 //ACTION-END: Sell 16
 

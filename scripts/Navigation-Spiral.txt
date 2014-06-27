@@ -36,7 +36,10 @@ do("%#dist%");
 
         unsafe;
 
-            log("%#x%   %#z%")
+            //Debug
+            log("X: [%#x%]  |  Y: [%#z%]")
+            //End
+
             do;
                 #yaw = calcyawto("%#x%","%#z%",#distance);
                 #yaw = %#yaw% + 180;
@@ -44,10 +47,12 @@ do("%#dist%");
                 keydown("forward");
                 key("%&operation%");
                 
+                //Debug
                 if( #var != #distance )
-                    log("           %#distance%")
+                    log("  Distance: [%#distance%]")
                 endif;
-                #var = #distance;
+                #var = %#distance%;
+                //End
 
             while( ( XPOS != #x ) && ( ZPOS != #z ) && ( #distance >= 1) );
 
