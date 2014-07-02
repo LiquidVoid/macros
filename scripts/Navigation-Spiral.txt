@@ -41,12 +41,12 @@ do("%#dist%");
             //End
 
             do;
-                #yaw = calcyawto("%#x%","%#z%",#distance);
+                #yaw = calcyawto("%#x%","%#z%",,#distance);
                 #yaw = %#yaw% + 180;
                 looks("%#yaw%","+0","0.1");
                 keydown("forward");
                 key("%&operation%");
-                
+
                 //Debug
                 if( #var != #distance )
                     log("  Distance: [%#distance%]")
