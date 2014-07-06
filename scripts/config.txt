@@ -1,1 +1,389 @@
-ew0KICAiY29sb3VycyI6IHsNCiAgICAidmFyaWFibGUiOiB7DQogICAgICAiZGVmYXVsdCI6ICImOSIsDQogICAgICAiZ2xvYmFsIjogIiYxIg0KICAgIH0sDQogICAgInRleHQiOiB7DQogICAgICAiZGVmYXVsdCI6ICImNyIsDQogICAgICAiaGlnaGxpZ2h0IjogIiZmIiwNCiAgICAgICJlbmFibGUiOiAiJmEiLA0KICAgICAgImRpc2FibGUiOiAiJmMiDQogICAgfQ0KICB9LA0KICAicmVtb3RlIjogew0KICAgICJ3ZWF0aGVyIjogImh0dHA6Ly9hcGkub3BlbndlYXRoZXJtYXAub3JnL2RhdGEvMi41L3dlYXRoZXIiLA0KICAgICJodHRwIjogImh0dHA6Ly9kZXYubG9yZHplZWwuY29tL21pbmVjcmFmdC9yZW1vdGUvY2xpZW50LnBocCINCiAgfSwNCiAgInVzZXIiOiB7DQogICAgImRlZmF1bHQiOiB7DQogICAgICAicmFua3MiOiB7DQogICAgICAgICJTUCI6IDMsDQogICAgICAgICJsb2NhbGhvc3QiOiAzDQogICAgICB9LA0KICAgICAgIndlYXRoZXIiOiB7DQogICAgICAgICJ1bml0cyI6ICJJbXBlcmlhbCIsDQogICAgICAgICJsb2NhdGlvbiI6ICJEaXN0cmljdCBvZiBDb2x1bWJpYSIsDQogICAgICAgICJsYW5ndWFnZSI6ICJFbmdsaXNoIg0KICAgICAgfQ0KICAgIH0sDQogICAgIk1lZ2FTbmlwZXJCIjogew0KICAgICAgInJhbmtzIjogew0KICAgICAgICAiY29ubmVjdDEubWluZXRpbWUuY29tIjogMSwNCiAgICAgICAgIm5vb2JzdG93bi5jb20iOiAyLA0KICAgICAgICAiU1AiOiAzLA0KICAgICAgICAibG9jYWxob3N0IjogNA0KICAgICAgfSwNCiAgICAgICJ3ZWF0aGVyIjogew0KICAgICAgICAidW5pdHMiOiAiSW1wZXJpYWwiLA0KICAgICAgICAibG9jYXRpb24iOiAiU3RvdywgT2hpbyIsDQogICAgICAgICJsYW5ndWFnZSI6ICJFbmdsaXNoIg0KICAgICAgfQ0KICAgIH0sDQogICAgIkE2Nzc2Ijogew0KICAgICAgInJhbmtzIjogew0KICAgICAgICAiY29ubmVjdDEubWluZXRpbWUuY29tIjogMSwNCiAgICAgICAgIm5vb2JzdG93bi5jb20iOiAyDQogICAgICB9LA0KICAgICAgIndlYXRoZXIiOiB7DQogICAgICAgICJ1bml0cyI6ICJJbXBlcmlhbCIsDQogICAgICAgICJsb2NhdGlvbiI6ICJBa3JvbiwgT2hpbyIsDQogICAgICAgICJsYW5ndWFnZSI6ICJFbmdsaXNoIg0KICAgICAgfQ0KICAgIH0sDQogICAgInplZWwwMSI6IHsNCiAgICAgICJyYW5rcyI6IHsNCiAgICAgICAgImNvbm5lY3QxLm1pbmV0aW1lLmNvbSI6IDEsDQogICAgICAgICJub29ic3Rvd24uY29tIjogMywNCiAgICAgICAgIlNQIjogMywNCiAgICAgICAgImxvY2FsaG9zdCI6IDQNCiAgICAgIH0sDQogICAgICAid2VhdGhlciI6IHsNCiAgICAgICAgInVuaXRzIjogIkltcGVyaWFsIiwNCiAgICAgICAgImxvY2F0aW9uIjogIkFrcm9uLCBPaGlvIiwNCiAgICAgICAgImxhbmd1YWdlIjogIkVuZ2xpc2giDQogICAgICB9DQogICAgfQ0KICB9LA0KICAic2VydmVyIjogew0KICAgICJkZWZhdWx0Ijogew0KICAgICAgImNvbW1hbmRzIjogew0KICAgICAgICAic3Bhd24iOiAiL3NwYXduIiwNCiAgICAgICAgIm1vbmV5IjogbnVsbCwNCiAgICAgICAgInNhZmVob21lIjogbnVsbCwNCiAgICAgICAgImhvbWUiOiAiL2hvbWUiDQogICAgICB9LA0KICAgICAgImtpdHMiOiBudWxsLA0KICAgICAgImNoYXQiOiB7DQogICAgICAgICJibG9ja2VkIjogWw0KICAgICAgICAgICIoXFwqIHwtKT9bQS1aYS16MC05X117MywxNn0gKGpvaW5lZHxsZWZ0fGlzIChubyBsb25nZXJ8bm93KSBBRkspXFwuPyIsDQogICAgICAgICAgIkF2YWlsYWJsZSBraXRzJzonIE5vIGtpdHMgYXZhaWxhYmxlIiwNCiAgICAgICAgICAiR2l2aW5nIGtpdCBbQS1aYS16MC05X10rIHRvIChcXCVAJnNlcnZlcl9ncm91cHNfdHJ1c3RlZFxcJXxcXCVAJnNlcnZlcl9ncm91cHNfZnJpZW5kXFwlKSIsDQogICAgICAgICAgIlJlcXVlc3Qgc2VudCB0byAoW0EtWmEtejAtOV9dezMsMTZ9KVxcLiIsDQogICAgICAgICAgIlRlbGVwb3J0KGF0aW9ufGluZ1xcLnszfSk/ICh3aWxsIGNvbW1lbmNlIGluIChbMC05XSspIHNlY29uZHNcXC4gRG9uJ3QgTW92ZVxcLnxjb21tZW5jaW5nXFwuXFwuXFwufFRlbGVwb3J0IFdvb3NoISkiLA0KICAgICAgICAgICJUaGF0IG9yZSBzbWVsdGVkIGl0c2VsZiEiLA0KICAgICAgICAgICJUaGlzIChbQS1aYS16MC05X10rKSBpcyBsb2NrZWQgd2l0aCBhIG1hZ2ljYWwgc3BlbGwiLA0KICAgICAgICAgICJUaGlzIHJlcXVlc3Qgd2lsbCB0aW1lb3V0IGFmdGVyIChbMC05XSspIHNlY29uZHNcXC4iLA0KICAgICAgICAgICJUbyAodGVsZXBvcnR8ZGVueSB0aGlzIHJlcXVlc3QpXFwsIHR5cGUgL3RwKGFjY2VwdHxkZW55KVxcLiIsDQogICAgICAgICAgIllvdSBkb24ndCBoYXZlIHBlcm1pc3Npb24gZm9yIHRoaXMgYXJlYVxcLiIsDQogICAgICAgICAgIllvdSBhcmUgbm90IHBlcm1pdHRlZCB0byBlbnRlciB0aGlzIGFyZWFcXC4iLA0KICAgICAgICAgICJZb3UgYXJlIGluIGEgbm8tUHZQIGFyZWFcXC4iLA0KICAgICAgICAgICJZb3UgY2FuIG9ubHkgc2xlZXAgYXQgbmlnaHQiLA0KICAgICAgICAgICJZb3UgaGF2ZSBubyBuZXcgbWFpbFxcLiIsDQogICAgICAgICAgIlxcKlxcKllPVSAoUkVBRFl8TE9XRVIpIFlPVVIgKEhPRXxBWEV8UElDS0FYRXxGSVNUU3xTV09SRHxTSE9WRUwpXFwqXFwqIiwNCiAgICAgICAgICAiXFxbKFRJUCF8Vm90ZXxQVlApXFxdICguKykiLA0KICAgICAgICAgICJodHRwKHMpPyc6Jy8vKG1pbmVjcmFmdHNlcnZlcnN8bWluZWNyYWZ0LXNlcnZlci1saXN0fHBsYW5ldG1pbmVjcmFmdClcXC4ob3JnfGNvbXxuZXQpKC9bQS1aYS16MC05XSspKi92b3RlKC9bQS1aYS16MC05XSspKiINCiAgICAgICAgXSwNCiAgICAgICAgImxvZyI6IFsNCiAgICAgICAgICAiKCgtfFxcK3xcXCQpKz8oWzAtOV17MCwzfShcXC58LCk/KStbMC05XXswLDJ9KS4/KGhhcyBiZWVuIChzZW50IHRvfHJlY2VpdmVkIGZyb20pIFtBLVphLXowLTlfXXs0LDE2fVxcLik/IiwNCiAgICAgICAgICAiKFtBLVphLXogXSspIGhhcyB3b3JuIG9mZiBmb3IgKFtBLVphLXowLTlfXXs0LDE2fSkiLA0KICAgICAgICAgICIoW0EtWmEtejAtOV8gXSspIHVucmVnaXN0ZXJlZFxcLiIsDQogICAgICAgICAgIihbQS1aYS16MC05X117NCwxNn0pIGFjY2VwdGVkIHlvdXIgdGVsZXBvcnQgcmVxdWVzdFxcLiIsDQogICAgICAgICAgIihbQS1aYS16MC05X117NCwxNn0pIGhhcyByZXF1ZXN0ZWQgdGhhdCB5b3UgdGVsZXBvcnQgdG8gdGhlbVxcLiIsDQogICAgICAgICAgIihbQS1aYS16MC05X117NCwxNn0pIGhhcyB1c2VkIChbQS1aYS16IF0rKSEiLA0KICAgICAgICAgICJCZWQgc3Bhd24gc2V0ISIsDQogICAgICAgICAgIkNyZWF0ZWQgYSBbQS1aYS16MC05XyBdKyBzdWNjZXNzZnVsbHkiLA0KICAgICAgICAgICJLaXRzJzonKCBbQS1aYS16MC05X10rKSsiLA0KICAgICAgICAgICJNYWlsIHNlbnQhIiwNCiAgICAgICAgICAiTm93IGNoYXR0aW5nIGluIChbQS1aYS16MC05XyBdKylcXC4iLA0KICAgICAgICAgICJQZW5kaW5nIHRlbGVwb3J0YXRpb24gcmVxdWVzdCBjYW5jZWxsZWRcXC4iLA0KICAgICAgICAgICJSZWNlaXZlZCBraXQgW0EtWmEtejAtOV8gXStcXC4iLA0KICAgICAgICAgICJSaWdodFxcLWNsaWNrIGFnYWluIHRvIGNvbmZpcm0gUmVwYWlyXFwuIExlZnQtY2xpY2sgdG8gY2FuY2VsXFwuIiwNCiAgICAgICAgICAiU29tZXRoaW5nIGRvZXNuJ3Qgc2VtbSBxdWl0ZSByaWdodFxcLnszfSIsDQogICAgICAgICAgIlRlbGVwb3J0IHJlcXVlc3QgYWNjZXB0ZWRcXC4iLA0KICAgICAgICAgICJUaGF0IGZlbHQgZWFzeVxcLiIsDQogICAgICAgICAgIlRoZSBsdWNrIG9mIEh5cnVsZSBpcyB3aXRoIHlvdSB0b2RheSEiLA0KICAgICAgICAgICJUcmVhc3VyZSBmb3VuZCEiLA0KICAgICAgICAgICJXYXJwaW5nIHRvIChbQS1aYS16MC05X10rKVxcLiIsDQogICAgICAgICAgIllvdSBhcmUgdG9vIHRpcmVkIHRvIHVzZSB0aGF0IGFiaWxpdHkgYWdhaW5cXC4gXFwoWzAtOV0qc1xcKSIsDQogICAgICAgICAgIllvdSBoYXZlIGpvaW5lZCAoLispXFwuIiwNCiAgICAgICAgICAiWW91IGhhdmUgcGxhY2VkIGFuIGFudmlsLCBhbnZpbHMgY2FuIHJlcGFpciB0b29scyBhbmQgYXJtb3JcXC4iLA0KICAgICAgICAgICJZb3UgbmVlZCBtb3JlIChbQS1aYS16XSspIiwNCiAgICAgICAgICAiWW91ciAoLispIGFiaWxpdHkgaXMgcmVmcmVzaGVkISIsDQogICAgICAgICAgIlxcKlxcKiguKykgKGhhcyB3b3JuIG9mZnxBQ1RJVkFURUQpXFwqXFwqIiwNCiAgICAgICAgICAiXFwqXFwqKEVORU1ZIEJMRUVESU5HfFJvbGxlZHxEb2RnZWQpXFwqXFwqIiwNCiAgICAgICAgICAiXFwqXFwqKFtBLVphLXowLTldKykgKFtBLVphLXowLTlfXXs0LDE2fSkgY3JlYXRlZCBhIG5ldyBmYWN0aW9uIChbQS1aYS16MC05XSspIiwNCiAgICAgICAgICAiXFxbQnJvYWRjYXN0XFxdICguKykiDQogICAgICAgIF0sDQogICAgICAgICJhbGxvd2VkIjogWw0KICAgICAgICAgICIoRnJvbXxUbyknOicgW0EtWmEtejAtOV9dezQsMTZ9ICguKykiLA0KICAgICAgICAgICJcXFtMXFxdKC4rKSINCiAgICAgICAgXQ0KICAgICAgfSwNCiAgICAgICJncm91cHMiOiB7DQogICAgICAgICJlbmVteSI6IFsNCiAgICAgICAgICAiaVNob3dDbGFzcyIsDQogICAgICAgICAgIkJyb2IyMTciDQogICAgICAgIF0sDQogICAgICAgICJmcmllbmQiOiBbDQogICAgICAgICAgIkptYW42Nzc2IiwNCiAgICAgICAgICAiTWlkbmlnaHQzMDEiLA0KICAgICAgICAgICJHaW5nb2xpY291cyIsDQogICAgICAgICAgIkdpcmxLaXR0eTUiDQogICAgICAgIF0sDQogICAgICAgICJ0cnVzdGVkIjogWw0KICAgICAgICAgICJNZWdhU25pcGVyQiIsDQogICAgICAgICAgInplZWwwMSIsDQogICAgICAgICAgIkE2Nzc2Ig0KICAgICAgICBdLA0KICAgICAgICAic3RhZmYiOiBbDQogICAgICAgICAgIk5vdGNoIiwNCiAgICAgICAgICAiSmViXyIsDQogICAgICAgICAgIkRpbm5lcmJvbmUiDQogICAgICAgIF0NCiAgICAgIH0sDQogICAgICAicGVybWlzc2lvbnMiOiB7DQogICAgICAgICJkZWZhdWx0IjogMSwNCiAgICAgICAgInJhbmtzIjogWw0KICAgICAgICAgICJoZWxwfD98bWV8dGVsbHxtZXNzYWdlfG1zZ3x3fHRyaWdnZXIiLA0KICAgICAgICAgICJraXR8d2FycHxob21lfHNwYXdufHRwYXx0cChhY2NlcHR8ZGVueSl8cHxjaChhbm5lbCk/fGluc3BlY3R8bWNzdGF0c3xtY3Jhbmt8bWN0b3B8d2lsZHx0b3dufHNob3B8bGlzdHx0aWNrZXR8aWdub3JlfGhlbHBvcHxsd2N8dW5sb2NrfGxvY2t8YyhpbmZvfHBhc3N3b3JkfG1vZGlmeXxwZXJzaXN0KXxwYXJ0eXxzZWVufG1lbnV8c2V0aG9tZXxkZWxob21lfGJhbChhbmNlKT8iLA0KICAgICAgICAgICJhY2hpZXZlbWVudHxibG9ja2RhdGF8Y2xlYXJ8Y2xvbmV8ZGVidWd8ZGVmYXVsdGdhbWVtb2RlfGRpZmZpY3VsdHl8ZWZmZWN0fGV4ZWN1dGV8ZmlsbHxnYW1lbW9kZXxnYW1lcnVsZXxnaXZlfGtpbGx8cGFydGljbGV8cGxheXNvdW5kfHB1Ymxpc2h8c2F5fHNjb3JlYm9hcmR8c2VlZHxzZXRibG9ja3xzZXR3b3JsZHNwYXdufHNwYXducG9pbnR8c3ByZWFkcGxheWVyc3xzdW1tb258dGVsbHJhd3x0ZXN0Zm9yfHRlc3Rmb3JibG9ja3x0ZXN0Zm9yYmxvY2tzfHRpbWV8dGl0bGV8dG9nZ2xlZG93bmZhbGx8dHB8d2VhdGhlcnx3b3JsZGJvcmRlcnx4cCIsDQogICAgICAgICAgIi4rIg0KICAgICAgICBdLA0KICAgICAgICAidGVsZXBvcnRhdGlvbiI6ICJ3YXJwfGhvbWV8c3Bhd258dHBhfHdpbGR8anVtcHx0cCINCiAgICAgIH0NCiAgICB9LA0KICAgICJub29ic3Rvd24uY29tIjogew0KICAgICAgImNvbW1hbmRzIjogew0KICAgICAgICAic3Bhd24iOiAiL3dhcnAgc3Bhd24iLA0KICAgICAgICAibW9uZXkiOiAiL2JhbGFuY2UiLA0KICAgICAgICAic2FmZWhvbWUiOiAiL3dpbGQgY2h1bmtzIGhvbWUiLA0KICAgICAgICAiaG9tZSI6ICIvaG9tZSINCiAgICAgIH0sDQogICAgICAia2l0cyI6IHsNCiAgICAgICAgImZvb2QiOiB7DQogICAgICAgICAgInRpbWUiOiA2MjAsDQogICAgICAgICAgInBlcm1pc3Npb24iOiAyDQogICAgICAgIH0NCiAgICAgIH0sDQogICAgICAiY2hhdCI6IHsNCiAgICAgICAgImJsb2NrZWQiOiBbDQogICAgICAgICAgIi0rIE1vdGQgLSsgUGFnZSBbMC05XSsvWzAtOV0rIC0rIiwNCiAgICAgICAgICAiQW55IHgtcmF5aW5nIHdpbGwgYmUgZm91bmQgYW5kIHdpbGwgcmVzdWx0IGluIGEgcGVybWFuZW50IGJhblxcLiIsDQogICAgICAgICAgIkJlIGF3YXJlIHdlIGFyZSBwZXJmb3JtaW5nIHN0cmljdCBjaGVja3Mgb24gYWxsIG1pbmluZ1xcLiIsDQogICAgICAgICAgIllvdSAoaGF2ZSBsZWZ0fGFyZSBub3QgaW4pIChMb2NhbHxUb3dufE1pbmV8V2lsZGVybmVzc3xHbG9iYWwpXFwuIiwNCiAgICAgICAgICAiWW91IGNhbid0IHNlbGwgKFtBLVphLXowLTldKykgZm9yIGFub3RoZXIgKFswLTldKylcXCsgaG91cnNcXC4iLA0KICAgICAgICAgICJZb3UgbXVzdCBoYXZlIChbMC05XSspeCAoW0EtWmEtejAtOV9dKykgXFwoSUQuIChbMC05XSspLCBkYXRhIHZhbHVlLiAoYW55fChbMC05XSspKVxcKSBmb3IgdGhpc1xcLiIsDQogICAgICAgICAgIlxcW1dpbGRcXF0gWW91IGp1c3QgY3JlYXRlZCBhIGRvdWJsZSBjaGVzdCB3aGljaCBjbGVhcnMgYW55IHByZXZpb3VzIHVuaXQgc2V0dGluZ3Mgd2hpY2ggbWF5IGhhdmUgc2V0IHdpdGggdGhlIG9yaWdpbmFsIGNoZXN0XFwuIiwNCiAgICAgICAgICAiXFxbW0EtWmEtejAtOV9dK1xcXS4/RHJhdyBpbiguKykiLA0KICAgICAgICAgICJcXFtbQS1aYS16MC05X10rXFxdIFBsZWFzZSB3ZWxjb21lIChbQS1aYS16MC05X117MywxNn0pIC93YXJwIHdlbGNvbWUiLA0KICAgICAgICAgICJcXFtbQS1aYS16MC05X10rXFxdIFNvbGQgeChbMC05XSspICguKykgYXQgYSB2YWx1ZSBvZiAoWzAtOV0rKSBOYnoiLA0KICAgICAgICAgICJcXFtbQS1aYS16MC05X10rXFxdIFlvdSBhcmUgbm90IHRha2luZyBwYXJ0IGluIFBWUCByaWdodCBub3dcXC4iLA0KICAgICAgICAgICJcXFtbQS1aYS16MC05X10rXFxdIFlvdSBjYW4ndCBkbyB0aGF0IGhlcmVcXC4gVHlwZSAvd2lsZFxcLiIsDQogICAgICAgICAgIlxcW1tBLVphLXowLTlfXStcXF0gWW91IHZpc2l0ZWQgdGhlIChbQS1aYS16MC05X10rKSBXb3JsZCBhbmQgY2hhbmdlZCB5b3VyIGNoYXQgYWNjb3JkaW5nbHlcXC4iLA0KICAgICAgICAgICJ+IElmIHlvdSBuZWVkIGhlbHAgdXNlIC90aWNrZXQiLA0KICAgICAgICAgICJ+IFBsYXllcnMgb25saW5lIE5vb2JzdG93bic6JyAoWzAtOV0rKSIsDQogICAgICAgICAgIn4gUmVtZW1iZXIgdG8gcmVhZCBvdXIgL3J1bGVzIiwNCiAgICAgICAgICAifihcXCVAJnNlcnZlcl9ncm91cHNfdHJ1c3RlZFxcJXxcXCVAJnNlcnZlcl9ncm91cHNfZnJpZW5kXFwlKSIsDQogICAgICAgICAgIn5Vbm93bmVkIg0KICAgICAgICBdLA0KICAgICAgICAibG9nIjogWw0KICAgICAgICAgICIoU3VtbW9ufERpc21pc3MpZWQgKFtBLVphLXowLTlfXXszLDE2fSkiLA0KICAgICAgICAgICIoWzAtOV0rKSBzZWNvbmRzIHRvIG1hcCBzZWxlY3Rpb24hPyIsDQogICAgICAgICAgIihbQS1aYS16MC05XyBdKykgd2FuZGVyZWQgb2ZmIGFuZCB3YXMgZGlzbWlzc2VkIiwNCiAgICAgICAgICAiKFtBLVphLXowLTlfXXszLDE2fSkgd2FzIHRoZSBsYXN0IG1hbiBzdGFuZGluZyEiLA0KICAgICAgICAgICJZb3UgYXJlIHN1bW1vbmluZyAoW0EtWmEtejAtOV9dKylcXC4gV2FpdCAoWzAtOV0rKSBzZWNvbmRzIiwNCiAgICAgICAgICAiWW91IGhhdmUgdG8gaGF2ZSBhbiBhY3RpdmUgaG9yc2UgdG8gZGlzbWlzcyBvbmUiLA0KICAgICAgICAgICJcXFtOb29ic3Rvd255XFxdICguKykiLA0KICAgICAgICAgICJcXFtXaWxkXFxdIFN1Y2Nlc3MsIHlvdSB3ZXJlIHRlbGVwb3J0ZWQgdG8geW91ciBsYW5kXFwuIiwNCiAgICAgICAgICAiXFxzP34oXFxzP3woXFwofFxcW3xcXHspP1tBLVphLXowLTlfXFxzJzonXSsoXFwpfFxcXXxcXH0pP3xcXHMtXFxzKSsiDQogICAgICAgIF0sDQogICAgICAgICJhbGxvd2VkIjogWw0KICAgICAgICAgICIuezJ9KFxcJUAmc2VydmVyX2dyb3Vwc190cnVzdGVkXFwlfFxcJUAmc2VydmVyX2dyb3Vwc19mcmllbmRcXCV8XFwlQCZzZXJ2ZXJfZ3JvdXBzX3N0YWZmXFwlKSAoam9pbmVkfGxlZnR8aXMgKG5vIGxvbmdlcnxub3cpIEFGSylcXC4iDQogICAgICAgIF0NCiAgICAgIH0sDQogICAgICAiZ3JvdXBzIjogew0KICAgICAgICAiZW5lbXkiOiBudWxsLA0KICAgICAgICAiZnJpZW5kIjogbnVsbCwNCiAgICAgICAgInRydXN0ZWQiOiBudWxsLA0KICAgICAgICAic3RhZmYiOiBbDQogICAgICAgICAgIkFRV19Bc3Nhc3NpYW4wMSIsDQogICAgICAgICAgIkFkcmlhbkNhdmkiLA0KICAgICAgICAgICJEYWRKYWVnZXIiLA0KICAgICAgICAgICJEdWVsY29uIiwNCiAgICAgICAgICAiRmF0bm9vYiIsDQogICAgICAgICAgIkl0c0xhd3JlbmNlIiwNCiAgICAgICAgICAiSmFja213b29kYWxsMTQiLA0KICAgICAgICAgICJNc01hbmlmZXN0YXRpb24iLA0KICAgICAgICAgICJXYXRlcndvcnRoIiwNCiAgICAgICAgICAiZG9jX2VuZ2llIiwNCiAgICAgICAgICAiZ2FtZXJnaXJseG8iLA0KICAgICAgICAgICJuZWJpaCINCiAgICAgICAgXQ0KICAgICAgfSwNCiAgICAgICJwZXJtaXNzaW9ucyI6IHsNCiAgICAgICAgImRlZmF1bHQiOiAxLA0KICAgICAgICAicmFua3MiOiBbDQogICAgICAgICAgImhlbHB8P3xtZXx0ZWxsfG1lc3NhZ2V8bXNnfHd8dHJpZ2dlciIsDQogICAgICAgICAgImtpdHxiYWwoYW5jZSk/fHdhcnB8aG9tZXxzcGF3bnx0cGF8d2lsZHx0cChhY2NlcHR8ZGVueSl8cHxjaChhbm5lbCk/fGluc3BlY3R8bWNzdGF0c3xtY3Jhbmt8bWN0b3B8d2lsZHx0b3dufHNob3B8bGlzdHx0aWNrZXR8aWdub3JlfGhlbHBvcHxwbG90fGhvcnNlKHMpP3xwZXR8bHdjfHVubG9ja3xsb2NrfGMoaW5mb3xwYXNzd29yZHxtb2RpZnl8cGVyc2lzdCl8cGFydHl8c2VlbnxtZW51fHNldGhvbWV8ZGVsaG9tZSIsDQogICAgICAgICAgImp1bXB8ZS4qY2hlc3R8Y3JhZnR8Ym9va3xjb21wYXNzfGNvb3Jkc3xjbGVhcmludmVudG9yeXxiYWNrfHRwYWhlcmUiLA0KICAgICAgICAgICJ2aXBzaG9wIiwNCiAgICAgICAgICAiYWNoaWV2ZW1lbnR8YmxvY2tkYXRhfGNsZWFyfGNsb25lfGRlYnVnfGRlZmF1bHRnYW1lbW9kZXxkaWZmaWN1bHR5fGVmZmVjdHxleGVjdXRlfGZpbGx8Z2FtZW1vZGV8Z2FtZXJ1bGV8Z2l2ZXxraWxsfHBhcnRpY2xlfHBsYXlzb3VuZHxwdWJsaXNofHNheXxzY29yZWJvYXJkfHNlZWR8c2V0YmxvY2t8c2V0d29ybGRzcGF3bnxzcGF3bnBvaW50fHNwcmVhZHBsYXllcnN8c3VtbW9ufHRlbGxyYXd8dGVzdGZvcnx0ZXN0Zm9yYmxvY2t8dGVzdGZvcmJsb2Nrc3x0aW1lfHRpdGxlfHRvZ2dsZWRvd25mYWxsfHRwfHdlYXRoZXJ8d29ybGRib3JkZXJ8eHAiLA0KICAgICAgICAgICIuKyINCiAgICAgICAgXSwNCiAgICAgICAgInRlbGVwb3J0YXRpb24iOiAid2FycHxob21lfHNwYXdufHRwYXx3aWxkfGp1bXB8dG93biBzcGF3biINCiAgICAgIH0NCiAgICB9LA0KICAgICJjb25uZWN0MS5taW5ldGltZS5jb20iOiB7DQogICAgICAiY29tbWFuZHMiOiB7DQogICAgICAgICJzcGF3biI6ICIvc3Bhd24iLA0KICAgICAgICAibW9uZXkiOiAiL2JhbGFuY2UiLA0KICAgICAgICAic2FmZWhvbWUiOiBudWxsLA0KICAgICAgICAiaG9tZSI6IG51bGwNCiAgICAgIH0sDQogICAgICAia2l0cyI6IG51bGwsDQogICAgICAiY2hhdCI6IHsNCiAgICAgICAgImJsb2NrZWQiOiBbDQogICAgICAgICAgIkJlIGNhcmVmdWwsIHRoZSBtYWluIHBsYXphIGhhcyBQdlAgZW5hYmxlZCEiLA0KICAgICAgICAgICJDaGF0IGlzIGRpc2FibGVkIGluIHRoZSBsb2JieVxcLiIsDQogICAgICAgICAgIkNoZWNrIG91dCBvdXIgY3VzdG9tIFNreXdhcnMgcGx1Z2luXFwuIiwNCiAgICAgICAgICAiQ2hvb3NlIGEgc2VydmVyIGJ5IHdhbGtpbmcgaW50byBpdHMgcG9ydGFsXFwuIiwNCiAgICAgICAgICAiQ2xpY2sgdGhlIGxpbmtzIGJlbG93IHRvIHZvdGUhIiwNCiAgICAgICAgICAiRG8geW91IGhhdmUgd2hhdCBpdCB0YWtlcyB0byBlc2NhcGVcXD8iLA0KICAgICAgICAgICJQdXJjaGFzZSByYW5rcyBhdCBidXlcXC5taW5ldGltZVxcLmNvbS4iLA0KICAgICAgICAgICJSYW5rIHVwIGZhc3RlciBieSB2b3Rpbmcgd2l0aCAvdm90ZVxcLiIsDQogICAgICAgICAgIlJhbmtzIHRyYW5zZmVyIHRvIGFsbCBzZXJ2ZXJzXFwuIiwNCiAgICAgICAgICAiV2VsY29tZSB0byBNaW5ldGltZSwgZW5qb3kgdGhlIHZpZXchIiwNCiAgICAgICAgICAiV2VsY29tZSAoW0EtWmEtejAtOV9dezMsMTZ9KSB0byBQdnBGZXN0ISBVc2UgL2tpdCBmaWdodFxcLiIsDQogICAgICAgICAgIihbQS1aYS16MC05X117MywxNn0pIGp1c3QgUk9GTFNUT01QJ2QgKFtBLVphLXowLTlfXXszLDE2fSkgXFxbeChbMC05XSspXFxdIiwNCiAgICAgICAgICAiXFxbU2VydmVyXFxdIFdlIGhhdmUgYWRkZWQgdm90aW5nISBHbyB0byAvd2FycCB2b3RlXFwuIC9yZXdhcmRzIGZvciBvdXIgbHVja3kgdm90ZXNcXC4iLA0KICAgICAgICAgICJcXFsoSW5mZWN0ZWR8TWluZXRpbWV8UHZwRmVzdHxQdlBUaW1lcnxQcmlzb24pXFxdICguKykiLA0KICAgICAgICAgICJcXFtbQS1aYS16MC05X10rXFxdIFBsYXllciAoW0EtWmEtejAtOV9dKykgaGFzIGJlZW4gZWxpbWluYXRlZCEiLA0KICAgICAgICAgICJcXFtbQS1aYS16MC05X10rXFxdIFVzZSAvc3cga2l0IDxuYW1lPiB0byBwaWNrIGEga2l0XFwuIg0KICAgICAgICBdLA0KICAgICAgICAibG9nIjogWw0KICAgICAgICAgICJZb3UganVzdCB3cmVja2VkIChbQS1aYS16MC05X117MywxNn0pIGhhcmRjb3JlIVxcW1xcKyhbMC05XSspXFxdIiwNCiAgICAgICAgICAiWW91J3ZlIGJlZW4gd2Vha2VuZCEiLA0KICAgICAgICAgICIoWzAtOV0rKSBzZWNvbmRzIHRvIG1hcCBzZWxlY3Rpb24hPyIsDQogICAgICAgICAgIihbQS1aYS16MC05X117MywxNn0pIHdhcyB0aGUgbGFzdCBtYW4gc3RhbmRpbmchIiwNCiAgICAgICAgICAiXFxbUG9ydGFsXFxdIFRoaXMgc2VydmVyIGlzIGN1cnJlbnRseSBvZmZsaW5lXFwuIFRyeSBhZ2FpbiBsYXRlciEiLA0KICAgICAgICAgICJcXFtbQS1aYS16MC05X10rXFxdLnsxLDJ9KFswLTldKykgbW9yZSBwbGF5ZXJzIGFyZSBuZWVkZWQgYmVmb3JlIHRoZSBnYW1lIHN0YXJ0cyIsDQogICAgICAgICAgIlxcW1tBLVphLXowLTlfXStcXF0uezEsMn0oW0EtWmEtejAtOV9dKykgaGFzIChqb2luZWR8bGVmdCkgdGhlIGdhbWUgXFwoKFswLTldKykvKFswLTldKylcXCkiLA0KICAgICAgICAgICJcXFtbQS1aYS16MC05X10rXFxdLnsxLDJ9R2FtZSBzdGFydGluZyBpbiAoWzAtOV0rKSBzZWNvbmRzISIsDQogICAgICAgICAgIlxcW1tBLVphLXowLTlfXStcXF0uezEsMn0oWzAtOV0rKSBwbGF5ZXJcXChzXFwpIHJlbWFpbiEiLA0KICAgICAgICAgICJcXFtbQS1aYS16MC05X10rXFxdLnsxLDJ9WW91IGhhdmUgYmVlbiBlbGltaW5hdGVkXFwuIEJldHRlciBsdWNrIG5leHQgdGltZSEiDQogICAgICAgIF0sDQogICAgICAgICJhbGxvd2VkIjogWw0KICAgICAgICAgICIuezJ9KFxcJUAmc2VydmVyX2dyb3Vwc190cnVzdGVkXFwlfFxcJUAmc2VydmVyX2dyb3Vwc19mcmllbmRcXCV8XFwlQCZzZXJ2ZXJfZ3JvdXBzX3N0YWZmXFwlKSAoam9pbmVkfGxlZnR8aXMgKG5vIGxvbmdlcnxub3cpIEFGSylcXC4iDQogICAgICAgIF0NCiAgICAgIH0sDQogICAgICAiZ3JvdXBzIjogew0KICAgICAgICAiZW5lbXkiOiBudWxsLA0KICAgICAgICAiZnJpZW5kIjogWw0KICAgICAgICAgICJub3RjaHM1Ig0KICAgICAgICBdLA0KICAgICAgICAidHJ1c3RlZCI6IG51bGwsDQogICAgICAgICJzdGFmZiI6IFsNCiAgICAgICAgICAic2F3aW5lIiwNCiAgICAgICAgICAiRHJhZ29uZXNzIiwNCiAgICAgICAgICAiRGFya3BzeSIsDQogICAgICAgICAgIkxvbWFuaWMiLA0KICAgICAgICAgICJEYW5uaURvcnJpdG8iLA0KICAgICAgICAgICJEYXJ0aCBBbmRyb2lkIiwNCiAgICAgICAgICAiRGV1cyBMZW1tdXMiLA0KICAgICAgICAgICJTYXlvbWllIiwNCiAgICAgICAgICAiRWxpdGVDYXRhbHlzdCIsDQogICAgICAgICAgIlhDb2FzdGVyIiwNCiAgICAgICAgICAiTWFzdGVySmFjayIsDQogICAgICAgICAgIkRhbm55IiwNCiAgICAgICAgICAiR3JpZmZmIiwNCiAgICAgICAgICAiSGF5ZGVuNzc1IiwNCiAgICAgICAgICAiSG9seVNtMGtlcyIsDQogICAgICAgICAgIk5laWwgdGhlIE5pbmphcmdoIiwNCiAgICAgICAgICAiV2hhdEl0RG8iLA0KICAgICAgICAgICJaaW9uaWEiLA0KICAgICAgICAgICI4eDhqb2hhbiIsDQogICAgICAgICAgIkFsZWNNY0tpbmxleSIsDQogICAgICAgICAgIktldmFsIiwNCiAgICAgICAgICAiTmFuYWtpc2FuIiwNCiAgICAgICAgICAib2h0ZW40MG96IiwNCiAgICAgICAgICAiUmF2ZW5zRHJhZ29uIiwNCiAgICAgICAgICAiVmV4ZWRfVml4eGVuIiwNCiAgICAgICAgICAieGtfY29ydGV4IiwNCiAgICAgICAgICAieE1vcmFsVGhyZWF0IiwNCiAgICAgICAgICAiemRlYXRoY2xvY2siLA0KICAgICAgICAgICJidWdhbnMxIiwNCiAgICAgICAgICAid2FmZmxldGFzdGljIiwNCiAgICAgICAgICAibGVyb256YWRvayIsDQogICAgICAgICAgImR6b3VtYXlhIiwNCiAgICAgICAgICAiamMxOTk3MTAiLA0KICAgICAgICAgICJMb2NoaWVjaG9jY2llIiwNCiAgICAgICAgICAibmJjMDcxMSIsDQogICAgICAgICAgIllvdUZvdW5kTWUiLA0KICAgICAgICAgICJKYXJlZCIsDQogICAgICAgICAgIk5vdmFsZWlnaCIsDQogICAgICAgICAgIlBsanoiLA0KICAgICAgICAgICJyb252YW5kb3JwIiwNCiAgICAgICAgICAic3lkbmV5YTExIiwNCiAgICAgICAgICAiQWx5eXNpYSIsDQogICAgICAgICAgImViYXkyNjkiLA0KICAgICAgICAgICJIYWdhbiIsDQogICAgICAgICAgImt1dGhhMSIsDQogICAgICAgICAgIkx1Z2dpb3VzIiwNCiAgICAgICAgICAicHlyZWZhbmdzIiwNCiAgICAgICAgICAic2F2YWdlMTEwNiIsDQogICAgICAgICAgInNtaWxpbmdrYXRlIiwNCiAgICAgICAgICAiSW5zZXJ0IiwNCiAgICAgICAgICAiTWlzY2hpZXZvdXNHcmlucyIsDQogICAgICAgICAgIlRtYW5fMTAzIg0KICAgICAgICBdDQogICAgICB9LA0KICAgICAgInBlcm1pc3Npb25zIjogew0KICAgICAgICAiZGVmYXVsdCI6IDEsDQogICAgICAgICJyYW5rcyI6IG51bGwsDQogICAgICAgICJ0ZWxlcG9ydGF0aW9uIjogIndhcnB8aG9tZXxzcGF3bnx0cGF8d2lsZHxqdW1wIg0KICAgICAgfQ0KICAgIH0sDQogICAgIlNQIjogew0KICAgICAgImNvbW1hbmRzIjogew0KICAgICAgICAic3Bhd24iOiBudWxsLA0KICAgICAgICAibW9uZXkiOiBudWxsLA0KICAgICAgICAic2FmZWhvbWUiOiBudWxsLA0KICAgICAgICAiaG9tZSI6IG51bGwNCiAgICAgIH0sDQogICAgICAia2l0cyI6IG51bGwsDQogICAgICAiY2hhdCI6IHsNCiAgICAgICAgImJsb2NrZWQiOiBudWxsLA0KICAgICAgICAibG9nIjogbnVsbCwNCiAgICAgICAgImFsbG93ZWQiOiBudWxsDQogICAgICB9LA0KICAgICAgImdyb3VwcyI6IHsNCiAgICAgICAgImVuZW15IjogbnVsbCwNCiAgICAgICAgImZyaWVuZCI6IG51bGwsDQogICAgICAgICJ0cnVzdGVkIjogbnVsbCwNCiAgICAgICAgInN0YWZmIjogbnVsbA0KICAgICAgfSwNCiAgICAgICJwZXJtaXNzaW9ucyI6IHsNCiAgICAgICAgImRlZmF1bHQiOiAxLA0KICAgICAgICAicmFua3MiOiBbDQogICAgICAgICAgImhlbHB8P3xtZXx0ZWxsfG1lc3NhZ2V8bXNnfHd8dHJpZ2dlciIsDQogICAgICAgICAgImFjaGlldmVtZW50fGJsb2NrZGF0YXxjbGVhcnxjbG9uZXxkZWJ1Z3xkZWZhdWx0Z2FtZW1vZGV8ZGlmZmljdWx0eXxlZmZlY3R8ZXhlY3V0ZXxmaWxsfGdhbWVtb2RlfGdhbWVydWxlfGdpdmV8a2lsbHxwYXJ0aWNsZXxwbGF5c291bmR8cHVibGlzaHxzYXl8c2NvcmVib2FyZHxzZWVkfHNldGJsb2NrfHNldHdvcmxkc3Bhd258c3Bhd25wb2ludHxzcHJlYWRwbGF5ZXJzfHN1bW1vbnx0ZWxscmF3fHRlc3Rmb3J8dGVzdGZvcmJsb2NrfHRlc3Rmb3JibG9ja3N8dGltZXx0aXRsZXx0b2dnbGVkb3duZmFsbHx0cHx3ZWF0aGVyfHdvcmxkYm9yZGVyfHhwIiwNCiAgICAgICAgICAiLisiDQogICAgICAgIF0sDQogICAgICAgICJ0ZWxlcG9ydGF0aW9uIjogInRwIg0KICAgICAgfQ0KICAgIH0NCiAgfQ0KfQ==
+{
+  "colours": {
+    "variable": {
+      "default": "&9", 
+      "global": "&1"
+    }, 
+    "text": {
+      "default": "&7", 
+      "highlight": "&f", 
+      "enable": "&a", 
+      "disable": "&c"
+    }
+  }, 
+  "remote": {
+    "weather": "http://api.openweathermap.org/data/2.5/weather", 
+    "http": "http://dev.lordzeel.com/minecraft/remote/client.php"
+  }, 
+  "user": {
+    "default": {
+      "ranks": {
+        "SP": 3, 
+        "localhost": 3
+      }, 
+      "weather": {
+        "units": "Imperial", 
+        "location": "District of Columbia", 
+        "language": "English"
+      }
+    }, 
+    "MegaSniperB": {
+      "ranks": {
+        "connect1.minetime.com": 0, 
+        "SP": 2, 
+        "localhost": 3, 
+        "noobstown.com": 1
+      }, 
+      "weather": {
+        "units": "Imperial", 
+        "location": "Stow, Ohio", 
+        "language": "English"
+      }
+    }, 
+    "A6776": {
+      "ranks": {
+        "connect1.minetime.com": 0, 
+        "noobstown.com": 1
+      }, 
+      "weather": {
+        "units": "Imperial", 
+        "location": "Akron, Ohio", 
+        "language": "English"
+      }
+    }, 
+    "zeel01": {
+      "ranks": {
+        "connect1.minetime.com": 0, 
+        "SP": 2, 
+        "localhost": 3, 
+        "noobstown.com": 2
+      }, 
+      "weather": {
+        "units": "Imperial", 
+        "location": "Akron, Ohio", 
+        "language": "English"
+      }
+    }
+  }, 
+  "server": {
+    "default": {
+      "commands": {
+        "spawn": "/spawn", 
+        "money": null, 
+        "safehome": null, 
+        "home": "/home"
+      }, 
+      "kits": null, 
+      "chat": {
+        "blocked": [
+          "(\\* |-)?[A-Za-z0-9_]{3,16} (joined|left|is (no longer|now) AFK)\\.?", 
+          "Available kits':' No kits available", 
+          "Giving kit [A-Za-z0-9_]+ to (\\%@&server_groups_trusted\\%|\\%@&server_groups_friend\\%)", 
+          "Request sent to ([A-Za-z0-9_]{3,16})\\.", 
+          "Teleport(ation|ing\\.{3})? (will commence in ([0-9]+) seconds\\. Don't Move\\.|commencing\\.\\.\\.|Teleport Woosh!)", 
+          "That ore smelted itself!", 
+          "This ([A-Za-z0-9_]+) is locked with a magical spell", 
+          "This request will timeout after ([0-9]+) seconds\\.", 
+          "To (teleport|deny this request)\\, type /tp(accept|deny)\\.", 
+          "You don't have permission for this area\\.", 
+          "You are not permitted to enter this area\\.", 
+          "You are in a no-PvP area\\.", 
+          "You can only sleep at night", 
+          "You have no new mail\\.", 
+          "\\*\\*YOU (READY|LOWER) YOUR (HOE|AXE|PICKAXE|FISTS|SWORD|SHOVEL)\\*\\*", 
+          "\\[(TIP!|Vote|PVP)\\] (.+)", 
+          "http(s)?':'//(minecraftservers|minecraft-server-list|planetminecraft)\\.(org|com|net)(/[A-Za-z0-9]+)*/vote(/[A-Za-z0-9]+)*"
+        ], 
+        "log": [
+          "((-|\\+|\\$)+?([0-9]{0,3}(\\.|,)?)+[0-9]{0,2}).?(has been (sent to|received from) [A-Za-z0-9_]{4,16}\\.)?", 
+          "([A-Za-z ]+) has worn off for ([A-Za-z0-9_]{4,16})", 
+          "([A-Za-z0-9_ ]+) unregistered\\.", 
+          "([A-Za-z0-9_]{4,16}) accepted your teleport request\\.", 
+          "([A-Za-z0-9_]{4,16}) has requested that you teleport to them\\.", 
+          "([A-Za-z0-9_]{4,16}) has used ([A-Za-z ]+)!", 
+          "Bed spawn set!", 
+          "Created a [A-Za-z0-9_ ]+ successfully", 
+          "Kits':'( [A-Za-z0-9_]+)+", 
+          "Mail sent!", 
+          "Now chatting in ([A-Za-z0-9_ ]+)\\.", 
+          "Pending teleportation request cancelled\\.", 
+          "Received kit [A-Za-z0-9_ ]+\\.", 
+          "Right\\-click again to confirm Repair\\. Left-click to cancel\\.", 
+          "Something doesn't semm quite right\\.{3}", 
+          "Teleport request accepted\\.", 
+          "That felt easy\\.", 
+          "The luck of Hyrule is with you today!", 
+          "Treasure found!", 
+          "Warping to ([A-Za-z0-9_]+)\\.", 
+          "You are too tired to use that ability again\\. \\([0-9]*s\\)", 
+          "You have joined (.+)\\.", 
+          "You have placed an anvil, anvils can repair tools and armor\\.", 
+          "You need more ([A-Za-z]+)", 
+          "Your (.+) ability is refreshed!", 
+          "\\*\\*(.+) (has worn off|ACTIVATED)\\*\\*", 
+          "\\*\\*(ENEMY BLEEDING|Rolled|Dodged)\\*\\*", 
+          "\\*\\*([A-Za-z0-9]+) ([A-Za-z0-9_]{4,16}) created a new faction ([A-Za-z0-9]+)", 
+          "\\[Broadcast\\] (.+)"
+        ], 
+        "allowed": [
+          "(From|To)':' [A-Za-z0-9_]{4,16} (.+)", 
+          "\\[L\\](.+)"
+        ]
+      }, 
+      "groups": {
+        "enemy": [
+          "iShowClass", 
+          "Brob217"
+        ], 
+        "friend": [
+          "Jman6776", 
+          "Midnight301", 
+          "Gingolicous", 
+          "GirlKitty5"
+        ], 
+        "trusted": [
+          "MegaSniperB", 
+          "zeel01", 
+          "A6776"
+        ], 
+        "staff": [
+          "Notch", 
+          "Jeb_", 
+          "Dinnerbone"
+        ]
+      }, 
+      "permissions": {
+        "default": 1, 
+        "ranks": [
+          "help|\\\\?|me|tell|message|msg|w|trigger", 
+          "kit|warp|home|spawn|tpa|tp(accept|deny)|p|ch(annel)?|inspect|mcstats|mcrank|mctop|wild|town|shop|list|ticket|ignore|helpop|lwc|unlock|lock|c(info|password|modify|persist)|party|seen|menu|sethome|delhome|bal(ance)?", 
+          "achievement|blockdata|clear|clone|debug|defaultgamemode|difficulty|effect|execute|fill|gamemode|gamerule|give|kill|particle|playsound|publish|say|scoreboard|seed|setblock|setworldspawn|spawnpoint|spreadplayers|summon|tellraw|testfor|testforblock|testforblocks|time|title|toggledownfall|tp|weather|worldborder|xp", 
+          ".+"
+        ], 
+        "teleportation": "warp|home|spawn|tpa|wild|jump|tp"
+      }
+    }, 
+    "noobstown.com": {
+      "commands": {
+        "spawn": "/warp spawn", 
+        "money": "/balance", 
+        "safehome": "/wild chunks home", 
+        "home": "/home"
+      }, 
+      "kits": {
+        "food": {
+          "time": 620, 
+          "permission": 1
+        }
+      }, 
+      "chat": {
+        "blocked": [
+          "-+ Motd -+ Page [0-9]+/[0-9]+ -+", 
+          "Any x-raying will be found and will result in a permanent ban\\.", 
+          "Be aware we are performing strict checks on all mining\\.", 
+          "You (have left|are not in) (Local|Town|Mine|Wilderness|Global)\\.", 
+          "You can't sell ([A-Za-z0-9]+) for another ([0-9]+)\\+ hours\\.", 
+          "You must have ([0-9]+)x ([A-Za-z0-9_]+) \\(ID. ([0-9]+), data value. (any|([0-9]+))\\) for this\\.", 
+          "\\[Wild\\] You just created a double chest which clears any previous unit settings which may have set with the original chest\\.", 
+          "\\[[A-Za-z0-9_]+\\].?Draw in(.+)", 
+          "\\[[A-Za-z0-9_]+\\] Please welcome ([A-Za-z0-9_]{3,16}) /warp welcome", 
+          "\\[[A-Za-z0-9_]+\\] Sold x([0-9]+) (.+) at a value of ([0-9]+) Nbz", 
+          "\\[[A-Za-z0-9_]+\\] You are not taking part in PVP right now\\.", 
+          "\\[[A-Za-z0-9_]+\\] You can't do that here\\. Type /wild\\.", 
+          "\\[[A-Za-z0-9_]+\\] You visited the ([A-Za-z0-9_]+) World and changed your chat accordingly\\.", 
+          "~ If you need help use /ticket", 
+          "~ Players online Noobstown':' ([0-9]+)", 
+          "~ Remember to read our /rules", 
+          "~(\\%@&server_groups_trusted\\%|\\%@&server_groups_friend\\%)", 
+          "~Unowned"
+        ], 
+        "log": [
+          "(Summon|Dismiss)ed ([A-Za-z0-9_]{3,16})", 
+          "([0-9]+) seconds to map selection!?", 
+          "([A-Za-z0-9_ ]+) wandered off and was dismissed", 
+          "([A-Za-z0-9_]{3,16}) was the last man standing!", 
+          "You are summoning ([A-Za-z0-9_]+)\\. Wait ([0-9]+) seconds", 
+          "You have to have an active horse to dismiss one", 
+          "\\[Noobstowny\\] (.+)", 
+          "\\[Wild\\] Success, you were teleported to your land\\.", 
+          "\\s?~(\\s?|(\\(|\\[|\\{)?[A-Za-z0-9_\\s':']+(\\)|\\]|\\})?|\\s-\\s)+"
+        ], 
+        "allowed": [
+          ".{2}(\\%@&server_groups_trusted\\%|\\%@&server_groups_friend\\%|\\%@&server_groups_staff\\%) (joined|left|is (no longer|now) AFK)\\."
+        ]
+      }, 
+      "groups": {
+        "enemy": null, 
+        "friend": [
+          "Chompertons"
+        ],
+        "trusted": null, 
+        "staff": [
+          "AQW_Assassian01", 
+          "AdrianCavi", 
+          "DadJaeger", 
+          "Duelcon", 
+          "Fatnoob", 
+          "ItsLawrence", 
+          "Jackmwoodall14", 
+          "MsManifestation", 
+          "Waterworth", 
+          "doc_engie", 
+          "gamergirlxo", 
+          "nebih"
+        ]
+      }, 
+      "permissions": {
+        "default": 1, 
+        "ranks": [
+          "help|me|tell|message|msg|w|trigger", 
+          "kit|bal(ance)?|warp|home|spawn|tpa|wild|tp(accept|deny)|p|ch(annel)?|inspect|mcstats|mcrank|mctop|wild|town|shop|list|ticket|ignore|helpop|plot|horse(s)?|pet|lwc|unlock|lock|c(info|password|modify|persist)|party|seen|menu|sethome|delhome", 
+          "jump|e.*chest|craft|book|compass|coords|clearinventory|back|tpahere", 
+          "vipshop", 
+          "achievement|blockdata|clear|clone|debug|defaultgamemode|difficulty|effect|execute|fill|gamemode|gamerule|give|kill|particle|playsound|publish|say|scoreboard|seed|setblock|setworldspawn|spawnpoint|spreadplayers|summon|tellraw|testfor|testforblock|testforblocks|time|title|toggledownfall|tp|weather|worldborder|xp", 
+          ".+"
+        ], 
+        "teleportation": "warp|home|spawn|tpa|wild|jump|town spawn"
+      }
+    }, 
+    "SP": {
+      "commands": {
+        "spawn": null, 
+        "money": null, 
+        "safehome": null, 
+        "home": null
+      }, 
+      "kits": null, 
+      "chat": {
+        "blocked": null, 
+        "log": null, 
+        "allowed": null
+      }, 
+      "groups": {
+        "enemy": null, 
+        "friend": null, 
+        "trusted": null, 
+        "staff": null
+      }, 
+      "permissions": {
+        "default": 0, 
+        "ranks": [
+          "help|\\\\?|me|tell|message|msg|w|trigger", 
+          "achievement|blockdata|clear|clone|debug|defaultgamemode|difficulty|effect|execute|fill|gamemode|gamerule|give|kill|particle|playsound|publish|say|scoreboard|seed|setblock|setworldspawn|spawnpoint|spreadplayers|summon|tellraw|testfor|testforblock|testforblocks|time|title|toggledownfall|tp|weather|worldborder|xp", 
+          ".+"
+        ], 
+        "teleportation": "tp"
+      }
+    }, 
+    "connect1.minetime.com": {
+      "commands": {
+        "spawn": "/spawn", 
+        "money": "/balance", 
+        "safehome": null, 
+        "home": null
+      }, 
+      "kits": null, 
+      "chat": {
+        "blocked": [
+          "Be careful, the main plaza has PvP enabled!", 
+          "Chat is disabled in the lobby\\.", 
+          "Check out our custom Skywars plugin\\.", 
+          "Choose a server by walking into its portal\\.", 
+          "Click the links below to vote!", 
+          "Do you have what it takes to escape\\?", 
+          "Purchase ranks at buy\\.minetime\\.com.", 
+          "Rank up faster by voting with /vote\\.", 
+          "Ranks transfer to all servers\\.", 
+          "Welcome to Minetime, enjoy the view!", 
+          "Welcome ([A-Za-z0-9_]{3,16}) to PvpFest! Use /kit fight\\.", 
+          "([A-Za-z0-9_]{3,16}) just ROFLSTOMP'd ([A-Za-z0-9_]{3,16}) \\[x([0-9]+)\\]", 
+          "\\[Server\\] We have added voting! Go to /warp vote\\. /rewards for our lucky votes\\.", 
+          "\\[(Infected|Minetime|PvpFest|PvPTimer|Prison)\\] (.+)", 
+          "\\[[A-Za-z0-9_]+\\] Player ([A-Za-z0-9_]+) has been eliminated!", 
+          "\\[[A-Za-z0-9_]+\\] Use /sw kit <name> to pick a kit\\."
+        ], 
+        "log": [
+          "You just wrecked ([A-Za-z0-9_]{3,16}) hardcore!\\[\\+([0-9]+)\\]", 
+          "You've been weakend!", 
+          "([0-9]+) seconds to map selection!?", 
+          "([A-Za-z0-9_]{3,16}) was the last man standing!", 
+          "\\[Portal\\] This server is currently offline\\. Try again later!", 
+          "\\[[A-Za-z0-9_]+\\].{1,2}([0-9]+) more players are needed before the game starts", 
+          "\\[[A-Za-z0-9_]+\\].{1,2}([A-Za-z0-9_]+) has (joined|left) the game \\(([0-9]+)/([0-9]+)\\)", 
+          "\\[[A-Za-z0-9_]+\\].{1,2}Game starting in ([0-9]+) seconds!", 
+          "\\[[A-Za-z0-9_]+\\].{1,2}([0-9]+) player\\(s\\) remain!", 
+          "\\[[A-Za-z0-9_]+\\].{1,2}You have been eliminated\\. Better luck next time!"
+        ], 
+        "allowed": [
+          ".{2}(\\%@&server_groups_trusted\\%|\\%@&server_groups_friend\\%|\\%@&server_groups_staff\\%) (joined|left|is (no longer|now) AFK)\\."
+        ]
+      }, 
+      "groups": {
+        "enemy": null, 
+        "friend": [
+          "notchs5"
+        ], 
+        "trusted": null, 
+        "staff": [
+          "sawine", 
+          "Dragoness", 
+          "Darkpsy", 
+          "Lomanic", 
+          "DanniDorrito", 
+          "Darth Android", 
+          "Deus Lemmus", 
+          "Sayomie", 
+          "EliteCatalyst", 
+          "XCoaster", 
+          "MasterJack", 
+          "Danny", 
+          "Grifff", 
+          "Hayden775", 
+          "HolySm0kes", 
+          "Neil the Ninjargh", 
+          "WhatItDo", 
+          "Zionia", 
+          "8x8johan", 
+          "AlecMcKinley", 
+          "Keval", 
+          "Nanakisan", 
+          "ohten40oz", 
+          "RavensDragon", 
+          "Vexed_Vixxen", 
+          "xk_cortex", 
+          "xMoralThreat", 
+          "zdeathclock", 
+          "bugans1", 
+          "waffletastic", 
+          "leronzadok", 
+          "dzoumaya", 
+          "jc199710", 
+          "Lochiechoccie", 
+          "nbc0711", 
+          "YouFoundMe", 
+          "Jared", 
+          "Novaleigh", 
+          "Pljz", 
+          "ronvandorp", 
+          "sydneya11", 
+          "Alyysia", 
+          "ebay269", 
+          "Hagan", 
+          "kutha1", 
+          "Luggious", 
+          "pyrefangs", 
+          "savage1106", 
+          "smilingkate", 
+          "Insert", 
+          "MischievousGrins", 
+          "Tman_103"
+        ]
+      }, 
+      "permissions": {
+        "default": 0, 
+        "ranks": null, 
+        "teleportation": "warp|home|spawn|tpa|wild|jump"
+      }
+    }
+  }
+}

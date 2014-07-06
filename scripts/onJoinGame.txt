@@ -234,6 +234,14 @@ if( ( MODULEFARHIT == true ) && ( MODULESIGNTEXT == true) && ( MODULEJSON == tru
 
                     endif;
 
+					@&permissions = "";
+
+					for(#var, 0, %@#permissions%);
+						@&permissions = %@&server_permissions_ranks[%#var%]%|%@&permissions%;
+
+					next;
+							
+
                 &weather = jsonget("%&user%","weather");
                     &weather_location = jsonget("%&weather%","location");
                         @&weather_location = match("%&weather_location%","\"(.+)\"",,"1");
@@ -384,40 +392,21 @@ if( ( MODULEFARHIT == true ) && ( MODULESIGNTEXT == true) && ( MODULEJSON == tru
 
                 if( &queue_str != "" );
 
-                    ifmatches("%&queue_str%","^//?[A-Za-z0-9]+( [A-Za-z0-9]+)*$");
-                        #cycle = 0;
+                    ifmatches("%&queue_str%","^/(/)?[A-Za-z0-9]+( [A-Za-z0-9]+)*$");
 
-                        foreach(@&server_permissions_ranks[],&cmd_perms_current);
+						ifmatches("%&queue_str%","^/(%@&permissions%)( [A-Za-z0-9]+)*$");
+							logto("cmdLog","%&queue_str%");
+							echo("%&queue_str%");
+							@#queue_wait = %@#queue_wait% + %@#queue_wait_base% + %@#queue_wait_thresh%;
+							@#queue_wait_thresh = %@#queue_wait_thresh% + %@#queue_wait_thresh_multi%;
 
-                            if( @#permissions >= #cycle );
+							ifmatches("%&queue_str%","(%@&server_permissions_teleportation%)( .+)*");
+								@#safety = 10;
+								@#queue_wait = %@#queue_wait% + %@#queue_wait_teleport%;
 
-                                ifmatches("%&queue_str%","^/(%&cmd_perms_current%)( [A-Za-z0-9]+)*$");
-                                    logto("cmdLog","%&queue_str%");
-                                    echo("%&queue_str%");
-                                    @#queue_wait = %@#queue_wait% + %@#queue_wait_base% + %@#queue_wait_thresh%;
-                                    @#queue_wait_thresh = %@#queue_wait_thresh% + %@#queue_wait_thresh_multi%;
+							endif;
 
-                                    ifmatches("%&queue_str%","(%@&server_permissions_teleportation%)( .+)*");
-                                        @#safety = 10;
-                                        @#queue_wait = %@#queue_wait% + %@#queue_wait_teleport%;
-
-                                    endif;
-
-                                    break;
-
-                                else;
-                                    #cycle = %#cycle% + 1;
-                                    next;
-
-                                endif;
-
-                            elseif;
-                                logto("ScriptLog","%@&colours_variable_default%%&queue_str%%@&colours_text_default% not issued. %@&colours_text_highlight%(%@&colours_variable_default%%#cycle%%@&colours_text_highlight%/%@&colours_variable_default%%@#permissions%%@&colours_text_highlight%)");
-                                break;
-
-                            endif;
-
-                        next;
+						endif;
 
                     else;
                         logto("cmdLog","%&queue_str%");
