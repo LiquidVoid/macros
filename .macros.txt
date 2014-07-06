@@ -231,7 +231,7 @@ Macro[18].Control=1
 Macro[19].Macro=$${@&queue[9] = "/jump";}$$
 
 # KEY_SLASH
-Macro[53].Macro=/$$!
+Macro[53].Macro=$${do;prompt(&cmd,"$$?","Command");if( &cmd == "" );stop;endif;ifmatchs("%&cmd%","/(([A-Za-z0-9]+)( [A-Za-z0-9]+))",&cmd,"1");endif;&cmd = "/%&cmd%";ifmatches("%&cmd%","^/(%@&permissions%)( [A-Za-z0-9]+)*$");@&queue[9] = %&cmd%;break;endif;loop;}$$
 Macro[53].Override=1
 
 # KEY_RSHIFT
