@@ -1,0 +1,46 @@
+if( ( @#safety == 0 ) && ( @&safehome != "" ) );
+	save = 0;
+
+	if( #lasty > YPOS );
+		#i = 0;
+		#thresh = %HEALTH%;
+		#thresh = %#thresh% + 2;
+
+			do;
+				#i = %#i% + 1;
+				&blockname = getidrel("0","-%#i%","0");
+
+				if( &blockname != "air" );
+
+					if( ( #i < #thresh ) || ( &blockname == "water" ) || ( &blockname == "flowing_water" ) );
+						break;
+
+					else;
+						save = 1;
+						break;
+
+
+					endif;
+
+				elseif( #i > #lasty );
+					if( YPOS < 0 );
+						save = 1;
+
+					endif;
+
+					break;
+
+				endif;
+
+			loop;
+
+		if( save == 1 );
+			logto("DeathLog","%@&colours_text_highlight%Fall saved%@&colours_text_default%: from %@&colours_variable_default%%#i%%@&colours_text_default%m on %@&colours_variable_default%%&blockname% %@&colours_text_default%at %@&colours_variable_default%%@&display_coords%");
+			@&queue[10] = %@&server_commands_safehome%;
+			@#safety = 10;
+
+		endif;
+
+	endif;
+
+endif;

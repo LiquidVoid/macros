@@ -1,0 +1,23 @@
+if( FARHITDIST >= 10 );
+	@&display_name = "(%DIRECTION%) %FARHITNAME% (%FARHITDIST%)";
+
+else;
+	@&display_name = "(%DIRECTION%) %FARHITNAME%";
+
+endif;
+
+if( ( FARHITDIST >= 10 ) && ( ( FARHITID  == "standing_sign" ) || ( FARHITID == "wall_sign" ) ) );
+	@&signtext[] = getsigntext("%FARHITX%","%FARHITY%","%FARHITZ%");
+
+else;
+	unset(@&signtext[]);
+
+endif;
+
+if( PLAYER == "zeel01" );
+	@&display_coords = "(%XPOS%, %YPOS%, %ZPOS%)";
+
+else;
+	@&display_coords = "%XPOS%, %ZPOS% (%YPOS%)";
+
+endif;
