@@ -57,7 +57,7 @@ unsafe;
 
                         //ACTION-START: Count Inventory
                         for(#slot_inventory,%#slot_inventory_min%,%#slot_inventory_max%);
-                            &name = getslotitem("%#slot_inventory%",#stacksize);
+                            &name = getslotitem("%#slot_inventory%",,#stacksize);
 
                             if( &name == &item_name );
                                 #item_total = %#item_total% + %#stacksize%;
