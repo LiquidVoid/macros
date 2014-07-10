@@ -21,8 +21,8 @@ if( ( MODULEFARHIT == true ) && ( MODULESIGNTEXT == true) && ( MODULEJSON == tru
     unsafe;
 
         do;
-            $$<Display-GUI.txt>
-            $$<Fall-Check.txt>
+            $$<Display-GUI.txt>;
+            $$<Fall-Check.txt>;
 
             time(@&display_clock,"h:mm:ss a");
 
@@ -31,7 +31,7 @@ if( ( MODULEFARHIT == true ) && ( MODULESIGNTEXT == true) && ( MODULEJSON == tru
 
             endif;
 
-			$$<CMD-Queue.txt>
+			$$<CMD-Queue.txt>;
 
 
             //COMMENT-START: 1.0000 Hz or (1 sec) @ [??] :
@@ -69,9 +69,9 @@ if( ( MODULEFARHIT == true ) && ( MODULESIGNTEXT == true) && ( MODULEJSON == tru
 
                 //COMMENT-START: 0.0167 Hz (60 sec) @ [07] :
                 ifmatches("%@&display_clock%","[0-9]{1,2}:[0-9]{2}:07 (A|P)M");
-					$$<Display-Player.txt>
-					$$<Display-Weather.txt>
-					$$<No-AFK.txt>
+					$$<Display-Player.txt>;
+					$$<Display-Weather.txt>;
+					$$<No-AFK.txt>;
 
                 endif;
 
