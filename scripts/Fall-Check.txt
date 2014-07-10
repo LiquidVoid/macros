@@ -1,4 +1,4 @@
-if( ( @#safety == 0 ) && ( @&safehome != "" ) );
+if( ( @#safety == 0 ) && ( @&server_commands_safehome != "" ) );
 	save = 0;
 
 	if( #lasty > YPOS );
@@ -9,7 +9,6 @@ if( ( @#safety == 0 ) && ( @&safehome != "" ) );
 			do;
 				#i = %#i% + 1;
 				&blockname = getidrel("0","-%#i%","0");
-
 				if( &blockname != "air" );
 
 					if( ( #i < #thresh ) || ( &blockname == "water" ) || ( &blockname == "flowing_water" ) );
