@@ -9,11 +9,10 @@ if( ( MODULEFARHIT == true ) && ( MODULESIGNTEXT == true) && ( MODULEJSON == tru
 
     unset(#times[]);
     #lasty = %YPOS%;
-    @@#queue_wait_base = 1;
-    @@#queue_wait_thresh_multi = 1;
-    @#queue_wait_chat = 2;
-    @#queue_wait_teleport = 3;
-
+	
+	// Reset Displays
+	$$<Display-Player.txt>;
+	$$<Display-Weather.txt>;
     @&display_balance = "";
 
     exec("CMD-Remote-Receive.txt","CMD-Remote-Receive");
