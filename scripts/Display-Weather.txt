@@ -3,7 +3,7 @@ weather_error = jsonhas("%&weather%","message");
 
 if( ( #status == 200 ) && ( weather_error == false ) );
 	&weather_name = jsonget("%&weather%","name");
-	&weather_name = match("%&weather_name%","\"(.*)\"",,"1");
+	match("%&weather_name%","\"(.*)\"",&weather_name,"1");
 
 	&weather_main = jsonget("%&weather%","main");
 		&weather_main_temp = jsonget("%&weather_main%","temp");
@@ -11,7 +11,7 @@ if( ( #status == 200 ) && ( weather_error == false ) );
 	&weather_weather = jsonget("%&weather%","weather");
 	&weather_weather_array = jsonarrayget("%&weather_weather%","0");
 		&weather_weather_desc = jsonget("%&weather_weather_array%","main");
-		&weather_weather_desc = match("%&weather_weather_desc%","\"(.+)\"",,"1");
+		match("%&weather_weather_desc%","\"(.+)\"",&weather_weather_desc,"1");
 
 endif;
 
