@@ -8,9 +8,10 @@ unsafe;
     until( GUI == "GUICHEST" );
     //ACTION-END: Open Shop Menu
 
-
     //ACTION-START: Loop Sub-Menus
-    for(#slot_menu,0,7);
+    for(#slot_menu,"0","7");
+		wait("100ms");
+
         &menu_name = getslotitem("%#slot_menu%");
 
         //ACTION-START: Set Sub-Menu Size
@@ -39,7 +40,7 @@ unsafe;
             wait("250ms");
 
             //ACTION-START: Set Sub-Menu Size
-            for(#shop_row,1,%#shop_size%);
+            for(#shop_row,"1","%#shop_size%");
                 //COMMENT-START: Sets Sub-Menu Size
                 #slot_chest_min = ( 18 * %#shop_row% ) - 18;
                 #slot_chest_max = ( 18 * %#shop_row% ) - 11;
@@ -48,7 +49,7 @@ unsafe;
                 //COMMENT-END: Sets Sub-Menu Size
 
                 //ACTION-START: Loop Sub-Menu Options
-                for(#slot_chest,%#slot_chest_min%,%#slot_chest_max%);
+                for(#slot_chest,"%#slot_chest_min%","%#slot_chest_max%");
                     #item_total = 0;
                     &item_name = getslotitem("%#slot_chest%");
 
@@ -56,8 +57,8 @@ unsafe;
                     if( &item_name != "air" );
 
                         //ACTION-START: Count Inventory
-                        for(#slot_inventory,%#slot_inventory_min%,%#slot_inventory_max%);
-                            &name = getslotitem("%#slot_inventory%",,#stacksize);
+                        for(#slot_inventory,"%#slot_inventory_min%","%#slot_inventory_max%");
+                            getslotitem("%#slot_inventory%",&name,#stacksize);
 
                             if( &name == &item_name );
                                 #item_total = %#item_total% + %#stacksize%;
@@ -91,7 +92,7 @@ unsafe;
                             endif;
                             //ACTION-END: Sell Max
 
-                            wait("250ms");
+                            wait("200ms");
 
                         until( #item_total < 16 );
                         //ACTION-END: Sell ALL
@@ -119,8 +120,6 @@ unsafe;
 
         until( &menu_back == "air" );
         //ACTION-END: GOTO Menu
-
-        wait(100ms);
 
     next;
     //ACTION-END: Loop Sub-Menus

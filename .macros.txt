@@ -237,6 +237,9 @@ Macro[53].Override=1
 # KEY_RSHIFT
 Macro[54].Macro=$${exec("Automatic.txt","Automatic","sneak","toggle");}$$
 
+# KEY_NUMPAD2
+Macro[80].Macro=$${exec("Sell-All.txt","Sell-All")}$$
+
 # KEY_NUMPAD0
 Macro[82].Macro=$${@&queue[9] = "/tpa $$f";}$$
 Macro[82].Override=1
