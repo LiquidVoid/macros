@@ -1,21 +1,4 @@
-#################
-## Mod Macro
-#################
-
-#Logs
-scripts/logs/*
-
-#tempfiles
-scripts/.events.txt
-.vars.xml
 .globalvars.xml
-
-############
-## Windows
-############
-
-# Windows image file caches
-Thumbs.db
-
-# Folder config file
-Desktop.ini
+.vars.xml
+scripts/.events.txt
+scripts/logs/
