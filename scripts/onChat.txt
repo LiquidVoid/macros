@@ -1,28 +1,24 @@
-$${
+ifmatches("%CHATCLEAN%","(^(From|To) (%@&server_groups_staff%)|^\[L\]) .+");
+    logto("%SERVER%-Mod-CHAT-LOG.txt","%DATETIME%: %CHATCLEAN%");
+    @chat_ping = 1;
 
-    ifmatches("%CHATCLEAN%","(^(From|To) (%@&server_groups_staff%)|^\[L\]) .+");
-        logto("%SERVER%-Mod-CHAT-LOG.txt","%DATETIME%: %CHATCLEAN%");
-        @chat_ping = 1;
+endif;
 
-    endif;
+ifmatches("%CHATCLEAN%","^From (%@&server_groups_trusted%):.*ka tago.*");
+    @chat_ping = 1;
+    wait("5");
+    disconnect;
 
-    ifmatches("%CHATCLEAN%","^From (%@&server_groups_trusted%):.*ka tago.*");
-        @chat_ping = 1;
-        wait("5");
-        disconnect;
+endif;
 
-    endif;
+ifmatches("%CHATCLEAN%","^From (%@&server_groups_trusted%): tpa.*",&tpname,"1")
+    wait("2");
+    @&queue[4] = "/tpa %&tpname%";
 
-    ifmatches("%CHATCLEAN%","^From (%@&server_groups_trusted%): tpa.*",&tpname)
-      wait("2");
-      @&queue[4] = "/tpa %&tpname%";
+endif;
 
-    endif;
+ifmatches("%CHATCLEAN%","(%@&server_chat_allowed%|%@&server_chat_log%)");
+    &act = urlencode("%CHATCLEAN%");
+    &reply = httpget("%@&http_remote%","source=%PLAYER%&target=web&type=echo&action=%&act%",#status);
 
-    ifmatches("%CHATCLEAN%","(%@&server_chat_allowed%|%@&server_chat_log%)");
-        &act = urlencode("%CHATCLEAN%");
-        &reply = httpget("%@&http_remote%","source=%PLAYER%&target=web&type=echo&action=%&act%",#status);
-
-    endif;
-
-}$$
+endif;

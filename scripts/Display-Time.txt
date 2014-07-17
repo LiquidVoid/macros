@@ -1,0 +1,48 @@
+#times[0] = %#times[0]% + 1;
+unset(&out);
+
+foreach(#times,#tim,#i);
+
+	if( #i == 0 );
+		#till = 60;
+
+	elseif( #i == 1 );
+		#till = 60;
+
+	elseif( #i == 2 );
+		#till = 24;
+
+	else;
+		#till = 365;
+
+	endif;
+
+	if( #times[%#i%] >= #till );
+		#times[%#i%] = 0;
+		#nex = %#i% + 1;
+		#times[%#nex%] = #times[%#nex%] + 1;
+
+	endif;
+
+	if( #times[%#i%] < 1 );
+		&str = 00;
+
+	elseif( #times[%#i%] < 10 );
+		&str = 0%#tim%;
+
+	else;
+		&str = %#tim%;
+
+	endif;
+
+	if( #i == 0 );
+		&out = %&str%%&out%;
+
+	else;
+		&out = %&str%:%&out%;
+
+	endif;
+
+next;
+
+@&display_ingametime = %&out%;

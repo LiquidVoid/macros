@@ -1,0 +1,276 @@
+// Queue Config
+@#queue_wait_base = 1;
+@#queue_wait_thresh_multi = 1;
+@#queue_wait_chat = 2;
+@#queue_wait_teleport = 3;
+
+// Load config.txt and parse
+&config = decode($$<config.txt>);
+
+if( &config != "" );
+	&remote = jsonget("%&config%","remote");
+		&remote_http = jsonget("%&remote%","http");
+			match("%&remote_http%","\"(.+)\"",@&remote_http,"1");
+		&remote_weather = jsonget("%&remote%","weather");
+			match("%&remote_weather%","\"(.+)\"",@&remote_weather,"1");
+	&colours = jsonget("%&config%","colours");
+		&colours_variable = jsonget(%&colours%,"variable");
+			&colours_variable_default = jsonget("%&colours_variable%","default");
+				match("%&colours_variable_default%","\"(.+)\"",@&colours_variable_default,"1");
+			&colours_variable_global = jsonget("%&colours_variable%","global");
+				match("%&colours_variable_global%","\"(.+)\"",@&colours_variable_global,"1");
+		&colours_text = jsonget("%&colours%","text");
+			&colours_text_default = jsonget("%&colours_text%","default");
+				match("%&colours_text_default%","\"(.+)\"",@&colours_text_default,"1");
+			&colours_text_enable = jsonget("%&colours_text%","enable");
+				match("%&colours_text_enable%","\"(.+)\"",@&colours_text_enable,"1");
+			&colours_text_disable = jsonget("%&colours_text%","disable");
+				match("%&colours_text_disable%","\"(.+)\"",@&colours_text_disable,"1");
+			&colours_text_highlight = jsonget("%&colours_text%","highlight");
+				match("%&colours_text_highlight%","\"(.+)\"",@&colours_text_highlight,"1");
+	&server = jsonget("%&config%","server");
+		server_configured = jsonhas("%&server%","%SERVER%");
+
+		if( server_configured == true );
+			&server_profile = %SERVER%;
+			&server_default = jsonget("%&server%","default");
+				&server_default_groups = jsonget("%&server_default%","groups");
+					&server_default_groups_enemy = jsonget("%&server_default_groups%","enemy");
+						&server_default_groups_enemy[] = getjsonasarray("%&server_default_groups_enemy%");
+					&server_default_groups_friend = jsonget("%&server_default_groups%","friend");
+						&server_default_groups_friend[] = getjsonasarray("%&server_default_groups_friend%");
+					&server_default_groups_trusted = jsonget("%&server_default_groups%","trusted");
+						&server_default_groups_trusted[] = getjsonasarray("%&server_default_groups_trusted%");
+					&server_default_groups_staff = jsonget("%&server_default_groups%","staff");
+						&server_default_groups_staff[] = getjsonasarray("%&server_default_groups_staff%");
+				&server_default_chat = jsonget("%&server_default%","chat");
+					&server_default_chat_blocked = jsonget("%&server_default_chat%","blocked");
+						&server_default_chat_blocked[] = getjsonasarray("%&server_default_chat_blocked%");
+					&server_default_chat_log = jsonget("%&server_default_chat%","log");
+						&server_default_chat_log[] = getjsonasarray("%&server_default_chat_log%");
+					&server_default_chat_allowed = jsonget("%&server_default_chat%","allowed");
+						&server_default_chat_allowed[] = getjsonasarray("%&server_default_chat_allowed%");
+
+		else;
+			&server_profile = "default";
+			logto("ErrorLog","%SERVER% not configured, using default.");
+
+		endif;
+
+		&server = jsonget("%&server%","%&server_profile%");
+			&server_kits = jsonget("%&server%","kits");
+				&server_kits_names[] = getjsonkeys("%&server_kits%");
+
+				foreach(&server_kits_names,&kit_current_name);
+					&kit_current_data_name = %&kit_current_name%;
+					&kit_current_data = jsonget("%&server_kits%","%&kit_current_name%");
+						#kit_current_data_time = jsonget("%&kit_current_data%","time");
+						#kit_current_data_permission = jsonget("%&kit_current_data%","permission");
+
+						if( #kit_current_data_permission <= @#permissions );
+							exec("onJoinGame_kit.txt","kit-%&kit_current_data_name%","%&kit_current_data_name%","%#kit_current_data_time%");
+
+						endif;
+
+				next;
+
+			&server_commands = jsonget("%&server%","commands");
+				&server_commands_money = jsonget("%&server_commands%","money");
+					match("%&server_commands_money%","\"(.+)\"",@&server_commands_money,"1");
+				&server_commands_safehome = jsonget("%&server_commands%","safehome");
+					match("%&server_commands_safehome%","\"(.+)\"",@&server_commands_safehome,"1");
+				&server_commands_home = jsonget("%&server_commands%","home");
+					match("%&server_commands_home%","\"(.+)\"",@&server_commands_home,"1");
+				&server_commands_spawn = jsonget("%&server_commands%","spawn");
+					match("%&server_commands_spawn%","\"(.+)\"",@&server_commands_spawn,"1");
+			&server_permissions = jsonget("%&server%","permissions");
+				@&server_permissions_teleportation = jsonget("%&server_permissions%","teleportation");
+				@#server_permissions_default = jsonget("%&server_permissions%","default");
+				&server_permissions_ranks = jsonget("%&server_permissions%","ranks");
+					&server_permissions_ranks[] = getjsonasarray("%&server_permissions_ranks%");
+					#rank_amount = JsonArraySize("%&server_permissions_ranks%")
+
+					for(#rank_current, "0", "%#rank_amount%");
+						match("%&server_permissions_ranks[%#rank_current%]%","\"(.+)\"",@&server_permissions_ranks[%#rank_current%],"1");
+
+					next;
+
+			&server_groups = jsonget("%&server%","groups");
+				&server_groups_enemy = jsonget("%&server_groups%","enemy");
+					&server_groups_enemy[] = getjsonasarray("%&server_groups_enemy%");
+				&server_groups_friend = jsonget("%&server_groups%","friend");
+					&server_groups_friend[] = getjsonasarray("%&server_groups_friend%");
+				&server_groups_trusted = jsonget("%&server_groups%","trusted");
+					&server_groups_trusted[] = getjsonasarray("%&server_groups_trusted%");
+				&server_groups_staff = jsonget("%&server_groups%","staff");
+					&server_groups_staff[] = getjsonasarray("%&server_groups_staff%");
+			&server_chat = jsonget("%&server%","chat");
+				&server_chat_blocked = jsonget("%&server_chat%","blocked");
+					&server_chat_blocked[] = getjsonasarray("%&server_chat_blocked%");
+				&server_chat_log = jsonget("%&server_chat%","log");
+					&server_chat_log[] = getjsonasarray("%&server_chat_log%");
+				&server_chat_allowed = jsonget("%&server_chat%","allowed");
+					&server_chat_allowed[] = getjsonasarray("%&server_chat_allowed%");
+
+				if( server_configured == true );
+					&server_default_groups_enemy = join("|","&server_default_groups_enemy[]");
+					&server_default_groups_friend = join("|","&server_default_groups_friend[]");
+					&server_default_groups_trusted = join("|","&server_default_groups_trusted[]");
+					&server_default_groups_staff = join("|","&server_default_groups_staff[]");
+					&server_default_chat_blocked = join("|","&server_default_chat_blocked[]");
+					&server_default_chat_log = join("|","&server_default_chat_log[]");
+					&server_default_chat_allowed = join("|","&server_default_chat_allowed[]");
+
+				endif;
+
+				&server_groups_enemy = join("|","&server_groups_enemy[]");
+				&server_groups_friend = join("|","&server_groups_friend[]");
+				&server_groups_trusted = join("|","&server_groups_trusted[]");
+				&server_groups_staff = join("|","&server_groups_staff[]");
+				&server_chat_blocked = join("|","&server_chat_blocked[]");
+				&server_chat_log = join("|","&server_chat_log[]");
+				&server_chat_allowed = join("|","&server_chat_allowed[]");
+
+				if( server_configured == true );
+
+					if( &server_groups_enemy != "" );
+						&server_groups_enemy = %&server_default_groups_enemy%|%&server_groups_enemy%;
+
+					else;
+						&server_groups_enemy = %&server_default_groups_enemy%;
+
+					endif;
+
+					if( &server_groups_friend != "" );
+						&server_groups_friend = %&server_default_groups_friend%|%&server_groups_friend%;
+
+					else;
+						&server_groups_friend = %&server_default_groups_friend%;
+
+					endif;
+
+					if( &server_groups_trusted != "" );
+						&server_groups_trusted = %&server_default_groups_trusted%|%&server_groups_trusted%;
+
+					else;
+						&server_groups_trusted = %&server_default_groups_trusted%;
+
+					endif;
+
+					if( &server_groups_staff != "" );
+						&server_groups_staff = %&server_default_groups_staff%|%&server_groups_staff%;
+
+					else;
+						&server_groups_staff = %&server_default_groups_staff%;
+
+					endif;
+
+					if( &server_chat_blocked != "" );
+						&server_chat_blocked = %&server_default_chat_blocked%|%&server_chat_blocked%;
+
+					else;
+						&server_chat_blocked = %&server_default_chat_blocked%;
+
+					endif;
+
+					if( &server_chat_log != "" );
+						&server_chat_log = %&server_default_chat_log%|%&server_chat_log%;
+
+					else;
+						&server_chat_log = %&server_default_chat_log%;
+
+					endif;
+
+					if( &server_chat_allowed != "" );
+						&server_chat_allowed = %&server_default_chat_allowed%|%&server_chat_allowed%;
+
+					else;
+						&server_chat_allowed = %&server_default_chat_allowed%;
+
+					endif;
+
+				endif;
+
+				match("%&server_groups_enemy%","\"(.+)\"",&server_groups_enemy,"1");
+					@&server_groups_enemy = replace("&server_groups_enemy","\"|\"","|");
+
+				match("%&server_groups_friend%","\"(.+)\"",&server_groups_friend,"1");
+					@&server_groups_friend = replace("&server_groups_friend","\"|\"","|");
+
+				match("%&server_groups_trusted%","\"(.+)\"",&server_groups_trusted,"1");
+					@&server_groups_trusted = replace("&server_groups_trusted","\"|\"","|");
+
+				match("%&server_groups_staff%","\"(.+)\"",&server_groups_staff,1);
+					@&server_groups_staff = replace("&server_groups_staff","\"|\"","|");
+
+				match("%&server_chat_blocked%","\"(.+)\"",&server_chat_blocked,"1");
+					@&server_chat_blocked = replace("&server_chat_blocked","\"|\"","|");
+						//&server_chat_blocked = replace("&server_chat_blocked","\\\\","\\");
+
+				match("%&server_chat_log%","\"(.+)\"",&server_chat_log,"1");
+					@&server_chat_log = replace("&server_chat_log","\"|\"","|");
+						//&server_chat_log = replace("&server_chat_log","\\\\","\\");
+
+				match("%&server_chat_allowed%","\"(.+)\"",&server_chat_allowed,"1");
+					@&server_chat_allowed = replace("&server_chat_allowed","\"|\"","|");
+						//&server_chat_allowed = replace("&server_chat_allowed","\\\\","\\");
+
+	&user = jsonget("%&config%","user");
+		user_configured = jsonhas("%&user%","%PLAYER%");
+
+		if( user_configured == true );
+			&user_profile = %PLAYER%;
+
+		else;
+			&user_profile = "default";
+			logto("ErrorLog","%PLAYER% not configured, using default.");
+
+		endif;
+
+		&user = jsonget("%&user%","%&user_profile%");
+			&ranks = jsonget("%&user%","ranks");
+				ranks_configured = jsonhas("%&ranks%","%SERVER%");
+
+				if( ranks_configured == true );
+					@#permissions = jsonget("%&ranks%","%SERVER%");
+
+				else;
+					@#permissions = @#server_permissions_default;
+					logto("ErrorLog","Rank not configured for %PLAYER% on %SERVER%, using default: %@#server_permissions_default%.");
+
+				endif;
+
+				@&permissions = "";
+
+				for(#var, "0", "%@#permissions%");
+					@&permissions = %@&server_permissions_ranks[%#var%]%|%@&permissions%;
+
+				next;
+						
+
+			&weather = jsonget("%&user%","weather");
+				&weather_location = jsonget("%&weather%","location");
+					match("%&weather_location%","\"(.+)\"",@&weather_location,"1");
+						@&weather_location_safe = urlencode("%@&weather_location%");
+				&weather_language = jsonget("%&weather%","language");
+					 match("%&weather_language%","\"(.+)\"",@&weather_language,"1");
+				&weather_units = jsonget("%&weather%","units");
+					 match("%&weather_units%","\"(.+)\"",@&weather_units,"1");
+
+					if( @&weather_units == "Imperial" );
+						@&weather_units_symbol = "°F";
+
+					elseif( @&weather_units == "Metric" );
+						@&weather_units_symbol = "°C";
+
+					else;
+						@&weather_units_symbol = "K";
+						@&weather_units = "Kelvin";
+
+					endif;
+
+elseif;
+	logto("ScriptLog","No config file found");
+	stop;
+
+endif;

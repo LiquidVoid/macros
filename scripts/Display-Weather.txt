@@ -1,0 +1,25 @@
+&weather = httpget("%@&remote_weather%","q=%@&weather_location_safe%&lang=%@&weather_language%&units=%@&weather_units%",#status);
+weather_error = jsonhas("%&weather%","message");
+
+if( ( #status == 200 ) && ( weather_error == false ) );
+	&weather_name = jsonget("%&weather%","name");
+	match("%&weather_name%","\"(.*)\"",&weather_name,"1");
+
+	&weather_main = jsonget("%&weather%","main");
+		&weather_main_temp = jsonget("%&weather_main%","temp");
+
+	&weather_weather = jsonget("%&weather%","weather");
+	&weather_weather_array = jsonarrayget("%&weather_weather%","0");
+		&weather_weather_desc = jsonget("%&weather_weather_array%","main");
+		match("%&weather_weather_desc%","\"(.+)\"",&weather_weather_desc,"1");
+
+endif;
+
+if( weather_error == true );
+	logto("ErrorLog","City not found");
+
+else;
+	@&display_weather_temp = %&weather_main_temp%%@&weather_units_symbol%;
+	@&display_weather_desc = %&weather_weather_desc%;
+
+endif;

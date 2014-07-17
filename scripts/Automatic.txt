@@ -1,60 +1,42 @@
 &function = $$[1];
 &action = $$[2];
 
-if( ( &function != "mine" ) && ( &function != "walk" ) && ( &function != "place" ) && ( &function != "sneak" ) )
-    &function = prompt(,"$$[[place,mine,walk,sneak]]","function")
+if( ( &function != "mine" ) && ( &function != "walk" ) && ( &function != "place" ) && ( &function != "sneak" ) );
+    &function = prompt(,"$$[[place,mine,walk,sneak]]","function");
+
 endif;
 
-if( ( &action != "enable" ) && ( &action != "disable" ) && ( &action != "toggle" ) )
-     &action = prompt(,"$$[[enable,disable,toggle]]","action")
-endif;
+if( ( &action != "enable" ) && ( &action != "disable" ) && ( &action != "toggle" ) );
+     &action = prompt(,"$$[[enable,disable,toggle]]","action");
 
+endif;
 
 if( &function == "mine" );
-
-    if( &action == "enable" )
-        @&actions[1] = "true";
-    elseif( &action == "disable" )
-        @&actions[1] = "false";
-    elseif( &action == "toggle" )
-        toggle(@&actions[1]);
-    endif
+    #function = 1;
 
 elseif( &function == "walk" );
-
-    if( &action == "enable" )
-        @&actions[2] = "true";
-    elseif( &action == "disable" )
-        @&actions[2] = "false";
-    elseif( &action == "toggle" )
-        toggle(@&actions[2]);
-    endif
-
-    keyup("forward")
+    #function = 2;
+    keyup("forward");
 
 elseif( &function == "place" );
-
-    if( &action == "enable" )
-        @&actions[3] = "true";
-    elseif( &action == "disable" )
-        @&actions[3] = "false";
-    elseif( &action == "toggle" )
-        toggle(@&actions[3]);
-    endif
+    #function = 3;
 
 elseif( &function == "sneak" );
+    #function = 4;
+    keyup("sneak");
 
-    if( &action == "enable" )
-        @&actions[4] = "true";
-    elseif( &action == "disable" )
-        @&actions[4] = "false";
-    elseif( &action == "toggle" )
-        toggle(@&actions[4]);
-    endif
+endif;
 
-    keyup("sneak")
+if( &action == "enable" );
+    @actions[%#function%] = "true";
 
-endif
+elseif( &action == "disable" );
+    @actions[%#function%] = "false";
+
+elseif( &action == "toggle" );
+    toggle(@actions[%#function%]);
+
+endif;
 
 logto("ScriptLog","Automatic %&function%: %&action%");
 
@@ -63,21 +45,25 @@ if( @automatic == false );
 
     do;
 
-        if( @&actions[1] == "true" )
-            key("attack")
-        endif
+        if( @actions[1] == "true" );
+            key("attack");
 
-        if( @&actions[2] == "true" )
-            keydown("forward")
-        endif
+        endif;
 
-        if( @&actions[3] == "true" )
-            key("use")
-        endif
+        if( @actions[2] == "true" );
+            keydown("forward");
 
-        if( @&actions[4] == "true" )
-            keydown("sneak")
-        endif
+        endif;
+
+        if( @actions[3] == "true" );
+            key("use");
+
+        endif;
+
+        if( @actions[4] == "true" );
+            keydown("sneak");
+
+        endif;
 
     loop;
 

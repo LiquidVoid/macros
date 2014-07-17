@@ -1,0 +1,53 @@
+//COMMENT-START: Channels
+//:: 1  | Anti-AFK
+//:: 2  | Kits
+//:: 3  | Balance
+//:: 4  | Auto-Response
+//:: 5  | General Commands
+//:: 6  |
+//:: 7  | Chat Management
+//:: 8  |
+//:: 9  | Teleport
+//:: 10 | Fall-Check
+//COMMENT-END: Channels
+
+if( ( @&display_clock != &temp_second_old ) && ( @#queue_wait > 0 ) );
+	@#queue_wait = @#queue_wait - 1;
+
+endif;
+
+if( @#queue_wait == 0 );
+	&queue_str = pop("@&queue");
+
+	if( &queue_str != "" );
+
+		ifmatches("%&queue_str%","^/(/)?[A-Za-z0-9]+( [A-Za-z0-9]+)*$");
+
+			ifmatches("%&queue_str%","^/(%@&permissions%)( [A-Za-z0-9]+)*$");
+				logto("cmdLog","%&queue_str%");
+				echo("%&queue_str%");
+				@#queue_wait = %@#queue_wait% + %@#queue_wait_base% + %@#queue_wait_thresh%;
+				@#queue_wait_thresh = %@#queue_wait_thresh% + %@#queue_wait_thresh_multi%;
+
+				ifmatches("%&queue_str%","(%@&server_permissions_teleportation%)( .+)*");
+					@#safety = 10;
+					@#queue_wait = %@#queue_wait% + %@#queue_wait_teleport%;
+
+				endif;
+
+			endif;
+
+		else;
+			logto("cmdLog","%&queue_str%");
+			echo("%&queue_str%");
+			@#queue_wait = %@#queue_wait% + %@#queue_wait_base% + %@#queue_wait_base_chat% + %@#queue_wait_thresh%;
+			@#queue_wait_thresh = %@#queue_wait_thresh% + %@#queue_wait_thresh_multi%;
+
+		endif;
+
+	else;
+		@#queue_wait_thresh = 0;
+
+	endif;
+
+endif;

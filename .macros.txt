@@ -34,13 +34,13 @@ compiler.maxincludes=30
 configs.enable.friends=0
 
 # Enable per-config homes list, setting this to 0 uses a single list for all configurations
-configs.enable.homes=0
+configs.enable.homes=1
 
 # Enable per-config places list, setting this to 0 uses a single list for all configurations
 configs.enable.places=1
 
 # Enable per-config presets list, setting this to 0 uses a single list for all configurations
-configs.enable.presets=0
+configs.enable.presets=1
 
 # Enable per-config towns list, setting this to 0 uses a single list for all configurations
 configs.enable.towns=1
@@ -110,7 +110,7 @@ gui.configname.linkstosettings=0
 gui.optionsfirst=1
 
 # Remember which binding page was used last when opening the binding GUI, otherwise always starts with the KEYS screen
-gui.rememberpage=1
+gui.rememberpage=0
 
 # True to display the old style large copy, move and delete buttons in the binding screen
 gui.showlargebuttons=0
@@ -231,11 +231,14 @@ Macro[18].Control=1
 Macro[19].Macro=$${@&queue[9] = "/jump";}$$
 
 # KEY_SLASH
-Macro[53].Macro=/$$!
+Macro[53].Macro=$${do;prompt(&cmd,"$$?","Command");if( &cmd == "" );stop;endif;ifmatchs("%&cmd%","/(([A-Za-z0-9]+)( [A-Za-z0-9]+))",&cmd,"1");endif;&cmd = "/%&cmd%";ifmatches("%&cmd%","^/(%@&permissions%)( [A-Za-z0-9]+)*$");@&queue[9] = %&cmd%;break;endif;loop;}$$
 Macro[53].Override=1
 
 # KEY_RSHIFT
 Macro[54].Macro=$${exec("Automatic.txt","Automatic","sneak","toggle");}$$
+
+# KEY_NUMPAD2
+Macro[80].Macro=$${exec("Sell-All.txt","Sell-All")}$$
 
 # KEY_NUMPAD0
 Macro[82].Macro=$${@&queue[9] = "/tpa $$f";}$$
@@ -250,7 +253,7 @@ Macro[83].Warp=stable
 # KEY_RCONTROL
 Macro[157].Macro=$${exec("automatic.txt","automatic","mine","disable");exec("automatic.txt","automatic","walk","disable");exec("automatic.txt","automatic","sneak","disable");}$$
 Macro[157].OnKeyUp=$${exec("automatic.txt","automatic","mine","enable");exec("automatic.txt","automatic","walk","enable");exec("automatic.txt","automatic","sneak","enable");}$$
-Macro[157].Condition=@&actions[1] == "true"
+Macro[157].Condition=@actions[1] == "true"
 Macro[157].Mode=conditional
 Macro[157].Control=1
 
@@ -305,39 +308,38 @@ Macro[276].Macro=$${@&queue[7] = "/ch leave wilderness";}$$
 Macro[277].Macro=$${@&queue[7] = "/ch leave global";}$$
 
 # CONTROL_REMOTE-SEND
-Macro[278].Macro=$$<CMD-Remote-Send.txt>
+Macro[278].Macro=$${$$<CMD-Remote-Send.txt>}$$
 
 # CONTROL_LOOP PING OFF
 Macro[281].Macro=$${@chat_ping = 0;}$$
 
 # CONTROL_RUN FILE
-Macro[289].Macro=$$m
-Macro[289].File=onJoinGame.txt
+Macro[289].Macro=$${&file = prompt(,"$$m","File");if( &file != "" );    &file = match("%&file%","^.{3}(.+).{5}$",,"1");    exec("%&file%.txt","%&file%");endif;}$$
 
 # CONTROL_LOOP_PING
 Macro[300].Macro=$${@chat_ping = 0;}$$
 
 # EVENT_ONJOINGAME
-Macro[1000].Macro=$$<onJoinGame.txt>
+Macro[1000].Macro=$${$$<onJoinGame.txt>}$$
 
 # EVENT_ONCHAT
-Macro[1001].Macro=$$<onChat.txt>
+Macro[1001].Macro=$${$$<onChat.txt>}$$
 
 # EVENT_ONHEALTHCHANGE
-Macro[1002].Macro=$$<onHealthChange.txt>
+Macro[1002].Macro=$${$$<onHealthChange.txt>}$$
 
 # EVENT_ONWORLDCHANGE
-Macro[1005].Macro=$$<onWorldChange.txt>
+Macro[1005].Macro=$${$$<onWorldChange.txt>}$$
 
 # EVENT_ONLEVELCHANGE
-Macro[1010].Macro=$$<onLevelChange.txt>
+Macro[1010].Macro=$${$$<onLevelChange.txt>}$$
 
 # EVENT_ONITEMDURABILITYCHANGE
-Macro[1011].Macro=$$<onItemDurabilityChange.txt>
+Macro[1011].Macro=$${$$<onItemDurabilityChange.txt>}$$
 
 # EVENT_ONPLAYERJOINED
-Macro[1014].Macro=$$<onPlayerJoined.txt>
+Macro[1014].Macro=$${$$<onPlayerJoined.txt>}$$
 
 # EVENT_ONSENDCHATMESSAGE
-Macro[1019].Macro=$$<onSendChatMessage.txt>
+Macro[1019].Macro=$${$$<onSendChatMessage.txt>}$$
 

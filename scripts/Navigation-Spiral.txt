@@ -1,61 +1,69 @@
-$${
+#dist = prompt(,"$$[int]","distance");
+&operation = prompt(,"$$[[attack,use]]","operation");
 
-    #dist = $$[Width];
-    &operation = $$[Key];
-    dir = 0;
-    axis = 0;
-    #x = %XPOS%;
-    #z = %ZPOS%;
+dir = 0;
+axis = 0;
+#x = %XPOS%;
+#z = %ZPOS%;
 
-    do("%#dist%");
-        toggle("dir");
+do("%#dist%");
+    toggle("dir");
 
-        do("2");
-            toggle("axis");
+    do("2");
+        toggle("axis");
 
-            if( axis == true );
+        if( axis == true );
 
-                if( dir == true);
-                    #z = %#z% + %#dist%;
-
-                else;
-                    #z = %#z% - %#dist%;
-
-                endif;
+            if( dir == true);
+                #z = %#z% + %#dist%;
 
             else;
-
-                if( dir == true );
-                    #x = %#x% + %#dist%;
-
-                else;
-                    #x = %#x% - %#dist%;
-
-                endif;
+                #z = %#z% - %#dist%;
 
             endif;
 
-            unsafe;
+        else;
 
-                do;
-                    #yaw = calcyawto("%#x%","%#z%",#distance);
-                    #yaw = %#yaw% + 180;
-                    looks(%#yaw%,"+0","0.1");
-                    keydown("forward");
-                    key("%&operation%");
+            if( dir == true );
+                #x = %#x% + %#dist%;
 
-                while( ( XPOS != #x ) && ( ( ZPOS != #z ) && ( #distance <= 1) );
+            else;
+                #x = %#x% - %#dist%;
 
-                keyup("forward");
+            endif;
 
-            endunsafe;
+        endif;
 
-            wait("100ms");
+        unsafe;
 
-        loop;
+            //Debug
+            log("X: [%#x%]  |  Y: [%#z%]")
+            //End
 
-        #dist = %#dist% - 1;
+            do;
+                calcyawto("%#x%","%#z%",#yaw,#distance);
+                #yaw = %#yaw% + 180;
+                looks("%#yaw%","+0","0.1");
+                keydown("forward");
+                key("%&operation%");
+
+                //Debug
+                if( #var != #distance )
+                    log("  Distance: [%#distance%]")
+                endif;
+                #var = %#distance%;
+                //End
+
+            while( ( XPOS != #x ) && ( ZPOS != #z ) && ( #distance >= 1) );
+
+            keyup("forward");
+
+        endunsafe;
+
+        wait("100ms");
 
     loop;
 
-}$$
+    #dist = %#dist% - 1;
+
+loop;

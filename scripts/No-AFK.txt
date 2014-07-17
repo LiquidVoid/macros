@@ -1,0 +1,31 @@
+if( ( @#noafk_x == XPOS ) && ( @#noafk_y == YPOS ) && ( @#noafk_z == ZPOS ) );
+
+    if( &server_commands_money != "" );
+        @&queue[3] = %@&server_commands_money%;
+
+    endif;
+    
+    @#noafk_fail = 0;
+
+else;
+
+    if( @#noafk_fail >= 5 );
+
+        if( &server_commands_money != "" );
+            @&queue[3] = %@&server_commands_money%;
+        
+        endif;
+        
+        @#noafk_fail = 0;
+
+    else;
+        @#noafk_fail = %@#noafk_fail% + 1;
+
+    endif;
+
+endif;
+
+@#noafk_x = %XPOS%;
+@#noafk_y = %YPOS%;
+@#noafk_z = %ZPOS%;
+

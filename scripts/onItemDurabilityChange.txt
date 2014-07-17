@@ -1,12 +1,8 @@
-$${
+if( ( DURABILITY < 25 ) && ( DURABILITY > 5 ) );
+    logto("ScriptLog","%@&colours_text_default%Up to %@&colours_variable_default%%DURABILITY% %@&colours_text_default%Remaining!");
+    playsound("random.break");
 
-    if( ( DURABILITY < 25 ) && ( DURABILITY > 5 ) );
-        logto("ScriptLog","%@&colours_text_default%Up to %@&colours_variable_default%%DURABILITY% %@&colours_text_default%Remaining!");
-        playsound("random.break");
+elseif( ( DURABILITY < 5 ) && ( DURABILITY != 0 ) );
+    gui("inventory");
 
-    elseif( ( DURABILITY < 5 ) && ( DURABILITY != 0 ) );
-        gui("inventory");
-
-    endif;
-
-}$$
+endif;

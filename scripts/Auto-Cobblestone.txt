@@ -1,56 +1,54 @@
-$${
+if( @auto_cobblestone == false );
+    @auto_cobblestone = true;
+    logto("ScriptLog","%@&colours_text_enable%Auto-Cobblestone Enabled");
+    #blocks = 0;
+    #jam = 0;
+    looks("180","-90","0.5");
 
-    if( @auto_cobblestone == false );
-        @auto_cobblestone = true;
-        logto("ScriptLog","%@&colours_text_enable%Auto-Cobblestone Enabled");
-        #blocks = 0;
-        #jam = 0;
-        looks("180","-90","0.5");
+    do;
+        #rand = random("30","40");
 
         do;
-            #rand = random("30","40");
+            &id = getidrel("0","4","0");
 
-            do;
-                &id = getidrel("0","4","0");
+            ifmatches("%&id%","(flowing_)?lava");
 
-                ifmatches("%&id%","(flowing_)?lava");
-
-                    if( #jam > 100 );
-                        logto("ScriptLog","%@&colours_text_enable%Auto-Cobblestone Disabled");
-                        @auto_cobblestone = false;
-                        @chat_ping = 1;
-                        wait("10");
-                        disconnect;
-
-                    else;
-                        #jam = %#jam% + 1;
-                    endif;
+                if( #jam > 100 );
+                    logto("ScriptLog","%@&colours_text_enable%Auto-Cobblestone Disabled");
+                    @auto_cobblestone = false;
+                    @chat_ping = 1;
+                    wait("10");
+                    disconnect;
 
                 else;
-                    #jam = 0;
+                    #jam = %#jam% + 1;
+
                 endif;
 
-                key("attack");
+            else;
+                #jam = 0;
 
-            until( DURABILITY < #rand );
+            endif;
 
-            looks("180","0","0.5");
+            key("attack");
 
-            do;
-                key("use");
-                wait("250ms");
+        until( DURABILITY < #rand );
 
-            until( DURABILITY >= 70 );
+        looks("180","0","0.5");
 
-            looks("180","-90","0.5");
+        do;
+            key("use");
+            wait("250ms");
 
-        loop;
+        until( DURABILITY >= 70 );
 
-    elseif;
-        logto("ScriptLog","%@&colours_text_enable%Auto-Cobblestone Disabled");
-        @auto_cobblestone = false;
-        stop;
+        looks("180","-90","0.5");
 
-    endif;
+    loop;
 
-}$$
+elseif;
+    logto("ScriptLog","%@&colours_text_enable%Auto-Cobblestone Disabled");
+    @auto_cobblestone = false;
+    stop;
+
+endif;

@@ -1,0 +1,10 @@
+#i = 0;
+unset(&effects[]);
+
+foreach(effects);
+	#i = %#i% + 1;
+	&effects[%#i%] = "%EFFECTNAME%: %EFFECTTIME%";
+
+next;
+
+@&display_effects = join("\n","&effects[]");
