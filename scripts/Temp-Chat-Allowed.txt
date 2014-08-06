@@ -1,1 +1,0 @@
-^.*($$<Players-Trusted.txt>|$$<Players-Friends.txt>|$$<Players-Mods.txt>) ((joined|left)|is (no longer|now) AFK)\.|^(From|To): .*|^\[L\].*|^Balance: \$.*

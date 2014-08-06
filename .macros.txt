@@ -4,7 +4,7 @@
 #
 
 # Version number of the mod which saved this file. ***Do not alter this value!***
-version=1004
+version=1011
 
 #
 # Settings

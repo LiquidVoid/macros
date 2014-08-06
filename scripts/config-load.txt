@@ -204,16 +204,16 @@ if( &config != "" );
 					@&server_groups_staff = replace("&server_groups_staff","\"|\"","|");
 
 				match("%&server_chat_blocked%","\"(.+)\"",&server_chat_blocked,"1");
-					@&server_chat_blocked = replace("&server_chat_blocked","\"|\"","|");
-						//&server_chat_blocked = replace("&server_chat_blocked","\\\\","\\");
+					&server_chat_blocked = replace("&server_chat_blocked","\"|\"","|");
+						@&server_chat_blocked = replace("&server_chat_blocked","\\\\","\\");
 
 				match("%&server_chat_log%","\"(.+)\"",&server_chat_log,"1");
-					@&server_chat_log = replace("&server_chat_log","\"|\"","|");
-						//&server_chat_log = replace("&server_chat_log","\\\\","\\");
+					&server_chat_log = replace("&server_chat_log","\"|\"","|");
+						@&server_chat_log = replace("&server_chat_log","\\\\","\\");
 
 				match("%&server_chat_allowed%","\"(.+)\"",&server_chat_allowed,"1");
-					@&server_chat_allowed = replace("&server_chat_allowed","\"|\"","|");
-						//&server_chat_allowed = replace("&server_chat_allowed","\\\\","\\");
+					&server_chat_allowed = replace("&server_chat_allowed","\"|\"","|");
+						@&server_chat_allowed = replace("&server_chat_allowed","\\\\","\\");
 
 	&user = jsonget("%&config%","user");
 		user_configured = jsonhas("%&user%","%PLAYER%");
