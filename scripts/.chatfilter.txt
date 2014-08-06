@@ -4,5 +4,5 @@
 #
 
 # Filter for config []
-Filter[].Script=$$<TEMP-ChatFilter.txt><BR />
+Filter[].Script=$$<Chat-Filter.txt><BR />
 
