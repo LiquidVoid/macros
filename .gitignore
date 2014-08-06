@@ -2,3 +2,5 @@
 .vars.xml
 scripts/.events.txt
 scripts/logs/
+
+!modules/*.jar
